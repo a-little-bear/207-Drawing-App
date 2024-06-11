@@ -8,12 +8,14 @@ public class Pixel extends Entity{
 
     GamePanel gp;
     Color color;
+    Boolean rendered;
 
     public  Pixel(GamePanel gp, int x,int y, Color color){
         this.gp = gp;
         this.x = x;
         this.y = y;
         this.color = color;
+        rendered = false;
     }
 
     public void update(){
@@ -24,8 +26,15 @@ public class Pixel extends Entity{
         this.color = color;
     }
 
+    public void render(boolean rendered){
+        this.rendered = rendered;
+    }
+
+
     public void draw(Graphics2D g2){
-        g2.setColor(color);
-        g2.fillRect(x, y, gp.tileSize, gp.tileSize);
+        if (rendered){
+            g2.setColor(color);
+            g2.fillRect(x, y, gp.tileSize, gp.tileSize);
+        }
     }
 }

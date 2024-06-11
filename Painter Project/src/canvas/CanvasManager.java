@@ -11,7 +11,7 @@ import main.*;
 
 public class CanvasManager{
     GamePanel gp;
-    ArrayList<Pixel> canvas = new ArrayList<Pixel>();
+    ArrayList<Canvas> layers = new ArrayList<Canvas>();
 
     public CanvasManager(GamePanel gp){
         this.gp = gp;
@@ -19,46 +19,18 @@ public class CanvasManager{
     }
 
     public void newCanvas(GamePanel gp){
-        int col = 0;
-        int row = 0;
-        int x = 0;
-        int y = 0;
-        while (col < gp.maxScreenCol && row < gp.maxScreenRow){
-            Pixel p = new Pixel(gp, x, y, Color.WHITE);
-            canvas.add(p);
-            col ++;
-            x += gp.tileSize;
-            if (col == gp.maxScreenCol){
-                col = 0;
-                x = 0;
-                row++;
-                y += gp.tileSize;
-            }
-        }
-    }
-
-    public ArrayList locate_pixel(int x, int y, int size){
-        ArrayList<Pixel> area = new ArrayList<Pixel>();
-        for (int i = 0; i < canvas.size(); i++){
-            Pixel pixel = canvas.get(i);
-            if (x <= pixel.x && pixel.x <= x + size && y <= pixel.y && pixel.y <= y + size ){
-                area.add(pixel);
-            }
-        }
-        return area;
+        Canvas layer = new Canvas(gp);
+        layers.add(layer);
     }
 
     public void paint (int x, int y, Color color, int size){
-        ArrayList <Pixel> area = locate_pixel(x, y, size);
-        for  (int i = 0; i< area.size(); i++){
-            area.get(i).setColor(color);
-        }
+        Canvas currentLayer = layers.get(0); // TODO change 0 to selected layer
+        currentLayer.paintArea(currentLayer.locatePixel(x,y,size), color);
     }
 
     public void draw(Graphics2D g2){
-        for (int i = 0; i < canvas.size(); i++){
-            Pixel pixel = canvas.get(i);
-            pixel.draw(g2);
+        for (int i = 0; i < layers.size(); i++){
+           layers.get(i).draw(g2);
         }
     }
 

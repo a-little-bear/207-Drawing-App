@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread thread;
 
     //FPS
-    int FPS = 4000;
+    int FPS = 60;
 
     public CanvasManager canvas = new CanvasManager(this);
 
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
     @Override
     public void run(){
         // TODO change so that it only updates when an action is performed instead of 60fps
-
+        /*
         double drawInterval = 1000000000/FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -56,13 +56,19 @@ public class GamePanel extends JPanel implements Runnable{
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / drawInterval;
-            
+
             lastTime = currentTime;
             if (delta>=1 ){
                 //System.out.println(controller.mouse.m.getX()+" , "+controller.mouse.m.getY());
                 update();
                 repaint();
             }
+        }
+        */
+
+        while(thread != null){
+            update();
+            repaint();
         }
     }
 
@@ -74,7 +80,6 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         canvas.draw(g2);
-
         cursor.draw(g2);
         g2.dispose();
     }
