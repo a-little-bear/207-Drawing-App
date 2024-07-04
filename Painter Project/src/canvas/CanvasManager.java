@@ -1,37 +1,37 @@
 package canvas;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.List;
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.ListIterator;
+import main.GamePanel;
 
-import entity.Pixel;
-import main.*;
+public class CanvasManager {
+    private ArrayList<Canvas> layers = new ArrayList<>();
+    private int width, height;
 
-public class CanvasManager{
-    GamePanel gp;
-    ArrayList<Canvas> layers = new ArrayList<Canvas>();
-
-    public CanvasManager(GamePanel gp){
-        this.gp = gp;
-        newCanvas(gp);
+    public CanvasManager(int width, int height) {
+        this.width = width;
+        this.height = height;
+        addLayer();
     }
 
-    public void newCanvas(GamePanel gp){
-        Canvas layer = new Canvas(gp);
-        layers.add(layer);
+    public void addLayer() {
+        Canvas newLayer = new Canvas(width, height);
+        layers.add(newLayer);
     }
 
-    public void paint (int x, int y, Color color, int size){
-        Canvas currentLayer = layers.get(0); // TODO change 0 to selected layer
-        currentLayer.paintArea(currentLayer.locatePixel(x,y,size), color);
+    public void paint(int x, int y, Color color, int size) {
+        Canvas currentLayer = layers.get(layers.size() - 1); // Paint on the topmost layer
+        currentLayer.paintArea(x, y, color, size);
     }
 
-    public void draw(Graphics2D g2){
-        for (int i = 0; i < layers.size(); i++){
-           layers.get(i).draw(g2);
+    public void paintLine(int x1, int y1, int x2, int y2, Color color, int size) {
+        Canvas currentLayer = layers.get(layers.size() - 1); // Paint on the topmost layer
+        currentLayer.paintLine(x1, y1, x2, y2, color, size);
+    }
+
+    public void draw(Graphics2D g2) {
+        for (Canvas layer : layers) {
+            layer.draw(g2);
         }
     }
-
 }
