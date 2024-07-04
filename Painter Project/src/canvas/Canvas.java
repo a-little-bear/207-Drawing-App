@@ -1,62 +1,63 @@
 package canvas;
 
-import entity.Pixel;
-import main.GamePanel;
-
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
 public class Canvas {
-    GamePanel gp;
-    Pixel[][] canvas;
+    private BufferedImage canvasImage;
+    private int width, height;
 
-    public Canvas (GamePanel gp){
-        this.gp = gp;
-        newCanvas(gp);
+    public Canvas(int width, int height) {
+        this.width = width;
+        this.height = height;
+        canvasImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        clearCanvas();
     }
 
-    public void newCanvas(GamePanel gp){
-        canvas = new Pixel[gp.maxScreenRow][gp.maxScreenCol];
-        int col = 0;
-        int row = 0;
-        int x = 0;
-        int y = 0;
-        while (col < gp.maxScreenCol && row < gp.maxScreenRow){
-            Pixel p = new Pixel(gp, x, y, Color.WHITE);
-            canvas [y][x] = p;
-            col ++;
-            x += gp.tileSize;
-            if (col == gp.maxScreenCol){
-                col = 0;
-                x = 0;
-                row++;
-                y += gp.tileSize;
+    public void clearCanvas() {
+        Graphics2D g2 = canvasImage.createGraphics();
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0, 0, width, height);
+        g2.dispose();
+    }
+
+    public void paintArea(int x, int y, Color color, int size) {
+        Graphics2D g2 = canvasImage.createGraphics();
+        g2.setColor(color);
+        g2.fillRect(x, y, size, size);
+        g2.dispose();
+    }
+
+    public void paintLine(int x1, int y1, int x2, int y2, Color color, int size) {
+        Graphics2D g2 = canvasImage.createGraphics();
+        g2.setColor(color);
+
+        // Bresenham's line algorithm
+        int dx = Math.abs(x2 - x1);
+        int dy = Math.abs(y2 - y1);
+        int sx = x1 < x2 ? 1 : -1;
+        int sy = y1 < y2 ? 1 : -1;
+        int err = dx - dy;
+
+        while (true) {
+            g2.fillRect(x1, y1, size, size);
+
+            if (x1 == x2 && y1 == y2) break;
+            int e2 = 2 * err;
+            if (e2 > -dy) {
+                err -= dy;
+                x1 += sx;
+            }
+            if (e2 < dx) {
+                err += dx;
+                y1 += sy;
             }
         }
+
+        g2.dispose();
     }
 
-    public Pixel[] locatePixel(int x, int y, int size){
-        ArrayList<Pixel> pixels = new ArrayList<Pixel>();
-        for (int i = x; i < x+size; i++) {
-            for (int j = y; j < y + size; j++) {
-                pixels.add(canvas[j][i]);
-            }
-        }
-        return pixels.toArray(new Pixel[0]);
-    }
-
-    public void paintArea(Pixel[] area, Color color){
-        for (Pixel pixel : area) {
-            pixel.setColor(color);
-            pixel.render(true);
-        }
-    }
-
-    public void draw(Graphics2D g2){
-        for (int i = 0; i< canvas.length; i++){
-            for (int j = 0; j < canvas[i].length; j++){
-                canvas[i][j].draw(g2);
-            }
-        }
+    public void draw(Graphics2D g2) {
+        g2.drawImage(canvasImage, 0, 0, null);
     }
 }

@@ -1,35 +1,48 @@
 package entity;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
+import main.Controller;
+import main.GamePanel;
 
-import main.*;
+public class CursorM extends Entity {
+    private GamePanel gp;
+    private Controller controller;
+    private int size;
+    private Color color;
+    private int lastX, lastY;
+    private boolean isDrawing;
 
-public class CursorM extends Entity{
-
-    GamePanel gp;
-    Controller controller;
-    int size;
-    Color color;
-
-    //TODO Implement change size and color of cursor method
-
-    public CursorM(GamePanel gp, Controller controller){
+    public CursorM(GamePanel gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
-        color = Color.BLACK;
-        size = 5;
+        this.color = Color.BLACK;
+        this.size = 5;
+        this.isDrawing = false;
     }
 
-    public void update(){
-        x = controller.mouse.xCoord;
-        y = controller.mouse.yCoord;
-        if (controller.mouse.isActive){
-            gp.canvas.paint(x, y, color, size);
+    public void update() {
+        int x = controller.mouse.xCoord;
+        int y = controller.mouse.yCoord;
+
+        if (controller.mouse.isActive) {
+            if (!isDrawing) {
+                // Starting a new line
+                lastX = x;
+                lastY = y;
+                isDrawing = true;
+            }
+            // Draw the line from the last point to the current point
+            gp.canvasManager.paintLine(lastX, lastY, x, y, color, size);
+            lastX = x;
+            lastY = y;
+        } else {
+            isDrawing = false;
         }
     }
 
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2) {
         g2.setColor(color);
-        g2.fillRect(x, y, gp.tileSize*size, gp.tileSize*size); // TODO: change to pen size when Implemented
+        g2.fillRect(lastX, lastY, size, size); // Updated to use size directly
     }
 }
