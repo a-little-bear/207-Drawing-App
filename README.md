@@ -1,10 +1,12 @@
-A Paint-type app for making graphic-design projects.
+# Sleep
+### A Paint app for making graphic-design projects.
 
 - Current features include:
   - Mouse Tracker
   - Canvas
   - Ability to draw
   - Open/Close program
+
 
 - TODOs:
   - Implement GUI
