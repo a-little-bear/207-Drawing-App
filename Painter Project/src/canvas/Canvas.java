@@ -16,7 +16,7 @@ public class Canvas {
 
     public void clearCanvas() {
         Graphics2D g2 = canvasImage.createGraphics();
-        g2.setColor(Color.WHITE);
+        g2.setColor(new Color(0,0,0,0));
         g2.fillRect(0, 0, width, height);
         g2.dispose();
     }

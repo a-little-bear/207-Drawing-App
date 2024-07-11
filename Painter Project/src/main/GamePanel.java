@@ -4,6 +4,10 @@ import javax.swing.JPanel;
 import java.awt.*;
 import canvas.CanvasManager;
 import entity.CursorM;
+import entity.KeyBoardM;
+import entity.Tools.PaintTool;
+import entity.Tools.Tool;
+import main.Controllers.Controller;
 
 public class GamePanel extends JPanel implements Runnable {
     private final int scale = 1;
@@ -16,7 +20,10 @@ public class GamePanel extends JPanel implements Runnable {
     public CanvasManager canvasManager;
     private Controller controller;
     private CursorM cursor;
+    private KeyBoardM keyboard;
     private Thread thread;
+
+    public Tool currentTool;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -25,10 +32,14 @@ public class GamePanel extends JPanel implements Runnable {
 
         controller = new Controller();
         cursor = new CursorM(this, controller);
+        keyboard = new KeyBoardM(this, controller);
         canvasManager = new CanvasManager(screenWidth, screenHeight);
+
+        currentTool = new PaintTool(this, controller);
 
         this.addMouseListener(controller.mouse);
         this.addMouseMotionListener(controller.mouse);
+        this.addKeyListener(controller.keyboard);
         this.setFocusable(true); // Fixed for keyboard events
     }
 
@@ -52,6 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
         cursor.update();
+        keyboard.update();
     }
 
     public void paintComponent(Graphics g) {
