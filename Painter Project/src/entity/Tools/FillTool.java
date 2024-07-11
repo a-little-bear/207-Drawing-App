@@ -1,46 +1,32 @@
 package entity.Tools;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-
-import main.GamePanel;
 import main.Controllers.Controller;
+import main.GamePanel;
 
-public class EraserTool implements Tool{
+import java.awt.*;
+
+public class FillTool implements Tool {
     private GamePanel gp;
     private Controller controller;
     private int size;
     private Color color;
     private int lastX, lastY;
     private boolean isDrawing;
-    
-    public EraserTool(GamePanel gp, Controller controller){
+
+    public FillTool(GamePanel gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
-        this.color = Color.WHITE; //TODO GET TRANSPARANT TO WORK INSTEAD OF WHITE
-        this.size = 20;
+        this.color = Color.BLACK;
+        this.size = 5;
         this.isDrawing = false;
     }
 
     @Override
     public void update() {
+        Graphics2D image = gp.canvasManager.getTopLayer().getCanvasImage();
         int x = controller.mouse.xCoord;
         int y = controller.mouse.yCoord;
-
-        if (controller.mouse.isActive) {
-            if (!isDrawing) {
-                // Starting a new line
-                lastX = x;
-                lastY = y;
-                isDrawing = true;
-            }
-            // Draw the line from the last point to the current point
-            gp.canvasManager.paintLine(lastX, lastY, x, y, color, size);
-            lastX = x;
-            lastY = y;
-        } else {
-            isDrawing = false;
-        }
+        // TO DO: implement dfs fill with colour using bounds of gamepanel and FillTool's colour
     }
 
     @Override
@@ -51,6 +37,7 @@ public class EraserTool implements Tool{
         g2.fillRect(x, y, size, size); // Updated to use size directly
     }
 
+    @Override
     public void setSize(int size){
         if (size < 1) {
             this.size = 1;
@@ -58,8 +45,10 @@ public class EraserTool implements Tool{
         else{
             this.size = size;
         }
+
     }
-    
+
+    @Override
     public void incrementSize(int increment){
         if (size < 1) {
             size = 1;

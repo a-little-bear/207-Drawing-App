@@ -44,8 +44,10 @@ public class PaintTool implements Tool{
     
     @Override
     public void draw(Graphics2D g2) {
+        int x = controller.mouse.xCoord;
+        int y = controller.mouse.yCoord;
         g2.setColor(color);
-        g2.fillRect(lastX, lastY, size, size); // Updated to use size directly
+        g2.fillRect(x, y, size, size); // Updated to use size directly
     }
 
     public void setColor(Color color){
