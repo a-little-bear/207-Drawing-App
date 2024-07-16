@@ -21,6 +21,9 @@ public class KeyBoardM {
         else if (controller.keyboard.wP == true){
             gp.currentTool = new EraserTool(gp, controller);
         }
+        else if (controller.keyboard.eP == true){
+            gp.canvasManager.exportToPNG();
+        }
         else if (controller.keyboard.up){
             gp.currentTool.incrementSize(1);
         }

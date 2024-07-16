@@ -61,7 +61,6 @@ public class PaintTool implements Tool{
         else{
             this.size = size;
         }
-        
     }
     
     public void incrementSize(int increment){
