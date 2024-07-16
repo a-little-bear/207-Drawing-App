@@ -9,6 +9,8 @@ import entity.Tools.PaintTool;
 import entity.Tools.Tool;
 import main.Controllers.Controller;
 
+import entity.KeyboardInput;
+
 public class GamePanel extends JPanel implements Runnable {
     private final int scale = 1;
     public final int tileSize = scale;
@@ -22,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
     private CursorM cursor;
     private KeyBoardM keyboard;
     private Thread thread;
+    private KeyboardInput keyboardInput;
 
     public Tool currentTool;
 
@@ -34,6 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
         cursor = new CursorM(this, controller);
         keyboard = new KeyBoardM(this, controller);
         canvasManager = new CanvasManager(screenWidth, screenHeight);
+        keyboardInput = new KeyboardInput(canvasManager);
 
         currentTool = new PaintTool(this, controller);
 
@@ -41,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.addMouseMotionListener(controller.mouse);
         this.addKeyListener(controller.keyboard);
         this.setFocusable(true); // Fixed for keyboard events
+        this.addKeyListener(keyboardInput);
     }
 
     public void startThread() {

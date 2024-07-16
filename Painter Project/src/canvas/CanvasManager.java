@@ -36,4 +36,14 @@ public class CanvasManager {
             layer.draw(g2);
         }
     }
+
+    public Canvas collapseLayers() {
+        //Method to collapse all the layers into 1 canvas
+
+        return layers.get(0);   //Temporary Solution for Testing
+    }
+
+    public void exportToPNG() {
+        collapseLayers().exportToPNG();
+    }
 }
