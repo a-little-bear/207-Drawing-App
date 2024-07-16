@@ -20,11 +20,11 @@ public class Canvas {
 
     public void clearCanvas() {
         Graphics2D g2 = canvasImage.createGraphics();
-        g2.setColor(Color.WHITE);
+        g2.setColor(new Color(0,0,0,0));
         g2.fillRect(0, 0, width, height);
         g2.dispose();
     }
-
+    public Graphics2D getCanvasImage() { return canvasImage.createGraphics(); }
     public void paintArea(int x, int y, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(color);
