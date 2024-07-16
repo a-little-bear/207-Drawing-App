@@ -1,7 +1,11 @@
 package canvas;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Canvas {
     private BufferedImage canvasImage;
@@ -59,5 +63,25 @@ public class Canvas {
 
     public void draw(Graphics2D g2) {
         g2.drawImage(canvasImage, 0, 0, null);
+    }
+
+    public void exportToPNG() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Specify a file to save");
+        int userSelection = fileChooser.showSaveDialog(null);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+
+            if (!file.getAbsolutePath().endsWith(".png")) {
+                file = new File(file.getAbsolutePath() + ".png");
+            }
+
+            try {
+                ImageIO.write(canvasImage, "png", file);
+            } catch (IOException | NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

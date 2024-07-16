@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import main.GamePanel;
 
 public class CanvasManager {
-    private ArrayList<Canvas> layers = new ArrayList<>();
+    public ArrayList<Canvas> layers = new ArrayList<>();
     private int width, height;
 
     public CanvasManager(int width, int height) {
@@ -33,5 +33,15 @@ public class CanvasManager {
         for (Canvas layer : layers) {
             layer.draw(g2);
         }
+    }
+
+    public Canvas collapseLayers() {
+        //Method to collapse all the layers into 1 canvas
+
+        return layers.get(0);   //Temporary Solution for Testing
+    }
+
+    public void exportToPNG() {
+        collapseLayers().exportToPNG();
     }
 }
