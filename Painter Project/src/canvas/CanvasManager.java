@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import main.GamePanel;
 
 public class CanvasManager {
-    public ArrayList<Canvas> layers = new ArrayList<>();
+    private ArrayList<Canvas> layers = new ArrayList<>();
     private int width, height;
 
     public CanvasManager(int width, int height) {
