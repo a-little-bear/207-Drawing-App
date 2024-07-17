@@ -6,8 +6,8 @@ import main.GamePanel;
 import main.Controllers.Controller;
 
 public class KeyBoardM {
-    private GamePanel gp;
-    private Controller controller;
+    private final GamePanel gp;
+    private final Controller controller;
 
     public KeyBoardM(GamePanel gp, Controller controller) {
         this.gp = gp;
@@ -15,13 +15,13 @@ public class KeyBoardM {
     }
 
     public void update() {
-        if(controller.keyboard.qP == true){
+        if(controller.keyboard.qP){
             gp.currentTool = new PaintTool(gp, controller);
         }
-        else if (controller.keyboard.wP == true){
+        else if (controller.keyboard.wP){
             gp.currentTool = new EraserTool(gp, controller);
         }
-        else if (controller.keyboard.eP == true){
+        else if (controller.keyboard.eP){
             gp.canvasManager.exportToPNG();
         }
         else if (controller.keyboard.up){
