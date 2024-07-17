@@ -1,10 +1,13 @@
 package entity.Tools;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public interface Tool {
-    public void update();
-    public void draw(Graphics2D g2);
-    public void setSize(int size);
-    public void incrementSize(int incr);
+    void update();
+
+    void draw(Graphics2D g2);
+
+    void setSize(int size);
+
+    void incrementSize(int incr);
 }

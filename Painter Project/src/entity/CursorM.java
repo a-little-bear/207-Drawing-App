@@ -1,13 +1,13 @@
 package entity;
 
-import java.awt.Graphics2D;
-
-import main.GamePanel;
 import main.Controllers.Controller;
+import main.GamePanel;
 
-public class CursorM{
-    private GamePanel gp;
-    private Controller controller;
+import java.awt.*;
+
+public class CursorM {
+    private final GamePanel gp;
+    private final Controller controller;
 
     public CursorM(GamePanel gp, Controller controller) {
         this.gp = gp;
@@ -18,7 +18,7 @@ public class CursorM{
         gp.currentTool.update();
     }
 
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2) {
         gp.currentTool.draw(g2);
     }
 }

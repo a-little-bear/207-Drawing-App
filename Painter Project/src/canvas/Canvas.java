@@ -1,15 +1,16 @@
 package canvas;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class Canvas {
-    private BufferedImage canvasImage;
-    private int width, height;
+    private final BufferedImage canvasImage;
+    private final int width;
+    private final int height;
 
     public Canvas(int width, int height) {
         this.width = width;
@@ -20,11 +21,15 @@ public class Canvas {
 
     public void clearCanvas() {
         Graphics2D g2 = canvasImage.createGraphics();
-        g2.setColor(new Color(0,0,0,0));
+        g2.setColor(new Color(0, 0, 0, 0));
         g2.fillRect(0, 0, width, height);
         g2.dispose();
     }
-    public BufferedImage getCanvasImage() { return canvasImage; }
+
+    public BufferedImage getCanvasImage() {
+        return canvasImage;
+    }
+
     public void paintArea(int x, int y, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(color);

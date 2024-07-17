@@ -1,16 +1,16 @@
 package entity;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import main.GamePanel;
 
-public class Pixel extends Entity{
+import java.awt.*;
+
+public class Pixel extends Entity {
 
     GamePanel gp;
     Color color;
     Boolean rendered;
 
-    public  Pixel(GamePanel gp, int x,int y, Color color){
+    public Pixel(GamePanel gp, int x, int y, Color color) {
         this.gp = gp;
         this.x = x;
         this.y = y;
@@ -18,21 +18,21 @@ public class Pixel extends Entity{
         rendered = false;
     }
 
-    public void update(){
+    public void update() {
         //TODO Implement update
     }
 
-    public void setColor(Color color){
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public void render(boolean rendered){
+    public void render(boolean rendered) {
         this.rendered = rendered;
     }
 
 
-    public void draw(Graphics2D g2){
-        if (rendered){
+    public void draw(Graphics2D g2) {
+        if (rendered) {
             g2.setColor(color);
             g2.fillRect(x, y, gp.tileSize, gp.tileSize);
         }

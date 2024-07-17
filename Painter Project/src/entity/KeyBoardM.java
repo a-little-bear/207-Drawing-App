@@ -2,8 +2,8 @@ package entity;
 
 import entity.Tools.EraserTool;
 import entity.Tools.PaintTool;
-import main.GamePanel;
 import main.Controllers.Controller;
+import main.GamePanel;
 
 public class KeyBoardM {
     private final GamePanel gp;
@@ -15,19 +15,15 @@ public class KeyBoardM {
     }
 
     public void update() {
-        if(controller.keyboard.qP){
+        if (controller.keyboard.qP) {
             gp.currentTool = new PaintTool(gp, controller);
-        }
-        else if (controller.keyboard.wP){
+        } else if (controller.keyboard.wP) {
             gp.currentTool = new EraserTool(gp, controller);
-        }
-        else if (controller.keyboard.eP){
+        } else if (controller.keyboard.eP) {
             gp.canvasManager.exportToPNG();
-        }
-        else if (controller.keyboard.up){
+        } else if (controller.keyboard.up) {
             gp.currentTool.incrementSize(1);
-        }
-        else if (controller.keyboard.down){
+        } else if (controller.keyboard.down) {
             gp.currentTool.incrementSize(-1);
         }
     }

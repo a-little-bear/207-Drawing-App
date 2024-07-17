@@ -22,7 +22,7 @@ public class Mouse implements MouseMotionListener, MouseListener {
 
     @Override
     public void mousePressed(java.awt.event.MouseEvent e) {
-        if (e.getButton() == java.awt.event.MouseEvent.BUTTON1){
+        if (e.getButton() == java.awt.event.MouseEvent.BUTTON1) {
             isActive = true;
         }
         update(e);
@@ -30,7 +30,7 @@ public class Mouse implements MouseMotionListener, MouseListener {
 
     @Override
     public void mouseReleased(java.awt.event.MouseEvent e) {
-        if (e.getButton() == java.awt.event.MouseEvent.BUTTON1){
+        if (e.getButton() == java.awt.event.MouseEvent.BUTTON1) {
             isActive = false;
         }
         update(e);
