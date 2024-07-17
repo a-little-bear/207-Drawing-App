@@ -4,6 +4,7 @@ import main.Controllers.Controller;
 import main.GamePanel;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class FillTool implements Tool {
     private GamePanel gp;
@@ -23,7 +24,7 @@ public class FillTool implements Tool {
 
     @Override
     public void update() {
-        Graphics2D image = gp.canvasManager.getTopLayer().getCanvasImage();
+        BufferedImage image = gp.canvasManager.getTopLayer().getCanvasImage();
         int x = controller.mouse.xCoord;
         int y = controller.mouse.yCoord;
         // TO DO: implement dfs fill with colour using bounds of gamepanel and FillTool's colour
@@ -38,23 +39,8 @@ public class FillTool implements Tool {
     }
 
     @Override
-    public void setSize(int size){
-        if (size < 1) {
-            this.size = 1;
-        }
-        else{
-            this.size = size;
-        }
-
-    }
+    public void setSize(int size){ }
 
     @Override
-    public void incrementSize(int increment){
-        if (size < 1) {
-            size = 1;
-        }
-        else{
-            size += increment;
-        }
-    }
+    public void incrementSize(int increment){ }
 }

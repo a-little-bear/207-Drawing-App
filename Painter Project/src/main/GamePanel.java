@@ -2,6 +2,9 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import canvas.CanvasManager;
 import entity.CursorM;
 import entity.KeyBoardM;
@@ -42,6 +45,16 @@ public class GamePanel extends JPanel implements Runnable {
         this.addMouseMotionListener(controller.mouse);
         this.addKeyListener(controller.keyboard);
         this.setFocusable(true); // Fixed for keyboard events
+    }
+
+    public int getScreenWidth() {
+        return screenWidth;
+    }
+    public int getScreenHeight() {
+        return screenHeight;
+    }
+    public ArrayList<Integer> getWidthHeight() {
+        return new ArrayList<Integer>(Arrays.asList(screenWidth, screenHeight));
     }
 
     public void startThread() {
