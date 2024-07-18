@@ -7,12 +7,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class FillTool implements Tool {
-    private GamePanel gp;
-    private Controller controller;
-    private int size;
-    private Color color;
+    private final GamePanel gp;
+    private final Controller controller;
+    private final int size;
+    private final Color color;
+    private final boolean isDrawing;
     private int lastX, lastY;
-    private boolean isDrawing;
 
     public FillTool(GamePanel gp, Controller controller) {
         this.gp = gp;
@@ -39,8 +39,10 @@ public class FillTool implements Tool {
     }
 
     @Override
-    public void setSize(int size){ }
+    public void setSize(int size) {
+    }
 
     @Override
-    public void incrementSize(int increment){ }
+    public void incrementSize(int increment) {
+    }
 }

@@ -1,10 +1,5 @@
 package main;
 
-import javax.swing.JPanel;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import canvas.CanvasManager;
 import entity.CursorM;
 import entity.KeyBoardM;
@@ -12,22 +7,26 @@ import entity.Tools.PaintTool;
 import entity.Tools.Tool;
 import main.Controllers.Controller;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class GamePanel extends JPanel implements Runnable {
     private final int scale = 1;
     public final int tileSize = scale;
     public final int maxScreenCol = 1920 / scale;
-    public final int maxScreenRow = 1080 / scale;
     private final int screenWidth = tileSize * maxScreenCol;
+    public final int maxScreenRow = 1080 / scale;
     private final int screenHeight = tileSize * maxScreenRow;
 
     public CanvasManager canvasManager;
-    private Controller controller;
-    private CursorM cursor;
-    private KeyBoardM keyboard;
-    private Thread thread;
-
     public Tool currentTool;
+    private final Controller controller;
+    private final CursorM cursor;
+    private final KeyBoardM keyboard;
+    private Thread thread;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -50,9 +49,11 @@ public class GamePanel extends JPanel implements Runnable {
     public int getScreenWidth() {
         return screenWidth;
     }
+
     public int getScreenHeight() {
         return screenHeight;
     }
+
     public ArrayList<Integer> getWidthHeight() {
         return new ArrayList<Integer>(Arrays.asList(screenWidth, screenHeight));
     }

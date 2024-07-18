@@ -3,14 +3,15 @@ package main.Controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Keyboard implements KeyListener{
-    public Boolean qP, wP, eP, rP, down, up;
+public class Keyboard implements KeyListener {
+    public Boolean qP, wP, eP, rP, tP, down, up;
 
-    public Keyboard(){
+    public Keyboard() {
         qP = false;
         wP = false;
         eP = false;
         rP = false;
+        tP = false;
         down = false;
         up = false;
     }
@@ -22,24 +23,21 @@ public class Keyboard implements KeyListener{
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        
+
         // TODO Implement Key Press Events
-        if (code == KeyEvent.VK_Q){
+        if (code == KeyEvent.VK_Q) {
             qP = true;
-        }
-        else if (code == KeyEvent.VK_W){
+        } else if (code == KeyEvent.VK_W) {
             wP = true;
-        }
-        else if (code == KeyEvent.VK_E){
+        } else if (code == KeyEvent.VK_E) {
             eP = true;
-        }
-        else if (code == KeyEvent.VK_R){
+        } else if (code == KeyEvent.VK_R) {
             rP = true;
-        }
-        else if (code == KeyEvent.VK_DOWN){
+        } else if (code == KeyEvent.VK_T) {
+            tP = true;
+        } else if (code == KeyEvent.VK_DOWN) {
             down = true;
-        }
-        else if (code == KeyEvent.VK_UP){
+        } else if (code == KeyEvent.VK_UP) {
             up = true;
         }
     }
@@ -47,26 +45,23 @@ public class Keyboard implements KeyListener{
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
-        
+
         // TODO Implement Key Press Events
-        if (code == KeyEvent.VK_Q){
+        if (code == KeyEvent.VK_Q) {
             qP = false;
-        }
-        else if (code == KeyEvent.VK_W){
+        } else if (code == KeyEvent.VK_W) {
             wP = false;
-        }
-        else if (code == KeyEvent.VK_E){
+        } else if (code == KeyEvent.VK_E) {
             eP = false;
-        }
-        else if (code == KeyEvent.VK_R){
+        } else if (code == KeyEvent.VK_R) {
             rP = false;
-        }
-        else if (code == KeyEvent.VK_DOWN){
+        } else if (code == KeyEvent.VK_T) {
+            tP = false;
+        } else if (code == KeyEvent.VK_DOWN) {
             down = false;
-        }
-        else if (code == KeyEvent.VK_UP){
+        } else if (code == KeyEvent.VK_UP) {
             up = false;
         }
     }
-    
+
 }
