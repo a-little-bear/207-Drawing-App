@@ -45,6 +45,10 @@ public class CanvasManager {
         return layers.get(0);   //Temporary Solution for Testing
     }
 
+    public void LatexOCR() {
+        collapseLayers().LatexOCR();
+    }
+
     public void exportToPNG() {
         collapseLayers().exportToPNG();
     }

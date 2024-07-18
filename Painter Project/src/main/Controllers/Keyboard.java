@@ -4,13 +4,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener {
-    public Boolean qP, wP, eP, rP, down, up;
+    public Boolean qP, wP, eP, rP, tP, down, up;
 
     public Keyboard() {
         qP = false;
         wP = false;
         eP = false;
         rP = false;
+        tP = false;
         down = false;
         up = false;
     }
@@ -32,6 +33,8 @@ public class Keyboard implements KeyListener {
             eP = true;
         } else if (code == KeyEvent.VK_R) {
             rP = true;
+        } else if (code == KeyEvent.VK_T) {
+            tP = true;
         } else if (code == KeyEvent.VK_DOWN) {
             down = true;
         } else if (code == KeyEvent.VK_UP) {
@@ -52,6 +55,8 @@ public class Keyboard implements KeyListener {
             eP = false;
         } else if (code == KeyEvent.VK_R) {
             rP = false;
+        } else if (code == KeyEvent.VK_T) {
+            tP = false;
         } else if (code == KeyEvent.VK_DOWN) {
             down = false;
         } else if (code == KeyEvent.VK_UP) {

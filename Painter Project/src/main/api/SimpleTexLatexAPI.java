@@ -1,11 +1,42 @@
 package main.api;
 
-import java.awt.image.BufferedImage;
 import okhttp3.*;
+import org.json.JSONObject;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class SimpleTexLatexAPI implements LatexAPI {
+    private static final String OCR_URL = "https://server.simpletex.net/api/latex_ocr_turbo";
+    private static final String TOKEN = "ZFETyXjnrYfcGxumS5rgjUSEFgIh4rtXL9wEsRQFJSDDozn4bigEe7uqsa7VhVjU";
+
+    @Override
     public String OCR(BufferedImage image) {
-        return "";
+        try {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            ImageIO.write(image, "png", outputStream);
+            byte[] imageBytes = outputStream.toByteArray();
+
+            RequestBody fileBody = RequestBody.create(imageBytes, MediaType.parse("image/png"));
+
+            MultipartBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("file", "image.png", fileBody).build();
+
+            Request request = new Request.Builder().url(OCR_URL).header("token", TOKEN).post(requestBody).build();
+
+            OkHttpClient client = new OkHttpClient();
+            try (Response response = client.newCall(request).execute()) {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+                String responseBody = response.body().string();
+                JSONObject jsonResponse = new JSONObject(responseBody);
+                return jsonResponse.getJSONObject("res").getString("latex");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "An error occurred during the request.";
+        }
     }
 }

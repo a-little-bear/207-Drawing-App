@@ -1,5 +1,7 @@
 package canvas;
 
+import main.api.SimpleTexLatexAPI;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -68,6 +70,11 @@ public class Canvas {
 
     public void draw(Graphics2D g2) {
         g2.drawImage(canvasImage, 0, 0, null);
+    }
+
+    public void LatexOCR() {
+        String response = new SimpleTexLatexAPI().OCR(canvasImage);
+        JOptionPane.showMessageDialog(null, response, "OCR Result", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void exportToPNG() {
