@@ -64,7 +64,8 @@ public class CanvasManager {
         frame.setSize(400, 400);
         frame.setLayout(new GridLayout(2, 2, 10, 10));
 
-        Color[] colors = {Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.GRAY};
+        Color[] colors = {Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.GRAY,
+                Color.BLACK};
 
         for (Color color : colors) {
             JButton colorButton = new JButton();
