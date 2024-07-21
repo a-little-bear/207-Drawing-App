@@ -19,6 +19,7 @@ public class PaintTool implements Tool {
         this.color = Color.BLACK;
         this.size = 5;
         this.isDrawing = false;
+        // System.out.println("PaintTool Created");
     }
 
     @Override
@@ -55,11 +56,7 @@ public class PaintTool implements Tool {
     }
 
     public void setSize(int size) {
-        if (size < 1) {
-            this.size = 1;
-        } else {
-            this.size = size;
-        }
+        this.size = Math.max(size, 1);
     }
 
     public void incrementSize(int increment) {
