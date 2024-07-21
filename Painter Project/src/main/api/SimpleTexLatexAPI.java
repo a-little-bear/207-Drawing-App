@@ -21,9 +21,15 @@ public class SimpleTexLatexAPI implements LatexAPI {
 
             RequestBody fileBody = RequestBody.create(imageBytes, MediaType.parse("image/png"));
 
-            MultipartBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("file", "image.png", fileBody).build();
+            MultipartBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                    .addFormDataPart("file", "image.png", fileBody)
+                    .build();
 
-            Request request = new Request.Builder().url(OCR_URL).header("token", TOKEN).post(requestBody).build();
+            Request request = new Request.Builder()
+                    .url(OCR_URL)
+                    .header("token", TOKEN)
+                    .post(requestBody)
+                    .build();
 
             OkHttpClient client = new OkHttpClient();
             try (Response response = client.newCall(request).execute()) {
@@ -32,7 +38,12 @@ public class SimpleTexLatexAPI implements LatexAPI {
                 }
                 String responseBody = response.body().string();
                 JSONObject jsonResponse = new JSONObject(responseBody);
-                return jsonResponse.getJSONObject("res").getString("latex");
+
+                if (jsonResponse.has("res") && jsonResponse.getJSONObject("res").has("latex")) {
+                    return jsonResponse.getJSONObject("res").getString("latex");
+                } else {
+                    return "Latex field not found in the response.";
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
