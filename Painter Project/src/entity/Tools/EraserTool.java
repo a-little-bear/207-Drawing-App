@@ -19,6 +19,7 @@ public class EraserTool implements Tool {
         this.color = Color.WHITE; //TODO GET TRANSPARANT TO WORK INSTEAD OF WHITE
         this.size = 20;
         this.isDrawing = false;
+        // System.out.println("EraserTool Created");
     }
 
     @Override
@@ -51,11 +52,7 @@ public class EraserTool implements Tool {
     }
 
     public void setSize(int size) {
-        if (size < 1) {
-            this.size = 1;
-        } else {
-            this.size = size;
-        }
+        this.size = Math.max(size, 1);
     }
 
     public void incrementSize(int increment) {

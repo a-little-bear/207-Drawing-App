@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>grade-api</artifactId>
+    <artifactId>207-Drawing-App</artifactId>
     <version>1</version>
     <dependencies>
         <dependency>

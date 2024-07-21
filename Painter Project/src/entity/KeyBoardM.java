@@ -1,9 +1,10 @@
 package entity;
 
 import entity.Tools.EraserTool;
+import entity.Tools.FillTool;
 import entity.Tools.PaintTool;
-import main.Controllers.Controller;
 import main.GamePanel;
+import main.Controllers.Controller;
 
 public class KeyBoardM {
     private final GamePanel gp;
@@ -25,7 +26,12 @@ public class KeyBoardM {
             gp.canvasManager.LatexOCR();
         } else if (controller.keyboard.up) {
             gp.currentTool.incrementSize(1);
-        } else if (controller.keyboard.down) {
+        }
+        else if (controller.keyboard.fP){
+            FillTool tool = new FillTool(gp, controller);
+            tool.update();
+        }
+        else if (controller.keyboard.down){
             gp.currentTool.incrementSize(-1);
         }
     }
