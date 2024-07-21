@@ -16,7 +16,7 @@ public class PaintTool implements Tool {
     public PaintTool(GamePanel gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
-        this.color = Color.BLACK;
+        this.color = gp.getColor();
         this.size = 5;
         this.isDrawing = false;
         // System.out.println("PaintTool Created");
@@ -51,12 +51,9 @@ public class PaintTool implements Tool {
         g2.fillRect(x, y, size, size); // Updated to use size directly
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public void setSize(int size) {
-        this.size = Math.max(size, 1);
+    @Override
+    public void setColor(Color newColor) {
+        color = newColor;
     }
 
     public void incrementSize(int increment) {

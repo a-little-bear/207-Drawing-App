@@ -1,7 +1,6 @@
 package main;
 
 import canvas.CanvasManager;
-import entity.KeyBoardM;
 import entity.Tools.PaintTool;
 import entity.Tools.Tool;
 import main.Controllers.Controller;
@@ -42,18 +41,6 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true); // Fixed for keyboard events
     }
 
-    public int getScreenWidth() {
-        return screenWidth;
-    }
-
-    public int getScreenHeight() {
-        return screenHeight;
-    }
-
-    public ArrayList<Integer> getWidthHeight() {
-        return new ArrayList<Integer>(Arrays.asList(screenWidth, screenHeight));
-    }
-
     public void startThread() {
         thread = new Thread(this);
         thread.start();
@@ -86,7 +73,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void chooseColor() {
         canvasManager.chooseColor(this);
-        currentTool.setColor(activeColor);
     }
 
     public Color getColor() {
@@ -94,5 +80,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setColor(Color color) {
         activeColor = color;
+        currentTool.setColor(color);
     }
 }
