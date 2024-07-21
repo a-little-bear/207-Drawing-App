@@ -1,7 +1,6 @@
 package main;
 
 import canvas.CanvasManager;
-import entity.CursorM;
 import entity.KeyBoardM;
 import entity.Tools.PaintTool;
 import entity.Tools.Tool;
@@ -24,18 +23,15 @@ public class GamePanel extends JPanel implements Runnable {
     public CanvasManager canvasManager;
     public Tool currentTool;
     private final Controller controller;
-    private final CursorM cursor;
-    private final KeyBoardM keyboard;
     private Thread thread;
+    private Color activeColor = Color.BLACK;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.WHITE);
         this.setDoubleBuffered(true);
 
-        controller = new Controller();
-        cursor = new CursorM(this, controller);
-        keyboard = new KeyBoardM(this, controller);
+        controller = new Controller(this);
         canvasManager = new CanvasManager(screenWidth, screenHeight);
 
         currentTool = new PaintTool(this, controller);
@@ -77,15 +73,26 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        cursor.update();
-        keyboard.update();
+        currentTool.update();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         canvasManager.draw(g2);
-        cursor.draw(g2);
+        currentTool.draw(g2);
         g2.dispose();
+    }
+
+    public void chooseColor() {
+        canvasManager.chooseColor(this);
+        currentTool.setColor(activeColor);
+    }
+
+    public Color getColor() {
+        return activeColor;
+    }
+    public void setColor(Color color) {
+        activeColor = color;
     }
 }

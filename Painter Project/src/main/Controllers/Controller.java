@@ -1,12 +1,14 @@
 package main.Controllers;
 
+import main.GamePanel;
+
 public class Controller {
-    public Mouse mouse = new Mouse();
+    public Mouse mouse;
 
-    public Keyboard keyboard = new Keyboard();
+    public Keyboard keyboard;
 
-    public Controller() {
-
+    public Controller(GamePanel gp) {
+        mouse = new Mouse(gp, this);
+        keyboard = new Keyboard(gp, this);
     }
-    //TODO Add keyboard inputs if neccesary 
 }

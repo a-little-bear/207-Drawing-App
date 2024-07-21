@@ -1,5 +1,7 @@
 package main.Controllers;
 
+import main.GamePanel;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -9,6 +11,13 @@ public class Mouse implements MouseMotionListener, MouseListener {
     public boolean isActive;
     public int xCoord;
     public int yCoord;
+    private final GamePanel gp;
+    private final Controller controller;
+
+    public Mouse(GamePanel gp, Controller controller) {
+        this.gp = gp;
+        this.controller = controller;
+    }
 
     @Override
     public void mouseDragged(java.awt.event.MouseEvent e) {
