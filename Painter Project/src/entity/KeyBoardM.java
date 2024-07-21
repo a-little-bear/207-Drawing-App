@@ -31,6 +31,9 @@ public class KeyBoardM {
             FillTool tool = new FillTool(gp, controller);
             tool.update();
         }
+        else if (controller.keyboard.cP) {
+            gp.canvasManager.chooseColor();
+        }
         else if (controller.keyboard.down){
             gp.currentTool.incrementSize(-1);
         }
