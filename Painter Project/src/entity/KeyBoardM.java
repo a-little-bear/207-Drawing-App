@@ -28,7 +28,8 @@ public class KeyBoardM {
             gp.currentTool.incrementSize(1);
         }
         else if (controller.keyboard.fP){
-            gp.currentTool = new FillTool(gp, controller);
+            FillTool tool = new FillTool(gp, controller);
+            tool.update();
         }
         else if (controller.keyboard.down){
             gp.currentTool.incrementSize(-1);
