@@ -1,6 +1,6 @@
-package canvas;
+package entity.canvas;
 
-import main.api.SimpleTexLatexAPI;
+import api.SimpleTexLatexAPI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

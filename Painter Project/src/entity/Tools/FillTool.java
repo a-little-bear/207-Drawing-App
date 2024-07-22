@@ -1,7 +1,7 @@
 package entity.Tools;
 
-import main.Controllers.Controller;
-import main.GamePanel;
+import controllers.Controller;
+import main.View;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -9,12 +9,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FillTool implements Tool {
-    private final GamePanel gp;
+    private final View gp;
     private final Controller controller;
     private final int size;
     private Color color;
 
-    public FillTool(GamePanel gp, Controller controller) {
+    public FillTool(View gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
         this.color = gp.getColor();

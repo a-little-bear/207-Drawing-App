@@ -1,4 +1,4 @@
-package main.api;
+package api;
 
 import java.awt.image.BufferedImage;
 

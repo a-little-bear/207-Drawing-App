@@ -1,19 +1,19 @@
 package entity.Tools;
 
-import main.Controllers.Controller;
-import main.GamePanel;
+import controllers.Controller;
+import main.View;
 
 import java.awt.*;
 
 public class EraserTool implements Tool {
-    private final GamePanel gp;
+    private final View gp;
     private final Controller controller;
     private int size;
     private final Color color;
     private int lastX, lastY;
     private boolean isDrawing;
 
-    public EraserTool(GamePanel gp, Controller controller) {
+    public EraserTool(View gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
         this.color = Color.WHITE; //TODO GET TRANSPARANT TO WORK INSTEAD OF WHITE

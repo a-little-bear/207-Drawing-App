@@ -1,19 +1,19 @@
 package entity.Tools;
 
-import main.Controllers.Controller;
-import main.GamePanel;
+import controllers.Controller;
+import main.View;
 
 import java.awt.*;
 
 public class PaintTool implements Tool {
-    private final GamePanel gp;
+    private final View gp;
     private final Controller controller;
     private int size;
     private Color color;
     private int lastX, lastY;
     private boolean isDrawing;
 
-    public PaintTool(GamePanel gp, Controller controller) {
+    public PaintTool(View gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
         this.color = gp.getColor();

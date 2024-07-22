@@ -1,6 +1,6 @@
-package canvas;
+package entity.canvas;
 
-import main.GamePanel;
+import main.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,7 +58,7 @@ public class CanvasManager {
         collapseLayers().exportToPNG();
     }
 
-    public void chooseColor(GamePanel gp) {
+    public void chooseColor(View gp) {
         JFrame frame = new JFrame("Color Picker");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);

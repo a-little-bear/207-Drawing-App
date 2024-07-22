@@ -1,13 +1,13 @@
-package main.Controllers;
+package controllers;
 
-import main.GamePanel;
+import main.View;
 
 public class Controller {
     public Mouse mouse;
 
     public Keyboard keyboard;
 
-    public Controller(GamePanel gp) {
+    public Controller(View gp) {
         mouse = new Mouse(gp, this);
         keyboard = new Keyboard(gp, this);
     }
