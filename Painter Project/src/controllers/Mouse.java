@@ -1,22 +1,20 @@
-package main.Controllers;
+package controllers;
 
-import main.GamePanel;
+import main.View;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-// Implementation of this can be changed imo, this was just what i could think of on the spot 
+// Implementation of this can be changed imo, this was just what i could think of on the spot
 public class Mouse implements MouseMotionListener, MouseListener {
     public boolean isActive;
     public int xCoord;
     public int yCoord;
-    private final GamePanel gp;
-    private final Controller controller;
+    private View view;
 
-    public Mouse(GamePanel gp, Controller controller) {
-        this.gp = gp;
-        this.controller = controller;
+    public Mouse(View view) {
+        this.view = view;
     }
 
     @Override

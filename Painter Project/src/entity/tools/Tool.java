@@ -1,4 +1,4 @@
-package entity.Tools;
+package entity.tools;
 
 import java.awt.*;
 

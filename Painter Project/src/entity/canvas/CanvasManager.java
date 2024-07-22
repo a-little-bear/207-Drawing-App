@@ -1,11 +1,12 @@
-package canvas;
+package entity.canvas;
 
-import main.GamePanel;
+import main.View;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class CanvasManager {
@@ -54,11 +55,11 @@ public class CanvasManager {
         collapseLayers().LatexOCR();
     }
 
-    public void exportToPNG() {
-        collapseLayers().exportToPNG();
+    public BufferedImage getCanvasImage() {
+        return collapseLayers().getCanvasImage();
     }
 
-    public void chooseColor(GamePanel gp) {
+    public void chooseColor(View gp) {
         JFrame frame = new JFrame("Color Picker");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);

@@ -1,25 +1,25 @@
-package entity.Tools;
+package entity.tools;
 
-import main.Controllers.Controller;
-import main.GamePanel;
+import controllers.Controller;
+import main.View;
 
 import java.awt.*;
 
-public class PaintTool implements Tool {
-    private final GamePanel gp;
+public class EraserTool implements Tool {
+    private final View gp;
     private final Controller controller;
     private int size;
-    private Color color;
+    private final Color color;
     private int lastX, lastY;
     private boolean isDrawing;
 
-    public PaintTool(GamePanel gp, Controller controller) {
+    public EraserTool(View gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
-        this.color = gp.getColor();
-        this.size = 5;
+        this.color = Color.WHITE; //TODO GET TRANSPARANT TO WORK INSTEAD OF WHITE
+        this.size = 20;
         this.isDrawing = false;
-        // System.out.println("PaintTool Created");
+        // System.out.println("EraserTool Created");
     }
 
     @Override
@@ -51,16 +51,14 @@ public class PaintTool implements Tool {
         g2.fillRect(x, y, size, size); // Updated to use size directly
     }
 
-    @Override
-    public void setColor(Color newColor) {
-        color = newColor;
-    }
-
     public void incrementSize(int increment) {
         if (size < 1) {
             size = 1;
         } else {
             size += increment;
         }
+    }
+    @Override
+    public void setColor(Color newColor) {
     }
 }

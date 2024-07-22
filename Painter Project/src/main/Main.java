@@ -10,11 +10,11 @@ public class Main {
         window.setResizable(true);
         window.setTitle("Slumber:ZZZ");
 
-        GamePanel gamePanel = new GamePanel();
-        window.add(gamePanel);
+        View view = new View();
+        window.add(view);
         window.pack();
 
-        gamePanel.startThread();
+        view.startThread();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
