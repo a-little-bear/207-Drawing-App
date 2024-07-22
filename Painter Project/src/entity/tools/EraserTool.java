@@ -52,15 +52,14 @@ public class EraserTool implements Tool {
     }
 
     public void incrementSize(int increment) {
-        if (size < 1) {
-            size = 1;
-        } else {
-            size += increment;
-        }
+        size = Math.max(1, size + increment);
+
     }
+
     @Override
     public void setColor(Color newColor) {
     }
+
     // Getter for size
     public int getSize() {
         return size;
