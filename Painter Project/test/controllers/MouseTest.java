@@ -1,3 +1,5 @@
+package controllers;
+
 import main.View;
 import org.junit.Before;
 import org.junit.Test;
