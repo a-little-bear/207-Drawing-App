@@ -1,84 +1,58 @@
 package main.Controllers;
 
+import entity.Tools.EraserTool;
+import entity.Tools.FillTool;
+import entity.Tools.PaintTool;
+import main.GamePanel;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Keyboard implements KeyListener{
-    public Boolean qP, wP, eP, rP, fP, tP, down, up;
-
-    public Keyboard(){
-        qP = false;
-        wP = false;
-        eP = false;
-        rP = false;
-        fP = false;
-        tP = false;
-        down = false;
-        up = false;
+    private final GamePanel gp;
+    private final Controller controller;
+    public Keyboard(GamePanel gp, Controller controller){
+        this.gp = gp;
+        this.controller = controller;
     }
-
     @Override
     public void keyTyped(KeyEvent e) {
+        char code = Character.toLowerCase(e.getKeyChar());
+        if (code == 'q') {
+            gp.currentTool = new PaintTool(gp, controller);
+        }
+        if (code == 'w') {
+            gp.currentTool = new EraserTool(gp, controller);
+        }
+        if (code == 'e') {
+            gp.canvasManager.exportToPNG();
+        }
+        if (code == 't') {
+            gp.canvasManager.LatexOCR();
+        }
+        if (code == 'f') {
+            FillTool tool = new FillTool(gp, controller);
+            tool.update();
+        }
+        if (code == 'c') {
+            gp.chooseColor();
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
-        
-        // TODO Implement Key Press Events
-        if (code == KeyEvent.VK_Q){
-            qP = true;
-        }
-        else if (code == KeyEvent.VK_W){
-            wP = true;
-        }
-        else if (code == KeyEvent.VK_E){
-            eP = true;
-        }
-        else if (code == KeyEvent.VK_R){
-            rP = true;
-        } else if (code == KeyEvent.VK_T) {
-            tP = true;
-        }
-        else if (code == KeyEvent.VK_F){
-            fP = true;
-        }
-        else if (code == KeyEvent.VK_DOWN){
-            down = true;
+        if (code == KeyEvent.VK_DOWN){
+            gp.currentTool.incrementSize(-1);
         }
         else if (code == KeyEvent.VK_UP){
-            up = true;
+            gp.currentTool.incrementSize(1);
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        int code = e.getKeyCode();
-        
-        // TODO Implement Key Press Events
-        if (code == KeyEvent.VK_Q){
-            qP = false;
-        }
-        else if (code == KeyEvent.VK_W){
-            wP = false;
-        }
-        else if (code == KeyEvent.VK_E){
-            eP = false;
-        }
-        else if (code == KeyEvent.VK_R){
-            rP = false;
-        }
-        else if (code == KeyEvent.VK_F){
-            fP = false;
-        }
-        else if (code == KeyEvent.VK_T) {
-            tP = false;
-        } else if (code == KeyEvent.VK_DOWN) {
-            down = false;
-        }
-        else if (code == KeyEvent.VK_UP){
-            up = false;
-        }
+
     }
     
 }

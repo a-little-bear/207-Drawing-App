@@ -5,25 +5,20 @@ import main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 public class FillTool implements Tool {
     private final GamePanel gp;
     private final Controller controller;
     private final int size;
-    private final Color color;
-    private final boolean isDrawing;
-    private int lastX, lastY;
+    private Color color;
 
     public FillTool(GamePanel gp, Controller controller) {
         this.gp = gp;
         this.controller = controller;
-        this.color = Color.BLACK;
+        this.color = gp.getColor();
         this.size = 5;
-        this.isDrawing = false;
         // System.out.println("Fill tool created");
     }
 
@@ -35,13 +30,11 @@ public class FillTool implements Tool {
         int pastColor = image.getRGB(x, y);
         // System.out.println("pastColor: " + pastColor);
         if (pastColor != color.getRGB()) {
-            Graphics2D g2 = image.createGraphics();
-            // bfs(x, y, pastColor, image, g2);
-            floodFill(x, y, pastColor, color.getRGB(), image, g2);
+            floodFill(x, y, pastColor, color.getRGB(), image);
         }
     }
 
-    private void floodFill(int x, int y, int initialColor, int targetColor, BufferedImage image, Graphics2D g2) {
+    private void floodFill(int x, int y, int initialColor, int targetColor, BufferedImage image) {
         if (initialColor == targetColor) {
             return; // No need to fill if the initial color is the same as the target color
         }
@@ -91,10 +84,11 @@ public class FillTool implements Tool {
     }
 
     @Override
-    public void setSize(int size) {
+    public void incrementSize(int increment) {
     }
 
     @Override
-    public void incrementSize(int increment) {
+    public void setColor(Color newColor) {
+        color = newColor;
     }
 }

@@ -51,15 +51,14 @@ public class EraserTool implements Tool {
         g2.fillRect(x, y, size, size); // Updated to use size directly
     }
 
-    public void setSize(int size) {
-        this.size = Math.max(size, 1);
-    }
-
     public void incrementSize(int increment) {
         if (size < 1) {
             size = 1;
         } else {
             size += increment;
         }
+    }
+    @Override
+    public void setColor(Color newColor) {
     }
 }
