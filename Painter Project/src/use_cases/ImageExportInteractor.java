@@ -12,8 +12,8 @@ import data_access.DataAccessObject;
 public class ImageExportInteractor implements  ImageExportInputBoundary {
     private DataAccessObject dataAccessObject;
 
-    public ImageExportInteractor(DataAccessObject dataAccessObject) {
-        this.dataAccessObject = dataAccessObject;
+    public ImageExportInteractor() {
+        this.dataAccessObject = new DataAccessObject();
     }
 
     @Override

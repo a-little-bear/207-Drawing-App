@@ -26,8 +26,6 @@ public class Keyboard implements KeyListener {
     public void keyPressed(KeyEvent e) {
         this.lastPressed = e.getKeyCode();
 
-        System.out.println(e.getKeyCode());
-
         switch (e.getKeyCode()) {
             case 83:    //Save "s"
                 imageExportInteractor.exportImage(this.view);
