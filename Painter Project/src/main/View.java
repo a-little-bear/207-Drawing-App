@@ -67,7 +67,7 @@ public class View extends JPanel implements Runnable {
         currentTool.draw(g2);
         g2.dispose();
     }
-
+    public Controller getController() {return controller;}
     public void chooseColor() {
         canvasManager.chooseColor(this);
     }

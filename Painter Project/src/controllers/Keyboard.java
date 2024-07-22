@@ -3,32 +3,55 @@ package controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import entity.tools.EraserTool;
+import entity.tools.FillTool;
+import entity.tools.PaintTool;
 import main.View;
 import use_cases.ImageExportInteractor;
 
 public class Keyboard implements KeyListener {
-    private int lastTyped, lastPressed, lastReleased;
-    private ImageExportInteractor imageExportInteractor;
-    private View view;
+    private int lastPressed, lastReleased;
+    private char lastTyped;
+    private final ImageExportInteractor imageExportInteractor;
+    private final View view;
+    private final FillTool fillTool;
 
     public Keyboard(View view) {
         this.view = view;
-
+        this.fillTool = new FillTool(view, view.getController());
         this.imageExportInteractor = new ImageExportInteractor();
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        this.lastTyped = e.getKeyCode();
+        this.lastTyped = Character.toLowerCase(e.getKeyChar());
+        switch (this.lastTyped) {
+            case 'e':
+                imageExportInteractor.exportImage(view);
+            case 's':
+                imageExportInteractor.exportImage(view);
+            case 'q':
+                view.currentTool = new PaintTool(view,  view.getController());
+            case 'w':
+                view.currentTool = new EraserTool(view, view.getController());
+            case 't':
+                // LaTeX OCR
+            case 'f':
+                fillTool.update();
+            case 'c':
+                view.chooseColor();
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         this.lastPressed = e.getKeyCode();
 
-        switch (e.getKeyCode()) {
-            case 83:    //Save "s"
-                imageExportInteractor.exportImage(this.view);
+        switch (this.lastPressed) {
+            case KeyEvent.VK_UP:
+                view.currentTool.incrementSize(1);
+            case KeyEvent.VK_DOWN:
+                view.currentTool.incrementSize(-1);
         }
     }
 
