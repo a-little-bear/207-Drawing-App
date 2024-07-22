@@ -30,7 +30,7 @@ Available tools:
   - This tool allows you to erase drawn items on the canvas.
   - Usage:
     - Hold down the left mouse button and drag your cursor around the canvas.
-- Export to PNG - E
+- Export to PNG - S
   - This tool will export the current canvas image to a PNG file.
   - Usage:
     - Navigate to a folder in which to store the canvas along with your desired filename. 
@@ -41,7 +41,7 @@ Available tools:
 - Fill Tool - F
   - This tool will fill the current region of the canvas using the [flood fill](https://en.wikipedia.org/wiki/Flood_fill) algorithm.
   - Usage:
-    - First, draw a bounded shape, and then hover your mouse cursor over the area you want to fill. 
+    - First, draw a bounded shape, hover your mouse cursor over the area you want to fill, and then invoke the tool.
 - Color Tool - C
   - This tool allows you to change the colour of your brush.
   - Usage:
