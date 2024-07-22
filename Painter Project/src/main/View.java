@@ -79,4 +79,8 @@ public class View extends JPanel implements Runnable {
         activeColor = color;
         currentTool.setColor(color);
     }
+    // Added this getter method for testing purposes
+    public CanvasManager getCanvasManager() {
+        return canvasManager;
+    }
 }
