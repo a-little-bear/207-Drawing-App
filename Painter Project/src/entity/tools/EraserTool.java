@@ -61,4 +61,8 @@ public class EraserTool implements Tool {
     @Override
     public void setColor(Color newColor) {
     }
+    // Getter for size
+    public int getSize() {
+        return size;
+    }
 }
