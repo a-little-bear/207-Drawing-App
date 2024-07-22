@@ -1,15 +1,14 @@
 package main;
 
-import canvas.CanvasManager;
-import entity.Tools.PaintTool;
-import entity.Tools.Tool;
-import main.Controllers.Controller;
+import entity.canvas.CanvasManager;
+import entity.tools.PaintTool;
+import entity.tools.Tool;
+import controllers.Controller;
 
 import javax.swing.*;
 import java.awt.*;
 
-
-public class GamePanel extends JPanel implements Runnable {
+public class View extends JPanel implements Runnable {
     private final int scale = 1;
     public final int tileSize = scale;
     public final int maxScreenCol = 1920 / scale;
@@ -23,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     private Thread thread;
     private Color activeColor = Color.BLACK;
 
-    public GamePanel() {
+    public View() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.WHITE);
         this.setDoubleBuffered(true);

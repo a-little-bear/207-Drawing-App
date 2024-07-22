@@ -1,6 +1,6 @@
-package canvas;
+package entity.canvas;
 
-import main.api.SimpleTexLatexAPI;
+import api.SimpleTexLatexAPI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -75,25 +75,5 @@ public class Canvas {
     public void LatexOCR() {
         String response = new SimpleTexLatexAPI().OCR(canvasImage);
         JOptionPane.showMessageDialog(null, response, "OCR Result", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    public void exportToPNG() {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Specify a file to save");
-        int userSelection = fileChooser.showSaveDialog(null);
-
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile();
-
-            if (!file.getAbsolutePath().endsWith(".png")) {
-                file = new File(file.getAbsolutePath() + ".png");
-            }
-
-            try {
-                ImageIO.write(canvasImage, "png", file);
-            } catch (IOException | NullPointerException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }

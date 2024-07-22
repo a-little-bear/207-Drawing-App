@@ -1,4 +1,4 @@
-package main.api;
+package api;
 
 import okhttp3.*;
 import org.json.JSONObject;

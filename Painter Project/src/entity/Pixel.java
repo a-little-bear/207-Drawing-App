@@ -1,16 +1,16 @@
 package entity;
 
-import main.GamePanel;
+import main.View;
 
 import java.awt.*;
 
 public class Pixel extends Entity {
 
-    GamePanel gp;
+    View gp;
     Color color;
     Boolean rendered;
 
-    public Pixel(GamePanel gp, int x, int y, Color color) {
+    public Pixel(View gp, int x, int y, Color color) {
         this.gp = gp;
         this.x = x;
         this.y = y;
