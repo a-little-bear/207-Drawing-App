@@ -8,9 +8,18 @@ import java.io.IOException;
 
 public class DataAccessObject implements DataAccessInterface {
 
+    private final JFileChooser fileChooser;
+    // Constructor for testing purposes
+    public DataAccessObject() {
+        this.fileChooser = new JFileChooser();
+    }
+    // Constructor for testing purposes
+    public DataAccessObject(JFileChooser fileChooser) {
+        this.fileChooser = fileChooser;
+    }
+
     @Override
     public void saveFile(String dialogBoxTitle, BufferedImage image) {
-        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle(dialogBoxTitle);
         int userSelection = fileChooser.showSaveDialog(null);
 
