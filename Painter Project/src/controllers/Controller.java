@@ -7,8 +7,8 @@ public class Controller {
 
     public Keyboard keyboard;
 
-    public Controller(View gp) {
-        mouse = new Mouse(gp, this);
-        keyboard = new Keyboard(gp, this);
+    public Controller(View view) {
+        mouse = new Mouse(view);
+        keyboard = new Keyboard(view);
     }
 }

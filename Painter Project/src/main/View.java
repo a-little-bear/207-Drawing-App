@@ -1,8 +1,8 @@
 package main;
 
 import entity.canvas.CanvasManager;
-import entity.Tools.PaintTool;
-import entity.Tools.Tool;
+import entity.tools.PaintTool;
+import entity.tools.Tool;
 import controllers.Controller;
 
 import javax.swing.*;

@@ -11,12 +11,10 @@ public class Mouse implements MouseMotionListener, MouseListener {
     public boolean isActive;
     public int xCoord;
     public int yCoord;
-    private final View gp;
-    private final Controller controller;
+    private View view;
 
-    public Mouse(View gp, Controller controller) {
-        this.gp = gp;
-        this.controller = controller;
+    public Mouse(View view) {
+        this.view = view;
     }
 
     @Override

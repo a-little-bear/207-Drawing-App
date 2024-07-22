@@ -1,4 +1,4 @@
-package entity.Tools;
+package entity.tools;
 
 import controllers.Controller;
 import main.View;
