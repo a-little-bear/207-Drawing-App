@@ -14,11 +14,9 @@ public class Keyboard implements KeyListener {
     private char lastTyped;
     private final ImageExportInteractor imageExportInteractor;
     private final View view;
-    private final FillTool fillTool;
 
     public Keyboard(View view) {
         this.view = view;
-        this.fillTool = new FillTool(view, view.getController());
         this.imageExportInteractor = new ImageExportInteractor();
     }
 
@@ -62,17 +60,5 @@ public class Keyboard implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         this.lastReleased = e.getKeyCode();
-    }
-
-    public int getLastTyped() {
-        return lastTyped;
-    }
-
-    public int getLastPressed() {
-        return lastPressed;
-    }
-
-    public int getLastReleased() {
-        return lastReleased;
     }
 }
