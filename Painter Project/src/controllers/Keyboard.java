@@ -26,20 +26,24 @@ public class Keyboard implements KeyListener {
     public void keyTyped(KeyEvent e) {
         this.lastTyped = Character.toLowerCase(e.getKeyChar());
         switch (this.lastTyped) {
-            case 'e':
-                imageExportInteractor.exportImage(view);
             case 's':
                 imageExportInteractor.exportImage(view);
+                break;
             case 'q':
                 view.currentTool = new PaintTool(view,  view.getController());
+                break;
             case 'w':
                 view.currentTool = new EraserTool(view, view.getController());
+                break;
             case 't':
-                // LaTeX OCR
+                view.canvasManager.LatexOCR();
+                break;
             case 'f':
-                fillTool.update();
+                new FillTool(view, view.getController()).update();
+                break;
             case 'c':
                 view.chooseColor();
+                break;
         }
     }
 

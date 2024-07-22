@@ -27,18 +27,15 @@ public class FillTool implements Tool {
         BufferedImage image = gp.canvasManager.getTopLayer().getCanvasImage();
         int x = controller.mouse.xCoord;
         int y = controller.mouse.yCoord;
-        int pastColor = image.getRGB(x, y);
+        int initialColor = image.getRGB(x, y);
+        int targetColor = color.getRGB();
         // System.out.println("pastColor: " + pastColor);
-        if (pastColor != color.getRGB()) {
-            floodFill(x, y, pastColor, color.getRGB(), image);
+        if (initialColor != targetColor) {
+            floodFill(x, y, initialColor, targetColor, image);
         }
     }
 
     private void floodFill(int x, int y, int initialColor, int targetColor, BufferedImage image) {
-        if (initialColor == targetColor) {
-            return; // No need to fill if the initial color is the same as the target color
-        }
-
         int width = image.getWidth();
         int height = image.getHeight();
         Queue<Point> queue = new LinkedList<>();
