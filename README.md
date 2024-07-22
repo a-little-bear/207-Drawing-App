@@ -1,5 +1,5 @@
 
-#### Setup
+## Setup
 
 1. Clone the Repository
 
@@ -17,7 +17,7 @@ git clone https://github.com/sage35deng/207-Drawing-App
 
 ![img_1.png](screenshots/img_1.png)
 
-#### Usage 
+## Usage 
 
 Currently, our software employs the use of keybindings to switch between tools.
 
