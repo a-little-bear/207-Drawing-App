@@ -2,18 +2,24 @@ package entity.canvas;
 
 import api.SimpleTexLatexAPI;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
+/**
+ * The Canvas class provides functionality for drawing and manipulating a canvas.
+ */
 public class Canvas {
     private final BufferedImage canvasImage;
     private final int width;
     private final int height;
 
+    /**
+     * Instantiates a new Canvas with the specified width and height.
+     *
+     * @param width  the width of the canvas
+     * @param height the height of the canvas
+     */
     public Canvas(int width, int height) {
         this.width = width;
         this.height = height;
@@ -21,6 +27,9 @@ public class Canvas {
         clearCanvas();
     }
 
+    /**
+     * Clears the canvas by filling it with a transparent color.
+     */
     public void clearCanvas() {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(new Color(0, 0, 0, 0));
@@ -28,10 +37,23 @@ public class Canvas {
         g2.dispose();
     }
 
+    /**
+     * Returns the BufferedImage representation of the canvas.
+     *
+     * @return the canvas image
+     */
     public BufferedImage getCanvasImage() {
         return canvasImage;
     }
 
+    /**
+     * Paints a filled rectangle at the specified location on the canvas.
+     *
+     * @param x     the x coordinate of the rectangle
+     * @param y     the y coordinate of the rectangle
+     * @param color the color of the rectangle
+     * @param size  the size of the rectangle
+     */
     public void paintArea(int x, int y, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(color);
@@ -39,6 +61,16 @@ public class Canvas {
         g2.dispose();
     }
 
+    /**
+     * Paints a line between two points on the canvas using Bresenham's line algorithm.
+     *
+     * @param x1    the starting x coordinate of the line
+     * @param y1    the starting y coordinate of the line
+     * @param x2    the ending x coordinate of the line
+     * @param y2    the ending y coordinate of the line
+     * @param color the color of the line
+     * @param size  the size of the line
+     */
     public void paintLine(int x1, int y1, int x2, int y2, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(color);
@@ -68,10 +100,18 @@ public class Canvas {
         g2.dispose();
     }
 
+    /**
+     * Draws the canvas image onto the provided Graphics2D object.
+     *
+     * @param g2 the Graphics2D object to draw on
+     */
     public void draw(Graphics2D g2) {
         g2.drawImage(canvasImage, 0, 0, null);
     }
 
+    /**
+     * Performs OCR on the canvas image and displays the result in a dialog box.
+     */
     public void LatexOCR() {
         String response = new SimpleTexLatexAPI().OCR(canvasImage);
         JOptionPane.showMessageDialog(null, response, "OCR Result", JOptionPane.INFORMATION_MESSAGE);
