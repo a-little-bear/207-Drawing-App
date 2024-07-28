@@ -75,11 +75,8 @@ public class EraserTool implements Tool {
      * @param increment the amount to increment the size by
      */
     public void incrementSize(int increment) {
-        if (size < 1) {
-            size = 1;
-        } else {
-            size += increment;
-        }
+        size = Math.max(1, size + increment);
+
     }
 
     /**
@@ -90,5 +87,10 @@ public class EraserTool implements Tool {
     @Override
     public void setColor(Color newColor) {
         // No implementation needed for eraser tool
+    }
+
+    // Getter for size
+    public int getSize() {
+        return size;
     }
 }

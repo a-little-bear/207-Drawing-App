@@ -1,14 +1,13 @@
+package controllers;
+
 import main.View;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.awt.event.KeyEvent;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import controllers.Keyboard;
 import entity.canvas.CanvasManager;
 
 public class KeyboardTest {

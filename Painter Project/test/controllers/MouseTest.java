@@ -1,9 +1,8 @@
+package controllers;
+
 import main.View;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
-import controllers.Mouse;
 
 import java.awt.event.MouseEvent;
 

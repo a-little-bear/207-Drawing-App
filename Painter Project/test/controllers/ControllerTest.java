@@ -1,11 +1,11 @@
+package controllers;
+
 import main.View;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
-import controllers.Controller;
 
 public class ControllerTest {
     private Controller controller;

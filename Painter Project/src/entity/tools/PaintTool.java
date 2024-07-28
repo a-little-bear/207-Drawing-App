@@ -91,4 +91,13 @@ public class PaintTool implements Tool {
             size += increment;
         }
     }
+    // Getter for color
+    public Color getColor() {
+        return color;
+    }
+
+    // Getter for size
+    public int getSize() {
+        return size;
+    }
 }
