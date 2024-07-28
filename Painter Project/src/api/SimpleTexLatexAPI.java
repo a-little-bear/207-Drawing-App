@@ -8,10 +8,20 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * The SimpleTexLatexAPI class implements the LatexAPI interface to provide OCR functionality
+ * for converting images to LaTeX code using the SimpleTex OCR API.
+ */
 public class SimpleTexLatexAPI implements LatexAPI {
     private static final String OCR_URL = "https://server.simpletex.net/api/latex_ocr_turbo";
     private static final String TOKEN = "ZFETyXjnrYfcGxumS5rgjUSEFgIh4rtXL9wEsRQFJSDDozn4bigEe7uqsa7VhVjU";
 
+    /**
+     * Performs Optical Character Recognition (OCR) on the provided image and returns the recognized LaTeX code.
+     *
+     * @param image the image to be processed
+     * @return the recognized LaTeX code from the image
+     */
     @Override
     public String OCR(BufferedImage image) {
         try {

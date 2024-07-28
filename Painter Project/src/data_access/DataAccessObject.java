@@ -6,8 +6,18 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The DataAccessObject class implements the DataAccessInterface to provide functionality
+ * for saving images to files.
+ */
 public class DataAccessObject implements DataAccessInterface {
 
+    /**
+     * Saves the provided image to a file.
+     *
+     * @param dialogBoxTitle the title of the dialog box
+     * @param image the image to be saved
+     */
     @Override
     public void saveFile(String dialogBoxTitle, BufferedImage image) {
         JFileChooser fileChooser = new JFileChooser();
