@@ -11,23 +11,17 @@ import java.awt.*;
  * for painting on the canvas with a specified color and size.
  */
 public class PaintTool implements Tool {
-    @Setter(AccessLevel.PROTECTED) @Getter private int size;
-    @Setter(AccessLevel.PROTECTED) @Getter private Color color;
-    @Setter(AccessLevel.PROTECTED) @Getter private boolean isDrawing;
+    @Setter @Getter private int size;
+    @Setter @Getter private Color paintColor;
+    @Setter @Getter private boolean isDrawing;
+
+    public boolean setIsDrawing(boolean isDrawing) {
+        this.isDrawing = isDrawing;
+        return isDrawing;
+    }
 
     private int lastX, lastY;
 
-    /**
-     * Draws the paint tool cursor on the canvas.
-     *
-     * @param g2 the Graphics2D object to draw on
-     */
-    public void draw(Graphics2D g2) {
-        int x = controller.mouse.xCoord;
-        int y = controller.mouse.yCoord;
-        g2.setColor(color);
-        g2.fillRect(x, y, size, size); // Updated to use size directly
-    }
 
     /**
      * Increments the size of the paint tool.

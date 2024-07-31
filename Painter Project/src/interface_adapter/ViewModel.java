@@ -6,6 +6,7 @@ import entity.tools.Tool;
 import lombok.Getter;
 import lombok.Setter;
 import use_case.create_tool.CreatePaintTool;
+import use_case.create_tool.CreateTool;
 
 import java.awt.*;
 
@@ -17,14 +18,15 @@ public class ViewModel {
     public final int maxScreenRow = 1080 / scale;
     private final int screenHeight = tileSize * maxScreenRow;
     @Getter private final Color backgroundColor = Color.WHITE;
-    @Getter public CanvasManager canvasManager;
+    @Getter private CanvasManager canvasManager;
     @Getter @Setter public Tool currentTool;
-    @Getter private Color activeColor = Color.BLACK;
+    @Getter @Setter private Color activeColor = Color.BLACK;
 
 
     public ViewModel(){
         this.canvasManager = new CanvasManager(screenWidth, screenHeight);
-        this.currentTool = new CreatePaintTool.create(activeColor);
+        CreateTool ct = new CreatePaintTool();
+        this.currentTool = ct.create(activeColor);
     }
 
     public Dimension getDimension() {
@@ -32,8 +34,6 @@ public class ViewModel {
     }
 
     public void paint(Graphics2D g2) {
-        // canvasManager.paint(g2);
-        currentTool.paint(g2);
+        canvasManager.draw(g2);
     }
-
 }

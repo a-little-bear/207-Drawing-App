@@ -1,6 +1,8 @@
 package use_case;
 
 import entity.tools.Tool;
+import interface_adapter.ViewModel;
+
 import java.awt.*;
 
 public interface InputBoundary{
@@ -11,4 +13,8 @@ public interface InputBoundary{
     OutputBoundary getPresenter();
 
     void update();
+
+    ViewModel getViewModel();
+
+    InputData getInputData();
 }

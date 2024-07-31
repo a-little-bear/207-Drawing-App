@@ -20,7 +20,7 @@ public class Controller {
         this.inputData = inputData;
     }
 
-    void update() {
+    public void update() {
         inputData.updateMouse(mouse);
         interactor.update();
     }

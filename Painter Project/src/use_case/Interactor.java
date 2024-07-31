@@ -2,6 +2,7 @@ package use_case;
 
 import entity.tools.PaintTool;
 import entity.tools.Tool;
+import interface_adapter.ViewModel;
 import lombok.Getter;
 import use_case.update_tool.UpdateToolFacade;
 
@@ -21,11 +22,17 @@ public class Interactor implements InputBoundary{
     }
 
     public <T extends Tool> void switchTool(T tool){
-        presenter.getViewModel().setActiveTool(tool);
+        presenter.getViewModel().setCurrentTool(tool);
     }
 
     public void update(){
-        UpdateToolFacade.update(presenter.getViewModel().getActiveTool(),
-                presenter.getViewModel().getInputData(), this);
+        UpdateToolFacade updateToolFacade = new UpdateToolFacade();
+        updateToolFacade.update(presenter.getViewModel().getCurrentTool(),
+                getInputData(), this);
+    }
+
+    @Override
+    public ViewModel getViewModel() {
+        return presenter.getViewModel();
     }
 }

@@ -4,19 +4,20 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import entity.tools.EraserTool;
-import entity.tools.FillTool;
-import entity.tools.PaintTool;
+import entity.tools.*;
 import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 import use_case.ImageExportInteractor;
+import use_case.create_tool.CreateEraserTool;
 import use_case.create_tool.CreatePaintTool;
+import use_case.create_tool.CreateTool;
+import use_case.update_tool.UpdateFillTool;
 
 /**
  * The Keyboard class handles keyboard events and interacts with various tools and actions in the view.
  */
 public class Keyboard implements KeyListener {
-    private int lastPressed;
+    private int lastPressed, lastReleased;
     private char lastTyped;
     private final ImageExportInputBoundary imageExportInteractor;
     private final InputBoundary interactor;
@@ -44,19 +45,24 @@ public class Keyboard implements KeyListener {
                 imageExportInteractor.exportImage(interactor.getPresenter().getViewModel().getCanvasManager());
                 break;
             case 'q':
-                interactor.<PaintTool> switchTool(new CreatePaintTool.create(interactor.getCurrentColor()));
+                CreatePaintTool tP = new CreatePaintTool();
+                interactor.<PaintTool> switchTool(tP.create(interactor.getCurrentColor()));
                 break;
             case 'w':
-                interactor.<EraserTool> switchTool(new CreateEraserTool.create(Color.WHITE));
+                CreateEraserTool tE = new CreateEraserTool();
+                interactor.<EraserTool> switchTool(tE.create(Color.WHITE));
                 break;
             case 't':
                 interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
                 break;
             case 'f':
-                new FillTool(view, view.getController()).update();
+                UpdateFillTool fillTool = new UpdateFillTool();
+                fillTool.update(FillToolFactory.create(interactor.getCurrentColor()),
+                        interactor.getInputData(), interactor);
                 break;
             case 'c':
-                view.chooseColor();
+                interactor.getPresenter().getViewModel().getCanvasManager().chooseColor(
+                        interactor.getPresenter().getViewModel());
                 break;
         }
     }
@@ -72,10 +78,10 @@ public class Keyboard implements KeyListener {
 
         switch (this.lastPressed) {
             case KeyEvent.VK_UP:
-                view.currentTool.incrementSize(1);
+                interactor.getViewModel().getCurrentTool().incrementSize(1);
                 break;
             case KeyEvent.VK_DOWN:
-                view.currentTool.incrementSize(-1);
+                interactor.getViewModel().getCurrentTool().incrementSize(-1);
                 break;
         }
     }

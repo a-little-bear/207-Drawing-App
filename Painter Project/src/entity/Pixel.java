@@ -1,5 +1,6 @@
 package entity;
 
+import interface_adapter.ViewModel;
 import view.View;
 
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.*;
  */
 public class Pixel extends Entity {
 
-    View gp;
+    ViewModel gp;
     Color color;
     Boolean rendered;
 
@@ -21,7 +22,7 @@ public class Pixel extends Entity {
      * @param y     the y coordinate of the pixel
      * @param color the color of the pixel
      */
-    public Pixel(View gp, int x, int y, Color color) {
+    public Pixel(ViewModel gp, int x, int y, Color color) {
         this.gp = gp;
         this.x = x;
         this.y = y;

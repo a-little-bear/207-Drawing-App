@@ -1,5 +1,6 @@
 package entity.canvas;
 
+import interface_adapter.ViewModel;
 import view.View;
 
 import javax.swing.*;
@@ -117,7 +118,7 @@ public class CanvasManager {
      *
      * @param gp the view to set the selected color
      */
-    public void chooseColor(View gp) {
+    public void chooseColor(ViewModel gp) {
         JFrame frame = new JFrame("Color Picker");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
@@ -132,7 +133,7 @@ public class CanvasManager {
             colorButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    gp.setColor(color);
+                    gp.setActiveColor(color);
                     frame.dispose(); // Close the frame after selection
                 }
             });

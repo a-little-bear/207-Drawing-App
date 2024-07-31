@@ -6,16 +6,16 @@ import use_case.InputData;
 
 public class UpdatePaintTool implements UpdateTool<PaintTool>{
     public void update(PaintTool paintTool, InputData inputData, InputBoundary interactor) {
-        int x = inputData.getXCoord;
-        int y = inputData.getYCoord;
+        int x = inputData.getXCoord();
+        int y = inputData.getYCoord();
 
-        if (inputData.mouseIsActive) {
+        if (inputData.isMouseIsActive()) {
             // Draw the line from the last point to the current point
             interactor.getPresenter().getViewModel().getCanvasManager().paintLine(
-                    paintTool.getLastXCoord, paintTool.getLastYCoord, x, y,
-                    paintTool.getColor, paintTool.getSize);
-            inputData.setLastxCoord(x);
-            inputData.setLastyCoord(y);
+                    inputData.getLastXCoord(), inputData.getLastYCoord(), x, y,
+                    interactor.getCurrentColor(), paintTool.getSize());
+            inputData.setLastXCoord(x);
+            inputData.setLastYCoord(y);
         }
     }
 }
