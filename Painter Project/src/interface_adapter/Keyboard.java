@@ -1,30 +1,33 @@
-package controllers;
+package interface_adapter;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import entity.tools.EraserTool;
 import entity.tools.FillTool;
 import entity.tools.PaintTool;
-import main.View;
-import use_cases.ImageExportInteractor;
+import use_case.ImageExportInputBoundary;
+import use_case.InputBoundary;
+import use_case.ImageExportInteractor;
+import use_case.create_tool.CreatePaintTool;
 
 /**
  * The Keyboard class handles keyboard events and interacts with various tools and actions in the view.
  */
 public class Keyboard implements KeyListener {
-    private int lastPressed, lastReleased;
+    private int lastPressed;
     private char lastTyped;
-    private final ImageExportInteractor imageExportInteractor;
-    private final View view;
+    private final ImageExportInputBoundary imageExportInteractor;
+    private final InputBoundary interactor;
 
     /**
      * Instantiates a new Keyboard.
      *
      * @param view the view to be associated with this keyboard
      */
-    public Keyboard(View view) {
-        this.view = view;
+    public Keyboard(InputBoundary interactor) {
+        this.interactor = interactor;
         this.imageExportInteractor = new ImageExportInteractor();
     }
 
@@ -38,16 +41,16 @@ public class Keyboard implements KeyListener {
         this.lastTyped = Character.toLowerCase(e.getKeyChar());
         switch (this.lastTyped) {
             case 's':
-                imageExportInteractor.exportImage(view);
+                imageExportInteractor.exportImage(interactor.getPresenter().getViewModel().getCanvasManager());
                 break;
             case 'q':
-                view.currentTool = new PaintTool(view, view.getController());
+                interactor.<PaintTool> switchTool(new CreatePaintTool.create(interactor.getCurrentColor()));
                 break;
             case 'w':
-                view.currentTool = new EraserTool(view, view.getController());
+                interactor.<EraserTool> switchTool(new CreateEraserTool.create(Color.WHITE));
                 break;
             case 't':
-                view.canvasManager.LatexOCR();
+                interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
                 break;
             case 'f':
                 new FillTool(view, view.getController()).update();

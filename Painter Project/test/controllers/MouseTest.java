@@ -1,6 +1,6 @@
-package controllers;
+package interface_adapter;
 
-import main.View;
+import app.View;
 import org.junit.Before;
 import org.junit.Test;
 

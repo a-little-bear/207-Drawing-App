@@ -1,6 +1,6 @@
 package entity.canvas;
 
-import main.View;
+import view.View;
 
 import javax.swing.*;
 import java.awt.*;

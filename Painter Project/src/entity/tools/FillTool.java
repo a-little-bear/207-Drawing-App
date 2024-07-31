@@ -1,7 +1,7 @@
 package entity.tools;
 
-import controllers.Controller;
-import main.View;
+import interface_adapter.Controller;
+import view.View;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

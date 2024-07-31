@@ -1,7 +1,7 @@
 package entity.tools;
 
-import controllers.Controller;
-import main.View;
+import interface_adapter.Controller;
+import app.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

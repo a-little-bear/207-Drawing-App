@@ -1,6 +1,6 @@
 package entity;
 
-import main.View;
+import view.View;
 
 import java.awt.*;
 
