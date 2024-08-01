@@ -7,9 +7,9 @@ import entity.tools.Tool;
 import use_case.InputBoundary;
 import use_case.InputData;
 
-public class UpdateToolFacade<T extends Tool> {
+public class UpdateToolFacade{
 
-    public void update(T tool, InputData inputData, InputBoundary interactor){
+    public static <T extends Tool> void update(T tool, InputData inputData, InputBoundary interactor){
         if (tool.getClass().equals(PaintTool.class)){
             UpdatePaintTool updatePaintTool = new UpdatePaintTool();
             updatePaintTool.update((PaintTool) tool, inputData, interactor);

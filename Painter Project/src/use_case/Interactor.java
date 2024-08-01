@@ -26,8 +26,7 @@ public class Interactor implements InputBoundary{
     }
 
     public void update(){
-        UpdateToolFacade updateToolFacade = new UpdateToolFacade();
-        updateToolFacade.update(presenter.getViewModel().getCurrentTool(),
+        UpdateToolFacade.update(presenter.getViewModel().getCurrentTool(),
                 getInputData(), this);
     }
 

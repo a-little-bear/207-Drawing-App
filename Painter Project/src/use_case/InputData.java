@@ -26,4 +26,7 @@ public class InputData {
         this.mouseIsActive = mouse.isActive;
     }
 
+    public boolean getMouseIsActive() {
+        return mouseIsActive;
+    }
 }
