@@ -1,6 +1,6 @@
-package controllers;
+package interface_adapter;
 
-import main.View;
+import view.View;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -13,16 +13,6 @@ public class Mouse implements MouseMotionListener, MouseListener {
     public boolean isActive;
     public int xCoord;
     public int yCoord;
-    private View view;
-
-    /**
-     * Instantiates a new Mouse controller.
-     *
-     * @param view the view to be associated with this mouse controller
-     */
-    public Mouse(View view) {
-        this.view = view;
-    }
 
     /**
      * Invoked when a mouse button is pressed and dragged.

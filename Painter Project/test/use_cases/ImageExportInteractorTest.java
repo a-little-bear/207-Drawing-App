@@ -1,8 +1,8 @@
-package use_cases;
+package use_case;
 
 import data_access.DataAccessObject;
 import entity.canvas.CanvasManager;
-import main.View;
+import app.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

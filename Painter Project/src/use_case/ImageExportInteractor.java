@@ -1,15 +1,15 @@
-package use_cases;
+package use_case;
 
 import data_access.DataAccessObject;
-import kotlin.OverloadResolutionByLambdaReturnType;
-import main.View;
+import entity.canvas.CanvasManager;
+import view.View;
 
 /**
  * The ImageExportInteractor class implements the ImageExportInputBoundary interface
  * and provides functionality to export images using a DataAccessObject.
  */
 public class ImageExportInteractor implements ImageExportInputBoundary {
-    private DataAccessObject dataAccessObject;
+    private final DataAccessObject dataAccessObject;
 
     /**
      * Instantiates a new ImageExportInteractor with a DataAccessObject.
@@ -29,7 +29,7 @@ public class ImageExportInteractor implements ImageExportInputBoundary {
      * @param view the view containing the image to be exported
      */
     @Override
-    public void exportImage(View view) {
-        dataAccessObject.saveFile("Specify a file to save", view.getCanvasManager().getCanvasImage());
+    public void exportImage(CanvasManager canvasManager) {
+        dataAccessObject.saveFile("Specify a file to save", canvasManager.getCanvasImage());
     }
 }

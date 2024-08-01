@@ -13,7 +13,7 @@ git clone https://github.com/sage35deng/207-Drawing-App
 
 ![img.png](screenshots/img.png)
 
-4. Open `Painter Project/src/main/Main.java` and press the `Run` button in the top right. (Ctrl + F5)
+4. Open `Painter Project/src/app/Main.java` and press the `Run` button in the top right. (Ctrl + F5)
 
 ![img_1.png](screenshots/img_1.png)
 
