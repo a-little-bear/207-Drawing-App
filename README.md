@@ -37,7 +37,7 @@ Available tools:
 - Latex OCR - T
   - This tool will scan the canvas for Math and return it back in [LaTeX](https://en.wikipedia.org/wiki/LaTeX) format.
   - Usage:
-    - Wait for the OCR to complete, and then copy the LaTeX from the new pop up window.
+    - Wait for the OCR to complete, and then check the clipboard when the Latex window pops up.
 - Fill Tool - F
   - This tool will fill the current region of the canvas using the [flood fill](https://en.wikipedia.org/wiki/Flood_fill) algorithm.
   - Usage:
