@@ -1,9 +1,7 @@
 package entity.tools;
 
-import interface_adapter.Controller;
 import lombok.Getter;
 import lombok.Setter;
-import view.View;
 
 import java.awt.*;
 
@@ -14,11 +12,14 @@ import java.awt.*;
 public class EraserTool implements Tool {
     @Setter @Getter private int size;
     @Setter @Getter private Color color;
-    @Setter @Getter private boolean isDrawing;
+    @Getter private boolean isDrawing;
 
-    public boolean setIsDrawing(boolean isDrawing) {
+    /**
+     * Set the drawing state of the eraser tool.
+     * @param isDrawing the new drawing state
+     */
+    public void setIsDrawing(boolean isDrawing) {
         this.isDrawing = isDrawing;
-        return isDrawing;
     }
 
 
@@ -40,10 +41,5 @@ public class EraserTool implements Tool {
     @Override
     public void setPaintColor(Color newColor) {
         // No implementation needed for eraser tool
-    }
-
-    // Getter for size
-    public int getSize() {
-        return size;
     }
 }

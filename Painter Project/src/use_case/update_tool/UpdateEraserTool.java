@@ -5,6 +5,14 @@ import use_case.InputBoundary;
 import use_case.InputData;
 
 public class UpdateEraserTool implements UpdateTool<EraserTool>{
+
+    /**
+     * Updates the eraser tool with the current input data.
+     *
+     * @param tool the eraser tool to update
+     * @param inputData the current input data
+     * @param interactor the input boundary
+     */
     public void update(EraserTool tool, InputData inputData, InputBoundary interactor) {
         int x = inputData.getXCoord();
         int y = inputData.getYCoord();

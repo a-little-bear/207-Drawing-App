@@ -26,10 +26,20 @@ public class ViewModel {
         this.currentTool = ct.create(activeColor);
     }
 
+    /**
+     * Gets the dimension of the view model.
+     *
+     * @return the dimension of the view model
+     */
     public Dimension getDimension() {
         return new Dimension(width, height);
     }
 
+    /**
+     * Paints the view.
+     *
+     * @param g2 the graphics object to paint
+     */
     public void paint(Graphics2D g2) {
         canvasManager.draw(g2);
     }
