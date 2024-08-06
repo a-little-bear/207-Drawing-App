@@ -11,6 +11,12 @@ import use_case.create_tool.CreateTool;
 import java.awt.*;
 
 public class ViewModel {
+    private final int scale = 1;
+    public final int tileSize = scale;
+    public final int maxScreenCol = 1920 / scale;
+    private final int screenWidth = tileSize * maxScreenCol;
+    public final int maxScreenRow = 1080 / scale;
+    private final int screenHeight = tileSize * maxScreenRow;
     @Getter private final Color backgroundColor = Color.WHITE;
     @Getter private final CanvasManager canvasManager;
     @Getter @Setter private Tool currentTool;

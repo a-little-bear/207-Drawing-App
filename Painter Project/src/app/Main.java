@@ -12,6 +12,8 @@ import use_case.OutputBoundary;
 import view.View;
 import view.ViewFactory;
 
+import toolbar.Toolbar;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -36,7 +38,11 @@ public class Main {
         Controller controller = new Controller(interactor, inputData, mouse);
         View view = ViewFactory.create(controller, viewModel);
 
+        ImageExportInputBoundary imageExportInteractor = new ImageExportInteractor();
+        Toolbar toolbar = new Toolbar(interactor, imageExportInteractor);
+
         // Add the view panel to the window
+        window.add(toolbar);
         window.add(view);
         window.pack();
 

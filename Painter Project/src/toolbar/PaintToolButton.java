@@ -1,0 +1,24 @@
+package toolbar;
+
+import entity.tools.PaintTool;
+import use_case.InputBoundary;
+import use_case.create_tool.CreatePaintTool;
+
+import javax.swing.*;
+
+public class PaintToolButton extends AbstractToolButton {
+    private Icon icon;
+    private final static String iconPath = "";
+    private final static String toolTip = "Brush Tool (Q)";
+    private final InputBoundary interactor;
+
+    public PaintToolButton(InputBoundary interactor) {
+        super(iconPath, toolTip);
+        this.interactor = interactor;
+    }
+
+    public void equipTool() {
+        CreatePaintTool tP = new CreatePaintTool();
+        interactor.<PaintTool> switchTool(tP.create(interactor.getCurrentColor()));
+    }
+}

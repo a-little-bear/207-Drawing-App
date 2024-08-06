@@ -4,7 +4,7 @@ import use_case.InputData;
 
 import java.awt.*;
 
-public class DrawPaint implements Drawable{
+public class DrawPaint implements Drawable {
     private final int size = 5;
 
     /**

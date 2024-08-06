@@ -4,7 +4,7 @@ import use_case.InputData;
 
 import java.awt.*;
 
-public class DrawEraser implements Drawable{
+public class DrawEraser implements Drawable {
     private final int size = 20;
 
     /**

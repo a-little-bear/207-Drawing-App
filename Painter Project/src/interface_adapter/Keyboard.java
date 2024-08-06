@@ -56,7 +56,6 @@ public class Keyboard implements KeyListener {
                 interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
                 break;
             case 'f':
-                CreateFillTool tF = new CreateFillTool();
                 UpdateFillTool fillTool = new UpdateFillTool();
                 fillTool.update(tF.create(interactor.getCurrentColor()),
                         interactor.getInputData(), interactor);

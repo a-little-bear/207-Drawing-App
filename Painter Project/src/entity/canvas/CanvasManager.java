@@ -1,7 +1,6 @@
 package entity.canvas;
 
 import interface_adapter.ViewModel;
-import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
  * for painting and collapsing layers, as well as performing OCR and selecting colors.
  */
 public class CanvasManager {
-    @Getter private final ArrayList<Canvas> layers = new ArrayList<>();
+    private ArrayList<Canvas> layers = new ArrayList<>();
     private final int width;
     private final int height;
 
@@ -143,5 +142,14 @@ public class CanvasManager {
         frame.pack();
         frame.setLocationRelativeTo(null); // Center the frame on the screen
         frame.setVisible(true);
+    }
+  
+    // Getter for layers
+    public ArrayList<Canvas> getLayers() {
+        return layers;
+    }
+
+    public void setLayers(ArrayList<Canvas> layers) {
+        this.layers = layers;
     }
 }
