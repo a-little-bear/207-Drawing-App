@@ -22,17 +22,29 @@ public class ViewModel {
     @Getter @Setter public Tool currentTool;
     @Getter @Setter private Color activeColor = Color.BLACK;
 
-
+    /**
+     * Instantiates a new ViewModel.
+     */
     public ViewModel(){
         this.canvasManager = new CanvasManager(screenWidth, screenHeight);
-        CreateTool ct = new CreatePaintTool();
+        CreateTool<PaintTool> ct = new CreatePaintTool();
         this.currentTool = ct.create(activeColor);
     }
 
+    /**
+     * Gets the dimension of the view model.
+     *
+     * @return the dimension of the view model
+     */
     public Dimension getDimension() {
         return new Dimension(screenWidth, screenHeight);
     }
 
+    /**
+     * Paints the view.
+     *
+     * @param g2 the graphics object to paint
+     */
     public void paint(Graphics2D g2) {
         canvasManager.draw(g2);
     }

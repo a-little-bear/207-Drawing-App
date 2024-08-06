@@ -1,8 +1,6 @@
 package app;
 
 import interface_adapter.Controller;
-import interface_adapter.Keyboard;
-import interface_adapter.Mouse;
 import view.View;
 
 public class DrawingAppThread implements Runnable{
@@ -11,6 +9,12 @@ public class DrawingAppThread implements Runnable{
     private final View view;
     private final Controller controller;
 
+    /**
+     * Instantiates a new DrawingAppThread with the specified view and controller.
+     *
+     * @param view the view to update and render
+     * @param controller the controller to update the view
+     */
     public DrawingAppThread(View view, Controller controller){
         this.view = view;
         this.controller = controller;

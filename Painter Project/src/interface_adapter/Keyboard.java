@@ -9,8 +9,8 @@ import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 import use_case.ImageExportInteractor;
 import use_case.create_tool.CreateEraserTool;
+import use_case.create_tool.CreateFillTool;
 import use_case.create_tool.CreatePaintTool;
-import use_case.create_tool.CreateTool;
 import use_case.update_tool.UpdateFillTool;
 
 /**
@@ -56,8 +56,9 @@ public class Keyboard implements KeyListener {
                 interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
                 break;
             case 'f':
+                CreateFillTool tF = new CreateFillTool();
                 UpdateFillTool fillTool = new UpdateFillTool();
-                fillTool.update(FillToolFactory.create(interactor.getCurrentColor()),
+                fillTool.update(tF.create(interactor.getCurrentColor()),
                         interactor.getInputData(), interactor);
                 break;
             case 'c':

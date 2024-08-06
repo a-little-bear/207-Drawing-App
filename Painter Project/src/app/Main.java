@@ -8,13 +8,14 @@ import use_case.InputBoundary;
 import use_case.InputData;
 import use_case.Interactor;
 import use_case.OutputBoundary;
-import use_case.create_tool.CreatePaintTool;
 import view.View;
 import view.ViewFactory;
 
 import javax.swing.*;
 
 public class Main{
+
+    // Main method to run the program
     public static void main(String[] args) {
         // Initialize the main program window
         JFrame window = new JFrame("Slumber:ZZZ");

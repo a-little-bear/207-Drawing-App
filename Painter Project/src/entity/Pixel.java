@@ -1,7 +1,7 @@
 package entity;
 
 import interface_adapter.ViewModel;
-import view.View;
+import lombok.Setter;
 
 import java.awt.*;
 
@@ -11,7 +11,7 @@ import java.awt.*;
 public class Pixel extends Entity {
 
     ViewModel gp;
-    Color color;
+    @Setter Color color;
     Boolean rendered;
 
     /**
@@ -28,22 +28,6 @@ public class Pixel extends Entity {
         this.y = y;
         this.color = color;
         rendered = false;
-    }
-
-    /**
-     * Updates the pixel. This method is not yet implemented.
-     */
-    public void update() {
-        //TODO Implement update
-    }
-
-    /**
-     * Sets the color of the pixel.
-     *
-     * @param color the new color to set
-     */
-    public void setColor(Color color) {
-        this.color = color;
     }
 
     /**
