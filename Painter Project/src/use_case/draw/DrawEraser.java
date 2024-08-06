@@ -1,15 +1,19 @@
 package use_case.draw;
 
-import interface_adapter.Controller;
-import use_case.InputBoundary;
 import use_case.InputData;
-import use_case.Interactor;
 
 import java.awt.*;
 
 public class DrawEraser implements Drawable {
     private final int size = 20;
 
+    /**
+     * Draws the eraser on the canvas.
+     *
+     * @param g2 the graphics object to draw on
+     * @param inputData the input data
+     * @param color the color of the eraser
+     */
     public void draw(Graphics2D g2, InputData inputData, Color color) {
         int x = inputData.getXCoord();
         int y = inputData.getYCoord();

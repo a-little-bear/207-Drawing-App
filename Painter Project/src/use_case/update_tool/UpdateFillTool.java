@@ -11,6 +11,13 @@ import java.util.Queue;
 
 public class UpdateFillTool implements UpdateTool<FillTool>{
 
+    /**
+     * Updates the fill tool by performing a flood fill operation on the canvas.
+     *
+     * @param tool      the fill tool to update
+     * @param inputData the input data for the update
+     * @param interactor the interactor to update
+     */
     public void update(FillTool tool, InputData inputData, InputBoundary interactor) {
         BufferedImage image = interactor.getPresenter().getViewModel().getCanvasManager()
                 .getTopLayer().getCanvasImage();

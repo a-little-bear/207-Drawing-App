@@ -2,7 +2,6 @@ package use_case;
 
 import data_access.DataAccessObject;
 import entity.canvas.CanvasManager;
-import view.View;
 
 /**
  * The ImageExportInteractor class implements the ImageExportInputBoundary interface
@@ -18,7 +17,11 @@ public class ImageExportInteractor implements ImageExportInputBoundary {
         this.dataAccessObject = new DataAccessObject();
     }
 
-    // Constructor to support testing
+    /**
+     * Instantiates a new ImageExportInteractor with a provided DataAccessObject.
+     *
+     * @param dataAccessObject the data access object
+     */
     public ImageExportInteractor(DataAccessObject dataAccessObject) {
         this.dataAccessObject = dataAccessObject;
     }

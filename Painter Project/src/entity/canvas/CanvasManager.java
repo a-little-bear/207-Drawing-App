@@ -143,6 +143,7 @@ public class CanvasManager {
         frame.setLocationRelativeTo(null); // Center the frame on the screen
         frame.setVisible(true);
     }
+  
     // Getter for layers
     public ArrayList<Canvas> getLayers() {
         return layers;

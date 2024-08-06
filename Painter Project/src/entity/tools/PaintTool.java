@@ -1,6 +1,5 @@
 package entity.tools;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,15 +12,15 @@ import java.awt.*;
 public class PaintTool implements Tool {
     @Setter @Getter private int size;
     @Setter @Getter private Color paintColor;
-    @Setter @Getter private boolean isDrawing;
+    @Getter private boolean isDrawing;
 
-    public boolean setIsDrawing(boolean isDrawing) {
+    /**
+     * Set the drawing state of the paint tool.
+     * @param isDrawing the new drawing state
+     */
+    public void setIsDrawing(boolean isDrawing) {
         this.isDrawing = isDrawing;
-        return isDrawing;
     }
-
-    private int lastX, lastY;
-
 
     /**
      * Increments the size of the paint tool.
