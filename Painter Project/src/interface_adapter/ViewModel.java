@@ -11,22 +11,17 @@ import use_case.create_tool.CreateTool;
 import java.awt.*;
 
 public class ViewModel {
-    private final int scale = 1;
-    public final int tileSize = scale;
-    public final int maxScreenCol = 1920 / scale;
-    private final int screenWidth = tileSize * maxScreenCol;
-    public final int maxScreenRow = 1080 / scale;
-    private final int screenHeight = tileSize * maxScreenRow;
     @Getter private final Color backgroundColor = Color.WHITE;
-    @Getter private CanvasManager canvasManager;
-    @Getter @Setter public Tool currentTool;
+    @Getter private final CanvasManager canvasManager;
+    @Getter @Setter private Tool currentTool;
     @Getter @Setter private Color activeColor = Color.BLACK;
+    private final int width;
+    private final int height;
 
-    /**
-     * Instantiates a new ViewModel.
-     */
-    public ViewModel(){
-        this.canvasManager = new CanvasManager(screenWidth, screenHeight);
+    public ViewModel(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.canvasManager = new CanvasManager(width, height);
         CreateTool<PaintTool> ct = new CreatePaintTool();
         this.currentTool = ct.create(activeColor);
     }
@@ -37,7 +32,7 @@ public class ViewModel {
      * @return the dimension of the view model
      */
     public Dimension getDimension() {
-        return new Dimension(screenWidth, screenHeight);
+        return new Dimension(width, height);
     }
 
     /**
