@@ -20,6 +20,6 @@ public class SaveActionButton extends AbstractActionButton {
 
     @Override
     public void performAction() {
-        imageExportInteractor.exportImage(interactor.getPresenter().getViewModel().getCanvasManager());
+        imageExportInteractor.saveImage(interactor.getPresenter().getViewModel().getCanvasManager());
     }
 }

@@ -14,10 +14,5 @@ public interface Tool {
      */
     void setPaintColor(Color newColor);
 
-    /**
-     * Increments the size of the tool.
-     *
-     * @param increment the amount to increment the size by
-     */
     void incrementSize(int increment);
 }

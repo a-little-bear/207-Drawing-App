@@ -42,7 +42,7 @@ public class Keyboard implements KeyListener {
         this.lastTyped = Character.toLowerCase(e.getKeyChar());
         switch (this.lastTyped) {
             case 's':
-                imageExportInteractor.exportImage(interactor.getPresenter().getViewModel().getCanvasManager());
+                imageExportInteractor.saveImage(interactor.getPresenter().getViewModel().getCanvasManager());
                 break;
             case 'q':
                 CreatePaintTool tP = new CreatePaintTool();
@@ -56,6 +56,7 @@ public class Keyboard implements KeyListener {
                 interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
                 break;
             case 'f':
+                CreateFillTool tF = new CreateFillTool();
                 UpdateFillTool fillTool = new UpdateFillTool();
                 fillTool.update(tF.create(interactor.getCurrentColor()),
                         interactor.getInputData(), interactor);
@@ -64,6 +65,8 @@ public class Keyboard implements KeyListener {
                 interactor.getPresenter().getViewModel().getCanvasManager().chooseColor(
                         interactor.getPresenter().getViewModel());
                 break;
+            case 'e':
+                imageExportInteractor.exportCanvasManager(interactor.getPresenter().getViewModel().getCanvasManager());
         }
     }
 

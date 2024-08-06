@@ -13,13 +13,6 @@ public class Controller {
     @Getter private final Mouse mouse;
     @Getter private final Keyboard keyboard;
 
-    /**
-     * Instantiates a new Controller with the specified interactor, input data, and mouse.
-     *
-     * @param interactor the interactor to use
-     * @param inputData  the input data to use
-     * @param mouse      the mouse to use
-     */
     public Controller(InputBoundary interactor, InputData inputData, Mouse mouse){
         this.interactor = interactor;
         this.mouse = mouse;
@@ -27,9 +20,6 @@ public class Controller {
         this.inputData = inputData;
     }
 
-    /**
-     * Updates the input devices.
-     */
     public void update() {
         inputData.updateMouse(mouse);
         interactor.update();

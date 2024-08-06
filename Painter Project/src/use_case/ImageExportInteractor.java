@@ -2,6 +2,7 @@ package use_case;
 
 import data_access.DataAccessObject;
 import entity.canvas.CanvasManager;
+import view.View;
 
 /**
  * The ImageExportInteractor class implements the ImageExportInputBoundary interface
@@ -17,11 +18,7 @@ public class ImageExportInteractor implements ImageExportInputBoundary {
         this.dataAccessObject = new DataAccessObject();
     }
 
-    /**
-     * Instantiates a new ImageExportInteractor with a provided DataAccessObject.
-     *
-     * @param dataAccessObject the data access object
-     */
+    // Constructor to support testing
     public ImageExportInteractor(DataAccessObject dataAccessObject) {
         this.dataAccessObject = dataAccessObject;
     }
@@ -29,10 +26,15 @@ public class ImageExportInteractor implements ImageExportInputBoundary {
     /**
      * Exports the image from the provided view using the DataAccessObject.
      *
-     * @param view the view containing the image to be exported
+     * @param canvasManager The canvasManger where the saved image is being sourced from
      */
     @Override
-    public void exportImage(CanvasManager canvasManager) {
+    public void saveImage(CanvasManager canvasManager) {
         dataAccessObject.saveFile("Specify a file to save", canvasManager.getCanvasImage());
+    }
+
+    @Override
+    public void exportCanvasManager(CanvasManager canvasManager) {
+        dataAccessObject.exportFile("Specify a file to save", canvasManager.getLayers());
     }
 }

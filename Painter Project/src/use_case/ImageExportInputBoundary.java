@@ -7,10 +7,7 @@ import entity.canvas.CanvasManager;
  */
 public interface ImageExportInputBoundary {
 
-    /**
-     * Exports the image from the view.
-     *
-     * @param canvasManager the canvas manager
-     */
-    void exportImage(CanvasManager canvasManager);
+    void saveImage(CanvasManager canvasManager);
+
+    void exportCanvasManager(CanvasManager canvasManager);
 }

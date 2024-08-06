@@ -1,19 +1,19 @@
 package entity.canvas;
 
 import api.SimpleTexLatexAPI;
-import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 /**
  * The Canvas class provides functionality for drawing and manipulating a canvas.
  */
-public class Canvas {
-    @Getter private final BufferedImage canvasImage;
+public class Canvas implements Serializable {
+    private BufferedImage canvasImage;
     private final int width;
     private final int height;
 
@@ -38,6 +38,15 @@ public class Canvas {
         g2.setColor(new Color(0, 0, 0, 0));
         g2.fillRect(0, 0, width, height);
         g2.dispose();
+    }
+
+    /**
+     * Returns the BufferedImage representation of the canvas.
+     *
+     * @return the canvas image
+     */
+    public BufferedImage getCanvasImage() {
+        return canvasImage;
     }
 
     /**

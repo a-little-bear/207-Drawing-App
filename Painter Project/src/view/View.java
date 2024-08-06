@@ -1,5 +1,9 @@
 package view;
 
+import entity.canvas.CanvasManager;
+import entity.tools.PaintTool;
+import entity.tools.Tool;
+import interface_adapter.Controller;
 import interface_adapter.ViewModel;
 
 import javax.swing.*;
@@ -24,16 +28,6 @@ public class View extends JPanel  {
         this.setDoubleBuffered(true);
 
         this.setFocusable(true); // Fixed for keyboard events
-    }
-
-    /**
-     * Gets the view model associated with this view.
-     *
-     * @return the view model
-     */
-    @Override
-    public Dimension getPreferredSize() {
-        return viewModel.getDimension(); // Ensure the preferred size matches the canvas dimensions
     }
 
     /**

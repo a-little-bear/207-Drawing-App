@@ -7,18 +7,8 @@ import entity.tools.Tool;
 import use_case.InputBoundary;
 import use_case.InputData;
 
-/**
- * Facade for updating tools.
- */
 public class UpdateToolFacade{
 
-    /**
-     * Updates the tool with the current input data.
-     *
-     * @param tool the tool to update
-     * @param inputData the current input data
-     * @param interactor the input boundary
-     */
     public static <T extends Tool> void update(T tool, InputData inputData, InputBoundary interactor){
         if (tool.getClass().equals(PaintTool.class)){
             UpdatePaintTool updatePaintTool = new UpdatePaintTool();
