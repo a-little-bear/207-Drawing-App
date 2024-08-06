@@ -26,10 +26,15 @@ public class ImageExportInteractor implements ImageExportInputBoundary {
     /**
      * Exports the image from the provided view using the DataAccessObject.
      *
-     * @param view the view containing the image to be exported
+     * @param canvasManager The canvasManger where the saved image is being sourced from
      */
     @Override
-    public void exportImage(CanvasManager canvasManager) {
+    public void saveImage(CanvasManager canvasManager) {
         dataAccessObject.saveFile("Specify a file to save", canvasManager.getCanvasImage());
+    }
+
+    @Override
+    public void exportCanvasManager(CanvasManager canvasManager) {
+        dataAccessObject.exportFile("Specify a file to save", canvasManager.getLayers());
     }
 }

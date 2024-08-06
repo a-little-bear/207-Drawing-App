@@ -7,12 +7,13 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 /**
  * The Canvas class provides functionality for drawing and manipulating a canvas.
  */
-public class Canvas {
-    private final BufferedImage canvasImage;
+public class Canvas implements Serializable {
+    private BufferedImage canvasImage;
     private final int width;
     private final int height;
 

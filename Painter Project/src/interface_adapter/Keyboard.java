@@ -11,8 +11,6 @@ import use_case.ImageExportInteractor;
 import use_case.create_tool.CreateEraserTool;
 import use_case.create_tool.CreateFillTool;
 import use_case.create_tool.CreatePaintTool;
-import use_case.create_tool.CreateTool;
-import use_case.update_tool.UpdateFillTool;
 
 /**
  * The Keyboard class handles keyboard events and interacts with various tools and actions in the view.
@@ -43,7 +41,7 @@ public class Keyboard implements KeyListener {
         this.lastTyped = Character.toLowerCase(e.getKeyChar());
         switch (this.lastTyped) {
             case 's':
-                imageExportInteractor.exportImage(interactor.getPresenter().getViewModel().getCanvasManager());
+                imageExportInteractor.saveImage(interactor.getPresenter().getViewModel().getCanvasManager());
                 break;
             case 'q':
                 CreatePaintTool tP = new CreatePaintTool();
@@ -64,6 +62,8 @@ public class Keyboard implements KeyListener {
                 interactor.getPresenter().getViewModel().getCanvasManager().chooseColor(
                         interactor.getPresenter().getViewModel());
                 break;
+            case 'e':
+                imageExportInteractor.exportCanvasManager(interactor.getPresenter().getViewModel().getCanvasManager());
         }
     }
 
