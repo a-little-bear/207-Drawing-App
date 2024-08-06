@@ -30,4 +30,6 @@ public class Toolbar extends JPanel {
     public void addFillToolButton() {
         toolButtons.add(new FillToolButton(interactor));
     }
+
+    public void add
 }
