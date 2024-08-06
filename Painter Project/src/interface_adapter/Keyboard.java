@@ -11,6 +11,7 @@ import use_case.ImageExportInteractor;
 import use_case.create_tool.CreateEraserTool;
 import use_case.create_tool.CreateFillTool;
 import use_case.create_tool.CreatePaintTool;
+import use_case.update_tool.UpdateFillTool;
 
 /**
  * The Keyboard class handles keyboard events and interacts with various tools and actions in the view.
@@ -55,8 +56,10 @@ public class Keyboard implements KeyListener {
                 interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
                 break;
             case 'f':
-                CreateFillTool fillTool = new CreateFillTool();
-                interactor.<FillTool> switchTool(fillTool.create(interactor.getCurrentColor()));
+                CreateFillTool tF = new CreateFillTool();
+                UpdateFillTool fillTool = new UpdateFillTool();
+                fillTool.update(tF.create(interactor.getCurrentColor()),
+                        interactor.getInputData(), interactor);
                 break;
             case 'c':
                 interactor.getPresenter().getViewModel().getCanvasManager().chooseColor(
