@@ -1,10 +1,10 @@
-package Toolbar;
+package toolbar;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-abstract class AbstractToolButton extends JToggleButton implements ActionListener {
+abstract class AbstractToolButton extends JToggleButton implements Button, ActionListener {
     private Icon icon;
     private String tooltip;
 

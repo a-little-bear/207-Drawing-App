@@ -1,7 +1,6 @@
 package entity.canvas;
 
 import interface_adapter.ViewModel;
-import view.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
  * for painting and collapsing layers, as well as performing OCR and selecting colors.
  */
 public class CanvasManager {
-    private final ArrayList<Canvas> layers = new ArrayList<>();
+    private ArrayList<Canvas> layers = new ArrayList<>();
     private final int width;
     private final int height;
 
@@ -147,5 +146,9 @@ public class CanvasManager {
     // Getter for layers
     public ArrayList<Canvas> getLayers() {
         return layers;
+    }
+
+    public void setLayers(ArrayList<Canvas> layers) {
+        this.layers = layers;
     }
 }

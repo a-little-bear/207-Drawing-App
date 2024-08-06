@@ -1,16 +1,39 @@
-package Toolbar;
+package toolbar;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-abstract class AbstractActionButton extends JButton implements ActionListener {
+abstract class AbstractActionButton extends JButton implements Button, ActionListener {
     private Icon icon;
     private String tooltip;
 
-    public AbstractActionButton(Icon icon, String tooltip) {
-
+    /**
+     * Constructor to initialize the action button with an icon and a tooltip.
+     *
+     * @param iconPath The path to the icon image file.
+     * @param tooltip  The tooltip text for the button.
+     */
+    public AbstractActionButton(String iconPath, String tooltip) {
+        setIcon(iconPath);
+        setTooltip(tooltip);
+        setupButton();
     }
+
+    /**
+     * Sets up the button with the icon and tooltip.
+     */
+    private void setupButton() {
+        setIcon(icon);
+        setToolTipText(tooltip);
+        addActionListener(this);
+    }
+
+    /**
+     * Abstract method to perform an action.
+     * This must be implemented by concrete subclasses to define specific behavior.
+     */
+    public abstract void performAction();
 
     /**
      * Gets the icon used for this action button.
@@ -54,6 +77,7 @@ abstract class AbstractActionButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+        // Define the specific action that should occur when the button is pressed
+        System.out.println("Button Pressed: " + e.getActionCommand());
     }
 }

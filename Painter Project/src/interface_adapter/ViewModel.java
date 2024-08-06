@@ -13,9 +13,9 @@ import java.awt.*;
 public class ViewModel {
     private final int scale = 1;
     public final int tileSize = scale;
-    public final int maxScreenCol = 1920 / scale;
+    public final int maxScreenCol = 1280 / scale;
     private final int screenWidth = tileSize * maxScreenCol;
-    public final int maxScreenRow = 1080 / scale;
+    public final int maxScreenRow = 720 / scale;
     private final int screenHeight = tileSize * maxScreenRow;
     @Getter private final Color backgroundColor = Color.WHITE;
     @Getter private CanvasManager canvasManager;

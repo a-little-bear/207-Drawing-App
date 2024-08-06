@@ -4,13 +4,11 @@ import interface_adapter.Controller;
 import interface_adapter.Mouse;
 import interface_adapter.Presenter;
 import interface_adapter.ViewModel;
-import use_case.InputBoundary;
-import use_case.InputData;
-import use_case.Interactor;
-import use_case.OutputBoundary;
-import use_case.create_tool.CreatePaintTool;
+import use_case.*;
 import view.View;
 import view.ViewFactory;
+
+import toolbar.Toolbar;
 
 import javax.swing.*;
 
@@ -31,7 +29,11 @@ public class Main{
         Controller controller = new Controller(interactor, inputData, mouse);
         View view = ViewFactory.create(controller, viewModel);
 
+        ImageExportInputBoundary imageExportInteractor = new ImageExportInteractor();
+        Toolbar toolbar = new Toolbar(interactor, imageExportInteractor);
+
         // Add the view panel to the window
+        window.add(toolbar);
         window.add(view);
         window.pack();
 

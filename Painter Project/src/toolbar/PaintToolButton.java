@@ -1,4 +1,4 @@
-package Toolbar;
+package toolbar;
 
 import entity.tools.PaintTool;
 import use_case.InputBoundary;

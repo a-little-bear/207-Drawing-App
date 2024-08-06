@@ -1,4 +1,4 @@
-package Toolbar;
+package toolbar;
 
 public class ExportActionButton {
 }

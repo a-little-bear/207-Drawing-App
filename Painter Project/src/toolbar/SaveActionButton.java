@@ -1,14 +1,14 @@
-package Toolbar;
+package toolbar;
 
 import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 
 import javax.swing.*;
 
-public class SaveActionButton extends AbstractToolButton {
+public class SaveActionButton extends AbstractActionButton {
     private Icon icon;
     private final static String iconPath = "";
-    private final static String toolTip = "Save Tool (S)";
+    private final static String toolTip = "Save (S)";
     private final InputBoundary interactor;
     private final ImageExportInputBoundary imageExportInteractor;
 
@@ -19,7 +19,7 @@ public class SaveActionButton extends AbstractToolButton {
     }
 
     @Override
-    public void equipTool() {
+    public void performAction() {
         imageExportInteractor.exportImage(interactor.getPresenter().getViewModel().getCanvasManager());
     }
 }
