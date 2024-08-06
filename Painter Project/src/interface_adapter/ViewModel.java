@@ -13,24 +13,27 @@ import java.awt.*;
 public class ViewModel {
     private final int scale = 1;
     public final int tileSize = scale;
-    public final int maxScreenCol = 1280 / scale;
+    public final int maxScreenCol = 1920 / scale;
     private final int screenWidth = tileSize * maxScreenCol;
-    public final int maxScreenRow = 720 / scale;
+    public final int maxScreenRow = 1080 / scale;
     private final int screenHeight = tileSize * maxScreenRow;
     @Getter private final Color backgroundColor = Color.WHITE;
-    @Getter private CanvasManager canvasManager;
-    @Getter @Setter public Tool currentTool;
+    @Getter private final CanvasManager canvasManager;
+    @Getter @Setter private Tool currentTool;
     @Getter @Setter private Color activeColor = Color.BLACK;
+    private final int width;
+    private final int height;
 
-
-    public ViewModel(){
-        this.canvasManager = new CanvasManager(screenWidth, screenHeight);
-        CreateTool ct = new CreatePaintTool();
+    public ViewModel(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.canvasManager = new CanvasManager(width, height);
+        CreateTool<PaintTool> ct = new CreatePaintTool();
         this.currentTool = ct.create(activeColor);
     }
 
     public Dimension getDimension() {
-        return new Dimension(screenWidth, screenHeight);
+        return new Dimension(width, height);
     }
 
     public void paint(Graphics2D g2) {
