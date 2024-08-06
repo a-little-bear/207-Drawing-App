@@ -31,6 +31,16 @@ public class View extends JPanel  {
     }
 
     /**
+     * Gets the view model associated with this view.
+     *
+     * @return the view model
+     */
+    @Override
+    public Dimension getPreferredSize() {
+        return viewModel.getDimension(); // Ensure the preferred size matches the canvas dimensions
+    }
+
+    /**
      * Paints the components of the view, including the canvas and the current tool.
      *
      * @param g the Graphics object to draw on
