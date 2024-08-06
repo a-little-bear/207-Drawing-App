@@ -7,7 +7,7 @@ import use_case.Interactor;
 
 import java.awt.*;
 
-public class DrawEraser implements Drawable{
+public class DrawEraser implements Drawable {
     private final int size = 20;
 
     public void draw(Graphics2D g2, InputData inputData, Color color) {

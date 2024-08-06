@@ -1,6 +1,7 @@
 package Toolbar;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 abstract class AbstractToolButton extends JToggleButton implements ActionListener {
@@ -29,7 +30,7 @@ abstract class AbstractToolButton extends JToggleButton implements ActionListene
     }
 
     /**
-     * Abstract method to define how the tool interacts with the drawing canvas.
+     * Abstract method to equip the current tool.
      */
     public abstract void equipTool();
 
@@ -71,5 +72,14 @@ abstract class AbstractToolButton extends JToggleButton implements ActionListene
     public void setTooltip(String tooltip) {
         this.tooltip = tooltip;
         setToolTipText(tooltip);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (this.isSelected()) {
+            this.setText("ON");
+        } else {
+            this.setText("OFF");
+        }
     }
 }

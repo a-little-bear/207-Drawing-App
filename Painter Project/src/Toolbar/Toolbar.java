@@ -1,18 +1,33 @@
 package Toolbar;
 
+import use_case.InputBoundary;
+
 import javax.swing.*;
 
 import java.util.ArrayList;
 
 public class Toolbar extends JPanel {
-    private ArrayList<AbstractToolButton> toolbuttons;
+    private ButtonGroup toolButtons;
+    private final InputBoundary interactor;
 
-    public Toolbar(ArrayList<AbstractToolButton> toolbuttons) {
-        this.toolbuttons = toolbuttons;
-        this.updateToolbar();
+    public Toolbar(InputBoundary interactor) {
+        this.toolButtons = new ButtonGroup();
+        this.interactor = interactor;
+
+        addPaintToolButton();
+        addEraserToolButton();
+        addFillToolButton();
     }
 
-    public void updateToolbar() {
-        
+    public void addPaintToolButton() {
+        toolButtons.add(new PaintToolButton(interactor));
+    }
+
+    public void addEraserToolButton() {
+        toolButtons.add(new EraserToolButton(interactor));
+    }
+
+    public void addFillToolButton() {
+        toolButtons.add(new FillToolButton(interactor));
     }
 }
