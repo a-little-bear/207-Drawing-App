@@ -11,12 +11,10 @@ public class Controller {
     private final InputBoundary interactor;
     private final InputData inputData;
     @Getter private final Mouse mouse;
-    @Getter private final Keyboard keyboard;
 
     public Controller(InputBoundary interactor, InputData inputData, Mouse mouse){
         this.interactor = interactor;
         this.mouse = mouse;
-        keyboard = new Keyboard(interactor);
         this.inputData = inputData;
     }
 
