@@ -12,7 +12,7 @@ import java.util.Queue;
 public class UpdateFillTool implements UpdateTool<FillTool>{
 
     public void update(FillTool tool, InputData inputData, InputBoundary interactor) {
-        BufferedImage image = interactor.getPresenter().getViewModel().getCanvasManager()
+        BufferedImage image = interactor.getCanvasManager()
                 .getTopLayer().getCanvasImage();
         int x = inputData.getXCoord();
         int y = inputData.getYCoord();

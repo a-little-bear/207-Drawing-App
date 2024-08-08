@@ -1,6 +1,6 @@
 package entity.canvas;
 
-import api.SimpleTexLatexAPI;
+import data_access.api.SimpleTexLatexAPI;
 
 import javax.swing.*;
 import java.awt.*;

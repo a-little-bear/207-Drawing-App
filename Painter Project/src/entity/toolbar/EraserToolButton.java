@@ -1,4 +1,4 @@
-package toolbar;
+package entity.toolbar;
 
 import entity.tools.EraserTool;
 import use_case.InputBoundary;

@@ -1,4 +1,4 @@
-package api;
+package data_access.api;
 
 import org.junit.Before;
 import org.junit.Test;

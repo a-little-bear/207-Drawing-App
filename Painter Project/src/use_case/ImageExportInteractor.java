@@ -2,7 +2,6 @@ package use_case;
 
 import data_access.DataAccessObject;
 import entity.canvas.CanvasManager;
-import view.View;
 
 /**
  * The ImageExportInteractor class implements the ImageExportInputBoundary interface
