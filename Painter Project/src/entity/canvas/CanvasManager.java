@@ -121,7 +121,7 @@ public class CanvasManager {
      */
     public void chooseColor(InputData inputData) {
         JFrame frame = new JFrame("Color Picker");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(400, 400);
         frame.setLayout(new GridLayout(2, 2, 10, 10));
 
