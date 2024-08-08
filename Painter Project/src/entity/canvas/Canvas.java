@@ -78,6 +78,10 @@ public class Canvas implements Serializable {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(color);
 
+        if (color.getAlpha() == 0) {
+            g2.setComposite(AlphaComposite.Clear);
+        }
+
         // Bresenham's line algorithm
         int dx = Math.abs(x2 - x1);
         int dy = Math.abs(y2 - y1);
