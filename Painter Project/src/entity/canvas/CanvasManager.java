@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * for painting and collapsing layers, as well as performing OCR and selecting colors.
  */
 public class CanvasManager {
-    private ArrayList<Canvas> layers = new ArrayList<>();
+    private ArrayList<entity.canvas.Canvas> layers = new ArrayList<>();
     private final int width;
     private final int height;
 
@@ -24,17 +24,26 @@ public class CanvasManager {
      * @param width  the width of the canvas
      * @param height the height of the canvas
      */
-    public CanvasManager(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public CanvasManager(int screenWidth, int screenHeight) {
+        this.width = screenWidth;
+        this.height = screenHeight;
         addLayer();
+    }
+
+    /**
+     * Returns the dimension of the canvas.
+     *
+     * @return the dimension of the canvas
+     */
+    public Dimension getDimension() {
+        return new Dimension(width, height);
     }
 
     /**
      * Adds a new layer to the canvas manager.
      */
     public void addLayer() {
-        Canvas newLayer = new Canvas(width, height);
+        entity.canvas.Canvas newLayer = new entity.canvas.Canvas(width, height);
         layers.add(newLayer);
     }
 
@@ -43,7 +52,7 @@ public class CanvasManager {
      *
      * @return the topmost canvas layer
      */
-    public Canvas getTopLayer() {
+    public entity.canvas.Canvas getTopLayer() {
         return layers.get(layers.size() - 1);
     }
 
@@ -56,7 +65,7 @@ public class CanvasManager {
      * @param size  the size of the rectangle
      */
     public void paint(int x, int y, Color color, int size) {
-        Canvas currentLayer = layers.get(layers.size() - 1); // Paint on the topmost layer
+        entity.canvas.Canvas currentLayer = layers.get(layers.size() - 1); // Paint on the topmost layer
         currentLayer.paintArea(x, y, color, size);
     }
 
@@ -71,7 +80,7 @@ public class CanvasManager {
      * @param size  the size of the line
      */
     public void paintLine(int x1, int y1, int x2, int y2, Color color, int size) {
-        Canvas currentLayer = layers.get(layers.size() - 1); // Paint on the topmost layer
+        entity.canvas.Canvas currentLayer = layers.get(layers.size() - 1); // Paint on the topmost layer
         currentLayer.paintLine(x1, y1, x2, y2, color, size);
     }
 
@@ -81,7 +90,7 @@ public class CanvasManager {
      * @param g2 the Graphics2D object to draw on
      */
     public void draw(Graphics2D g2) {
-        for (Canvas layer : layers) {
+        for (entity.canvas.Canvas layer : layers) {
             layer.draw(g2);
         }
     }
@@ -91,16 +100,9 @@ public class CanvasManager {
      *
      * @return the collapsed canvas
      */
-    public Canvas collapseLayers() {
+    public entity.canvas.Canvas collapseLayers() {
         // Method to collapse all the layers into 1 canvas
         return layers.get(0);   // Temporary Solution for Testing
-    }
-
-    /**
-     * Performs OCR on the collapsed canvas and displays the result in a dialog box.
-     */
-    public void LatexOCR() {
-        collapseLayers().LatexOCR();
     }
 
     /**
@@ -144,7 +146,7 @@ public class CanvasManager {
         frame.setVisible(true);
     }
     // Getter for layers
-    public ArrayList<Canvas> getLayers() {
+    public ArrayList<entity.canvas.Canvas> getLayers() {
         return layers;
     }
 

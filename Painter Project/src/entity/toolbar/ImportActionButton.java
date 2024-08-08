@@ -1,4 +1,4 @@
-package toolbar;
+package entity.toolbar;
 
 public class ImportActionButton {
 }

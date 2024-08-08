@@ -1,5 +1,6 @@
 package use_case;
 
+import entity.canvas.CanvasManager;
 import entity.tools.Tool;
 import interface_adapter.ViewModel;
 
@@ -17,4 +18,8 @@ public interface InputBoundary{
     ViewModel getViewModel();
 
     InputData getInputData();
+
+    CanvasManager getCanvasManager();
+
+    void latexOCR();
 }

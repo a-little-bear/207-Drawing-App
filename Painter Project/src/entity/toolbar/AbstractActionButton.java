@@ -1,4 +1,4 @@
-package toolbar;
+package entity.toolbar;
 
 import javax.swing.*;
 import java.awt.*;

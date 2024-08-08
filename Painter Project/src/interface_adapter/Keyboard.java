@@ -11,7 +11,6 @@ import use_case.ImageExportInteractor;
 import use_case.create_tool.CreateEraserTool;
 import use_case.create_tool.CreateFillTool;
 import use_case.create_tool.CreatePaintTool;
-import use_case.update_tool.UpdateFillTool;
 
 /**
  * The Keyboard class handles keyboard events and interacts with various tools and actions in the view.
@@ -25,7 +24,7 @@ public class Keyboard implements KeyListener {
     /**
      * Instantiates a new Keyboard.
      *
-     * @param view the view to be associated with this keyboard
+     * @param interactor the view to be associated with this keyboard
      */
     public Keyboard(InputBoundary interactor) {
         this.interactor = interactor;
@@ -42,7 +41,7 @@ public class Keyboard implements KeyListener {
         this.lastTyped = Character.toLowerCase(e.getKeyChar());
         switch (this.lastTyped) {
             case 's':
-                imageExportInteractor.saveImage(interactor.getPresenter().getViewModel().getCanvasManager());
+                imageExportInteractor.saveImage(interactor.getCanvasManager());
                 break;
             case 'q':
                 CreatePaintTool tP = new CreatePaintTool();
@@ -53,20 +52,18 @@ public class Keyboard implements KeyListener {
                 interactor.<EraserTool> switchTool(tE.create(Color.WHITE));
                 break;
             case 't':
-                interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
+                interactor.latexOCR();
                 break;
             case 'f':
                 CreateFillTool tF = new CreateFillTool();
-                UpdateFillTool fillTool = new UpdateFillTool();
-                fillTool.update(tF.create(interactor.getCurrentColor()),
-                        interactor.getInputData(), interactor);
+                interactor.<FillTool> switchTool(tF.create(interactor.getCurrentColor()));
                 break;
             case 'c':
-                interactor.getPresenter().getViewModel().getCanvasManager().chooseColor(
+                interactor.getCanvasManager().chooseColor(
                         interactor.getPresenter().getViewModel());
                 break;
             case 'e':
-                imageExportInteractor.exportCanvasManager(interactor.getPresenter().getViewModel().getCanvasManager());
+                imageExportInteractor.exportCanvasManager(interactor.getCanvasManager());
         }
     }
 

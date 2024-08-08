@@ -26,6 +26,13 @@ public class View extends JPanel  {
         this.setFocusable(true); // Fixed for keyboard events
     }
 
+    public void update() {
+        this.setPreferredSize(this.viewModel.getDimension());
+        this.setBackground(this.viewModel.getBackgroundColor());
+        this.setDoubleBuffered(true);
+        repaint();
+    }
+
     /**
      * Paints the components of the view, including the canvas and the current tool.
      *

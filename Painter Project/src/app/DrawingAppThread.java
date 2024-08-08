@@ -1,8 +1,7 @@
 package app;
 
 import interface_adapter.Controller;
-import interface_adapter.Keyboard;
-import interface_adapter.Mouse;
+import use_case.OutputBoundary;
 import view.View;
 
 public class DrawingAppThread implements Runnable{
@@ -10,10 +9,12 @@ public class DrawingAppThread implements Runnable{
     private final Thread thread = new Thread(this);
     private final View view;
     private final Controller controller;
+    private final OutputBoundary presenter;
 
-    public DrawingAppThread(View view, Controller controller){
+    public DrawingAppThread(View view, Controller controller, OutputBoundary presenter){
         this.view = view;
         this.controller = controller;
+        this.presenter = presenter;
 
         startThread();
     }
@@ -32,7 +33,8 @@ public class DrawingAppThread implements Runnable{
     public void run() {
         while (thread != null) {
             controller.update();
-            view.repaint();
+            view.update();
+            presenter.update();
             try {
                 Thread.sleep(16); // Approximately 60 FPS
             } catch (InterruptedException e) {
