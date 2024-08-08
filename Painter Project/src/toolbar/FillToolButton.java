@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class FillToolButton extends AbstractToolButton {
     private Icon icon;
-    private final static String iconPath = "";
+    private final static String iconPath = "Painter Project/images/FillToolButton.png";
     private final static String toolTip = "Fill Tool (F)";
     private final InputBoundary interactor;
 

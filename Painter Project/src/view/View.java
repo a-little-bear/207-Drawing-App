@@ -1,9 +1,5 @@
 package view;
 
-import entity.canvas.CanvasManager;
-import entity.tools.PaintTool;
-import entity.tools.Tool;
-import interface_adapter.Controller;
 import interface_adapter.ViewModel;
 
 import javax.swing.*;
