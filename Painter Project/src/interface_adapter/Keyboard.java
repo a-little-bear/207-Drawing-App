@@ -25,7 +25,7 @@ public class Keyboard implements KeyListener {
     /**
      * Instantiates a new Keyboard.
      *
-     * @param view the view to be associated with this keyboard
+     * @param interactor the view to be associated with this keyboard
      */
     public Keyboard(InputBoundary interactor) {
         this.interactor = interactor;
