@@ -1,6 +1,5 @@
-package entity.tools;
+package entity.tool;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,6 @@
 package use_case.update_tool;
 
-import entity.tools.PaintTool;
+import entity.tool.PaintTool;
 import use_case.InputBoundary;
 import use_case.InputData;
 

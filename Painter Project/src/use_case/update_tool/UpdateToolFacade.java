@@ -1,9 +1,9 @@
 package use_case.update_tool;
 
-import entity.tools.EraserTool;
-import entity.tools.FillTool;
-import entity.tools.PaintTool;
-import entity.tools.Tool;
+import entity.tool.EraserTool;
+import entity.tool.FillTool;
+import entity.tool.PaintTool;
+import entity.tool.Tool;
 import use_case.InputBoundary;
 import use_case.InputData;
 

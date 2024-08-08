@@ -1,6 +1,6 @@
 package use_case.create_tool;
 
-import entity.tools.Tool;
+import entity.tool.Tool;
 
 import java.awt.*;
 

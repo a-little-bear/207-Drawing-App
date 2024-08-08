@@ -1,7 +1,6 @@
 package use_case.update_tool;
 
-import entity.tools.Tool;
-import interface_adapter.Controller;
+import entity.tool.Tool;
 import use_case.InputBoundary;
 import use_case.InputData;
 

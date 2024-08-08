@@ -1,6 +1,7 @@
 package app;
 
 import entity.canvas.CanvasManager;
+import entity.tool.Tool;
 import interface_adapter.Controller;
 import interface_adapter.Mouse;
 import interface_adapter.Presenter;
@@ -34,11 +35,13 @@ public class Main{
         // and view panel for the window
         CanvasManager canvasManager = new CanvasManager(screenWidth, screenHeight);
         CreateTool ct = new CreatePaintTool();
-        ViewModel viewModel = new ViewModel(ct.create(Color.BLACK), canvasManager);
+        Color currentColor = Color.BLACK;
+        Tool currentTool = ct.create(currentColor);
+        ViewModel viewModel = new ViewModel(currentTool, canvasManager);
         OutputData outputData = new OutputData(canvasManager);
         OutputBoundary presenter = new Presenter(viewModel, outputData);
         Mouse mouse = new Mouse();
-        InputData inputData = new InputData(mouse, canvasManager);
+        InputData inputData = new InputData(mouse, canvasManager, currentTool, currentColor);
         InputBoundary interactor = new Interactor(presenter, inputData, outputData);
         Controller controller = new Controller(interactor, inputData, mouse);
         View view = ViewFactory.create(controller, viewModel);

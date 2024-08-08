@@ -1,6 +1,6 @@
 package use_case.update_tool;
 
-import entity.tools.FillTool;
+import entity.tool.FillTool;
 import use_case.InputBoundary;
 import use_case.InputData;
 
@@ -18,7 +18,7 @@ public class UpdateFillTool implements UpdateTool<FillTool>{
         int x = inputData.getXCoord();
         int y = inputData.getYCoord();
         int initialColor = image.getRGB(x, y);
-        int targetColor = interactor.getPresenter().getViewModel().getActiveColor().getRGB();
+        int targetColor = interactor.getCurrentColor().getRGB();
         // System.out.println("pastColor: " + pastColor);
         if (initialColor != targetColor) {
             floodFill(x, y, initialColor, targetColor, image);

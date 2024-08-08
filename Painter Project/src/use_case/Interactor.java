@@ -2,7 +2,7 @@ package use_case;
 
 import data_access.api.SimpleTexLatexAPI;
 import entity.canvas.CanvasManager;
-import entity.tools.Tool;
+import entity.tool.Tool;
 import interface_adapter.ViewModel;
 import lombok.Getter;
 import use_case.update_tool.UpdateToolFacade;
@@ -24,28 +24,30 @@ public class Interactor implements InputBoundary{
     }
 
     public Color getCurrentColor(){
-        return (Color) presenter.getViewModel().getActiveColor();
+        return inputData.getCurrentColor();
     }
 
     public <T extends Tool> void switchTool(T tool){
-        presenter.getViewModel().setCurrentTool(tool);
+        inputData.setCurrentTool(tool);
     }
 
     public void update(){
-        UpdateToolFacade.update(presenter.getViewModel().getCurrentTool(),
+        UpdateToolFacade.update(inputData.getCurrentTool(),
                 getInputData(), this);
-        outputData.update(inputData.getCanvasManager());
-    }
-
-    @Override
-    public ViewModel getViewModel() {
-        return presenter.getViewModel();
+        outputData.update(inputData.getCanvasManager(), inputData.getCurrentTool(), inputData.getCurrentColor());
     }
 
     public CanvasManager getCanvasManager(){
         return inputData.getCanvasManager();
     }
 
+    public Tool getCurrentTool(){
+        return inputData.getCurrentTool();
+    }
+
+    public InputData getInputData(){
+        return inputData;
+    }
 
     /**
      * Performs OCR on the canvas image and displays the result in a dialog box.
