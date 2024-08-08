@@ -1,33 +1,25 @@
-package entity.toolbar;
+package toolbar.button.action_button;
+
+import toolbar.button.Pressable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-abstract class AbstractToolButton extends JToggleButton implements Button, ActionListener {
+abstract class AbstractActionButton extends JButton implements Pressable {
     private Icon icon;
     private String tooltip;
 
     /**
-     * Constructor to initialize the tool toggle button with an icon and a tooltip.
+     * Constructor to initialize the action button with an icon and a tooltip.
      *
      * @param iconPath The path to the icon image file.
      * @param tooltip  The tooltip text for the button.
      */
-    public AbstractToolButton(String iconPath, String tooltip) {
+    public AbstractActionButton(String iconPath, String tooltip, Action listener) {
         setIcon(iconPath);
         setTooltip(tooltip);
-        setupButton();
-    }
-
-    /**
-     * Sets up the toggle button with the icon and tooltip.
-     */
-    private void setupButton() {
-        setIcon(icon);
-        setToolTipText(tooltip);
-        addActionListener(this);
+        setupButton(listener);
 
         Dimension buttonSize = new Dimension(40, 40);
         setPreferredSize(buttonSize);
@@ -37,12 +29,16 @@ abstract class AbstractToolButton extends JToggleButton implements Button, Actio
     }
 
     /**
-     * Abstract method to equip the current tool.
+     * Sets up the button with the icon and tooltip.
      */
-    public abstract void equipTool();
+    private void setupButton(Action listener) {
+        setIcon(icon);
+        setToolTipText(tooltip);
+        addActionListener(listener);
+    }
 
     /**
-     * Gets the icon used for this tool button.
+     * Gets the icon used for this action button.
      *
      * @return the Icon currently set for the button.
      */
@@ -51,7 +47,7 @@ abstract class AbstractToolButton extends JToggleButton implements Button, Actio
     }
 
     /**
-     * Sets the icon for this tool button using the specified file path.
+     * Sets the icon for this action button using the specified file path.
      *
      * @param iconPath the path to the image file to be used as the icon.
      *                 The icon will be updated with the image at the specified path.
@@ -62,7 +58,7 @@ abstract class AbstractToolButton extends JToggleButton implements Button, Actio
     }
 
     /**
-     * Gets the tooltip text associated with this tool button.
+     * Gets the tooltip text associated with this action button.
      *
      * @return a String containing the tooltip text for the button.
      */
@@ -71,18 +67,13 @@ abstract class AbstractToolButton extends JToggleButton implements Button, Actio
     }
 
     /**
-     * Sets the tooltip text for this tool button.
+     * Sets the tooltip text for this action button.
      *
      * @param tooltip the {@link String} to be displayed as the tooltip for the button.
-     *                The tooltip provides additional information about the tool's function.
+     *                The tooltip provides additional information about the button's function.
      */
     public void setTooltip(String tooltip) {
         this.tooltip = tooltip;
         setToolTipText(tooltip);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.equipTool();
     }
 }
