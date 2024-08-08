@@ -1,6 +1,7 @@
 package entity.toolbar;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +28,12 @@ abstract class AbstractToolButton extends JToggleButton implements Button, Actio
         setIcon(icon);
         setToolTipText(tooltip);
         addActionListener(this);
+
+        Dimension buttonSize = new Dimension(40, 40);
+        setPreferredSize(buttonSize);
+        setMinimumSize(buttonSize);
+        setMaximumSize(buttonSize);
+        setSize(buttonSize);
     }
 
     /**
@@ -76,10 +83,6 @@ abstract class AbstractToolButton extends JToggleButton implements Button, Actio
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (this.isSelected()) {
-            this.setText("ON");
-        } else {
-            this.setText("OFF");
-        }
+        this.equipTool();
     }
 }
