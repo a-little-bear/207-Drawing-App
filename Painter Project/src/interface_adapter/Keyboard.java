@@ -57,9 +57,7 @@ public class Keyboard implements KeyListener {
                 break;
             case 'f':
                 CreateFillTool tF = new CreateFillTool();
-                UpdateFillTool fillTool = new UpdateFillTool();
-                fillTool.update(tF.create(interactor.getCurrentColor()),
-                        interactor.getInputData(), interactor);
+                interactor.<FillTool> switchTool(tF.create(interactor.getCurrentColor()));
                 break;
             case 'c':
                 interactor.getPresenter().getViewModel().getCanvasManager().chooseColor(

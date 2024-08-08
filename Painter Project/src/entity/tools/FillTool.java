@@ -1,15 +1,11 @@
 package entity.tools;
 
-import interface_adapter.Controller;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import view.View;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * The FillTool class implements the Tool interface and provides functionality

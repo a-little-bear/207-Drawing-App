@@ -16,7 +16,7 @@ public class UpdateToolFacade{
         } else if (tool.getClass().equals(EraserTool.class)){
             UpdateEraserTool updateEraserTool = new UpdateEraserTool();
             updateEraserTool.update((EraserTool) tool, inputData, interactor);
-        } else if (tool.getClass().equals(FillTool.class)){
+        } else if (tool.getClass().equals(FillTool.class) && inputData.getMouseIsActive()){
             UpdateFillTool updateFillTool = new UpdateFillTool();
             updateFillTool.update((FillTool) tool, inputData, interactor);
         }
