@@ -11,7 +11,6 @@ import use_case.ImageExportInteractor;
 import use_case.create_tool.CreateEraserTool;
 import use_case.create_tool.CreateFillTool;
 import use_case.create_tool.CreatePaintTool;
-import use_case.update_tool.UpdateFillTool;
 
 /**
  * The Keyboard class handles keyboard events and interacts with various tools and actions in the view.
