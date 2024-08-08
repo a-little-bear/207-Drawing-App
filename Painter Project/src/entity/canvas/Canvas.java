@@ -1,11 +1,6 @@
 package entity.canvas;
 
-import data_access.api.SimpleTexLatexAPI;
-
-import javax.swing.*;
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
@@ -110,21 +105,5 @@ public class Canvas implements Serializable {
      */
     public void draw(Graphics2D g2) {
         g2.drawImage(canvasImage, 0, 0, null);
-    }
-
-    /**
-     * Performs OCR on the canvas image and displays the result in a dialog box.
-     */
-    public void LatexOCR() {
-        String response = new SimpleTexLatexAPI().OCR(canvasImage);
-
-        // copy to clipboard
-        StringSelection selection = new StringSelection(response);
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        clipboard.setContents(selection, selection);
-
-        // pop up the latex code
-        JOptionPane.showMessageDialog(null, response, "OCR Result", JOptionPane.INFORMATION_MESSAGE);
-
     }
 }
