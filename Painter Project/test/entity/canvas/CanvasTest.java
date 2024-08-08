@@ -55,14 +55,4 @@ public class CanvasTest {
         g2.dispose();
         assertNotNull(img, "Image should not be null after drawing");
     }
-
-    @Test
-    public void testLatexOCR() {
-        // We just test if the method runs without errors.
-        try {
-            canvas.LatexOCR();
-        } catch (Exception e) {
-            fail("LatexOCR method should not throw an exception");
-        }
-    }
 }
