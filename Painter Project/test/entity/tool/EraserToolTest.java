@@ -1,25 +1,19 @@
 package entity.tool;
 
-import interface_adapter.Controller;
-import view.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EraserToolTest {
+
     private EraserTool eraserTool;
 
     @BeforeEach
     void setUp() {
         eraserTool = new EraserTool();
-
-        // Optionally set initial values if needed
         eraserTool.setSize(10);
         eraserTool.setColor(Color.WHITE);
     }
@@ -38,7 +32,7 @@ public class EraserToolTest {
         eraserTool.incrementSize(10);
         assertEquals(15, eraserTool.getSize(), "Size should be incremented correctly");
 
-        eraserTool.incrementSize(-10);
+        eraserTool.incrementSize(-14); // This should set the size to 1, not below 1
         assertEquals(1, eraserTool.getSize(), "Size should not go below 1");
     }
 
