@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class SaveActionButton extends AbstractActionButton {
     private Icon icon;
-    private final static String iconPath = "";
+    private final static String iconPath = "Painter Project/images/SaveActionButton.png";
     private final static String toolTip = "Save (S)";
     private final InputBoundary interactor;
     private final ImageExportInputBoundary imageExportInteractor;
