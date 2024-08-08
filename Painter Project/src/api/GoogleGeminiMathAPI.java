@@ -35,7 +35,8 @@ public class GoogleGeminiMathAPI implements MathAPI {
      * @param latex the LaTeX formatted equation to be solved
      * @return a list of instructions for solving the given LaTeX equation
      */
-    public static String solveEquation(String latex) {
+    @Override
+    public String solveEquation(String latex) throws IOException {
         return getResponse(MATH_PROMPT + latex);
     }
 
@@ -46,7 +47,8 @@ public class GoogleGeminiMathAPI implements MathAPI {
      * @return the generated response from the API
      * @throws IOException if an error occurs during the API request
      */
-    public static String getResponse(String prompt) throws IOException {
+    @Override
+    public String getResponse(String prompt) throws IOException {
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(createJsonBody(prompt), MediaType.get("application/json; charset=utf-8"));
         Request request = new Request.Builder()
