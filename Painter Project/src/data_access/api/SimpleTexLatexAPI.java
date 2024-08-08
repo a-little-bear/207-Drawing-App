@@ -1,5 +1,7 @@
 package data_access.api;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import okhttp3.*;
 import org.json.JSONObject;
 
@@ -8,13 +10,24 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import java.util.Optional;
+
+
 /**
  * The SimpleTexLatexAPI class implements the LatexAPI interface to provide OCR functionality
  * for converting images to LaTeX code using the SimpleTex OCR API.
  */
 public class SimpleTexLatexAPI implements LatexAPI {
     private static final String OCR_URL = "https://server.simpletex.net/api/latex_ocr_turbo";
-    private static final String TOKEN = "ZFETyXjnrYfcGxumS5rgjUSEFgIh4rtXL9wEsRQFJSDDozn4bigEe7uqsa7VhVjU";
+
+    /**
+     * Load environment variables from .env file
+     */
+    private static final Dotenv dotenv = Dotenv.load();
+
+    private static final String TOKEN = Optional.ofNullable(dotenv.get("SIMPLETEX_API_KEY"))
+            .orElseGet(() -> Optional.ofNullable(System.getenv("SIMPLETEX_API_KEY"))
+                    .orElseThrow(() -> new IllegalArgumentException("SIMPLETEX_API_KEY environment variable must be set")));
 
     /**
      * Performs Optical Character Recognition (OCR) on the provided image and returns the recognized LaTeX code.
