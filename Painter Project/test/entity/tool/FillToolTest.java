@@ -1,25 +1,34 @@
 package entity.tool;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class FillToolTest extends TestCase {
+import java.awt.*;
 
-    public void setUp() throws Exception {
-        super.setUp();
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FillToolTest {
+
+    private FillTool fillTool;
+
+    @BeforeEach
+    void setUp() {
+        fillTool = new FillTool();
+        fillTool.setSize(10);
+        fillTool.setColor(Color.RED);
     }
 
-    public void tearDown() throws Exception {
+    @Test
+    void testDefaultValues() {
+        FillTool tool = new FillTool();
+        assertEquals(0, tool.getSize(), "Initial size should be 0");
+        assertNull(tool.getColor(), "Initial color should be null");
     }
 
-    public void testUpdate() {
-    }
-
-    public void testDraw() {
-    }
-
-    public void testIncrementSize() {
-    }
-
-    public void testSetColor() {
+    @Test
+    void testSetPaintColor() {
+        Color newColor = Color.BLUE;
+        fillTool.setPaintColor(newColor);
+        assertEquals(newColor, fillTool.getColor(), "Color should be set correctly");
     }
 }

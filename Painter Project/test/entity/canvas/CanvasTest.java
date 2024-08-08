@@ -2,6 +2,7 @@ package entity.canvas;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -20,8 +21,12 @@ public class CanvasTest {
     public void testClearCanvas() {
         canvas.clearCanvas();
         BufferedImage img = canvas.getCanvasImage();
-        int rgb = img.getRGB(0, 0);
-        assertEquals(0, rgb, "Canvas should be cleared to transparent");
+        for (int x = 0; x < img.getWidth(); x++) {
+            for (int y = 0; y < img.getHeight(); y++) {
+                int rgb = img.getRGB(x, y);
+                assertEquals(0, rgb, "Canvas should be cleared to transparent");
+            }
+        }
     }
 
     @Test
