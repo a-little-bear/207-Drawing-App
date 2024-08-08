@@ -1,4 +1,4 @@
-package toolbar;
+package entity.toolbar;
 
 import use_case.InputBoundary;
 
@@ -17,6 +17,6 @@ public class LatexOCRActionButton extends AbstractActionButton {
 
     @Override
     public void performAction() {
-        interactor.getPresenter().getViewModel().getCanvasManager().LatexOCR();
+        interactor.latexOCR();
     }
 }

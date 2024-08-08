@@ -1,4 +1,4 @@
-package toolbar;
+package entity.toolbar;
 
 import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
@@ -20,6 +20,6 @@ public class SaveActionButton extends AbstractActionButton {
 
     @Override
     public void performAction() {
-        imageExportInteractor.saveImage(interactor.getPresenter().getViewModel().getCanvasManager());
+        imageExportInteractor.saveImage(interactor.getCanvasManager());
     }
 }

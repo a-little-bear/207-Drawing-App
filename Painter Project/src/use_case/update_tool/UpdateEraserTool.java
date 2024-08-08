@@ -11,7 +11,7 @@ public class UpdateEraserTool implements UpdateTool<EraserTool>{
 
         if (inputData.getMouseIsActive()) {
             // Draw the line from the last point to the current point
-            interactor.getPresenter().getViewModel().getCanvasManager().paintLine(
+            interactor.getCanvasManager().paintLine(
                     inputData.getLastXCoord(), inputData.getLastYCoord(), x, y,
                     tool.getColor(), tool.getSize());
         }

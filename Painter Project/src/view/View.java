@@ -1,9 +1,5 @@
 package view;
 
-import entity.canvas.CanvasManager;
-import entity.tools.PaintTool;
-import entity.tools.Tool;
-import interface_adapter.Controller;
 import interface_adapter.ViewModel;
 
 import javax.swing.*;
@@ -28,6 +24,13 @@ public class View extends JPanel  {
         this.setDoubleBuffered(true);
 
         this.setFocusable(true); // Fixed for keyboard events
+    }
+
+    public void update() {
+        this.setPreferredSize(this.viewModel.getDimension());
+        this.setBackground(this.viewModel.getBackgroundColor());
+        this.setDoubleBuffered(true);
+        repaint();
     }
 
     /**
