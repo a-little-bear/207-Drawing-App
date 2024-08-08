@@ -1,4 +1,4 @@
-package api;
+package data_access.api;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import okhttp3.*;
