@@ -15,8 +15,6 @@ import use_case.update_tool_size.IncreaseToolSizeAction;
 import view.View;
 import view.ViewFactory;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 import toolbar.Toolbar;
 
 import javax.swing.*;
@@ -32,9 +30,6 @@ public class Main{
     private static final int screenHeight = tileSize * maxScreenRow;
 
     public static void main(String[] args) {
-        // Load environment variables from .env file
-        Dotenv dotenv = Dotenv.load();
-
         // Initialize the main program window
         JFrame window = new JFrame("Drawing App");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
