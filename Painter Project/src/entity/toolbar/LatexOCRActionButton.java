@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class LatexOCRActionButton extends AbstractActionButton {
     private Icon icon;
-    private final static String iconPath = "";
+    private final static String iconPath = "Painter Project/images/LatexOCRActionButton.png";
     private final static String toolTip = "Latex OCR (T)";
     private final InputBoundary interactor;
 

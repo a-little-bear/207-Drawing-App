@@ -1,6 +1,7 @@
 package entity.toolbar;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,6 +19,12 @@ abstract class AbstractActionButton extends JButton implements Button, ActionLis
         setIcon(iconPath);
         setTooltip(tooltip);
         setupButton();
+
+        Dimension buttonSize = new Dimension(40, 40);
+        setPreferredSize(buttonSize);
+        setMinimumSize(buttonSize);
+        setMaximumSize(buttonSize);
+        setSize(buttonSize);
     }
 
     /**
@@ -77,7 +84,6 @@ abstract class AbstractActionButton extends JButton implements Button, ActionLis
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Define the specific action that should occur when the button is pressed
-        System.out.println("Button Pressed: " + e.getActionCommand());
+        this.performAction();
     }
 }

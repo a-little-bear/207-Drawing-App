@@ -26,7 +26,7 @@ public class Main{
 
     public static void main(String[] args) {
         // Initialize the main program window
-        JFrame window = new JFrame("Slumber:ZZZ");
+        JFrame window = new JFrame("Drawing App");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(true);
 
@@ -47,8 +47,8 @@ public class Main{
         Toolbar toolbar = new Toolbar(interactor, imageExportInteractor);
 
         // Add the view panel to the window
-        window.add(toolbar);
-        window.add(view);
+        window.add(toolbar, BorderLayout.NORTH);
+        window.add(view, BorderLayout.CENTER);
         window.pack();
 
         // Run the thread and set the window to be visible

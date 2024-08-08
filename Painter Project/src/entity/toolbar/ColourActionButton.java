@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class ColourActionButton extends AbstractActionButton {
     private Icon icon;
-    private final static String iconPath = "";
+    private final static String iconPath = "Painter Project/images/ColourActionButton.png";
     private final static String toolTip = "Colour Picker (C)";
     private final InputBoundary interactor;
 
