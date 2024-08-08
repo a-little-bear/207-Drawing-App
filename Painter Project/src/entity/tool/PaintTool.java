@@ -28,10 +28,6 @@ public class PaintTool implements Tool {
      * @param increment the amount to increment the size by
      */
     public void incrementSize(int increment) {
-        if (size < 1) {
-            size = 1;
-        } else {
-            size += increment;
-        }
+        size = Math.max(1, size + increment); // size does not go below 1
     }
 }

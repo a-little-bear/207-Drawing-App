@@ -13,6 +13,9 @@ public class ViewModel {
     @Getter @Setter private Color activeColor = Color.BLACK;
     private int screenWidth;
     private int screenHeight;
+    // Getter for canvasManager for testing
+    // not necessary for production code
+    @Getter
     private CanvasManager canvasManager;
 
     public ViewModel(Tool tool, CanvasManager canvasManager) {

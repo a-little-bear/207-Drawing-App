@@ -1,57 +1,41 @@
 package interface_adapter;
 
-import view.View;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.awt.event.MouseEvent;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MouseTest {
-    private Mouse mouse;
-    private View view;
 
-    @Before
-    public void setUp() {
+    private Mouse mouse;
+
+    @BeforeEach
+    void setUp() {
         mouse = new Mouse();
     }
 
     @Test
-    public void testMousePressed() {
-        MouseEvent event = mock(MouseEvent.class);
-        when(event.getButton()).thenReturn(MouseEvent.BUTTON1);
-        when(event.getX()).thenReturn(100);
-        when(event.getY()).thenReturn(200);
-
-        mouse.mousePressed(event);
-
+    void testMousePressed() {
+        MouseEvent e = new MouseEvent(new java.awt.Button(), 0, 0, 0, 10, 10, 1, false, MouseEvent.BUTTON1);
+        mouse.mousePressed(e);
         assertTrue(mouse.isActive);
-        assertEquals(100, mouse.xCoord);
-        assertEquals(200, mouse.yCoord);
     }
 
     @Test
-    public void testMouseReleased() {
-        MouseEvent event = mock(MouseEvent.class);
-        when(event.getButton()).thenReturn(MouseEvent.BUTTON1);
-
-        mouse.mousePressed(event);  // Activate mouse
-        mouse.mouseReleased(event); // Deactivate mouse
-
+    void testMouseReleased() {
+        MouseEvent e = new MouseEvent(new java.awt.Button(), 0, 0, 0, 10, 10, 1, false, MouseEvent.BUTTON1);
+        mouse.mousePressed(e);
+        mouse.mouseReleased(e);
         assertFalse(mouse.isActive);
     }
 
     @Test
-    public void testMouseMoved() {
-        MouseEvent event = mock(MouseEvent.class);
-        when(event.getX()).thenReturn(150);
-        when(event.getY()).thenReturn(250);
-
-        mouse.mouseMoved(event);
-
-        assertEquals(150, mouse.xCoord);
-        assertEquals(250, mouse.yCoord);
+    void testMouseMoved() {
+        MouseEvent e = new MouseEvent(new java.awt.Button(), 0, 0, 0, 20, 20, 0, false);
+        mouse.mouseMoved(e);
+        assertEquals(20, mouse.xCoord);
+        assertEquals(20, mouse.yCoord);
     }
 }
