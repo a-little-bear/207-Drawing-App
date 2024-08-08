@@ -1,5 +1,6 @@
 package api;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import okhttp3.*;
 import org.json.JSONObject;
 
@@ -17,12 +18,19 @@ public class GoogleGeminiMathAPI implements MathAPI {
      */
     private static final String API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
+
+    /**
+     * Load environment variables from .env file
+     */
+    private static final Dotenv dotenv = Dotenv.load();
+
     /**
      * The API key used for authenticating requests to the Gemini API.
-     * This value is retrieved from the environment variable "GOOGLE_GEMINI_API_KEY".
+     * This value is retrieved first from dotenv, and if not found, from System.getenv.
      */
-    private static final String API_KEY = Optional.ofNullable(System.getenv("GOOGLE_GEMINI_API_KEY"))
-            .orElseThrow(() -> new IllegalArgumentException("GOOGLE_GEMINI_API_KEY environment variable must be set"));
+    private static final String API_KEY = Optional.ofNullable(dotenv.get("GOOGLE_GEMINI_API_KEY"))
+            .orElseGet(() -> Optional.ofNullable(System.getenv("GOOGLE_GEMINI_API_KEY"))
+                    .orElseThrow(() -> new IllegalArgumentException("GOOGLE_GEMINI_API_KEY environment variable must be set")));
 
     /**
      * The prompt used to request instructions for solving LaTeX formatted equations.
@@ -59,7 +67,17 @@ public class GoogleGeminiMathAPI implements MathAPI {
 
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful()) {
-                return response.body().string();
+                String responseBody = response.body().string();
+
+                // Parse the response to extract the content
+                JSONObject jsonResponse = new JSONObject(responseBody);
+                return jsonResponse
+                        .getJSONArray("candidates")
+                        .getJSONObject(0)
+                        .getJSONObject("content")
+                        .getJSONArray("parts")
+                        .getJSONObject(0)
+                        .getString("text");
             } else {
                 throw new IOException("Request failed with status: " + response.code());
             }

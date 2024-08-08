@@ -8,17 +8,12 @@ import use_case.*;
 import view.View;
 import view.ViewFactory;
 
-import io.github.cdimascio.dotenv.Dotenv;
-
 import toolbar.Toolbar;
 
 import javax.swing.*;
 
 public class Main{
     public static void main(String[] args) {
-        // Load environment variables from .env file
-        Dotenv dotenv = Dotenv.load();
-
         // Initialize the main program window
         JFrame window = new JFrame("Slumber:ZZZ");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
