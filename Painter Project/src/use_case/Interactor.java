@@ -1,5 +1,6 @@
 package use_case;
 
+import data_access.api.GoogleGeminiMathAPI;
 import data_access.api.SimpleTexLatexAPI;
 import entity.canvas.CanvasManager;
 import entity.tool.Tool;
@@ -11,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.io.IOException;
 
 public class Interactor implements InputBoundary{
     @Getter private final OutputBoundary presenter;
@@ -53,16 +55,32 @@ public class Interactor implements InputBoundary{
      * Performs OCR on the canvas image and displays the result in a dialog box.
      */
     public void latexOCR() {
-        String response = new SimpleTexLatexAPI().OCR(inputData.getCanvasManager().collapseLayers().getCanvasImage());
+        String latexResponse = new SimpleTexLatexAPI().OCR(inputData.getCanvasManager().collapseLayers().getCanvasImage());
 
         // copy to clipboard
-        StringSelection selection = new StringSelection(response);
+        StringSelection selection = new StringSelection(latexResponse);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(selection, selection);
 
         // pop up the latex code
-        JOptionPane.showMessageDialog(null, response, "OCR Result", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, latexResponse, "OCR Result", JOptionPane.INFORMATION_MESSAGE);
 
+
+        // Ask user if they want to send the LaTeX code to Google Gemini
+        int result = JOptionPane.showConfirmDialog(null,
+                "Do you want to send the LaTeX code to Google Gemini for analysis?",
+                "Send to Google Gemini",
+                JOptionPane.YES_NO_OPTION);
+
+        // If user selected "Yes", show another popup
+        if (result == JOptionPane.YES_OPTION) {
+            String geminiResponse;
+            try {
+                geminiResponse = new GoogleGeminiMathAPI().solveEquation(latexResponse);
+            } catch (IOException e) {
+                geminiResponse = "Failed to get response from Gemini:\n" + e.toString();
+            }
+            JOptionPane.showMessageDialog(null, geminiResponse, "Gemini Response", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
-
 }

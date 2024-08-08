@@ -4,6 +4,7 @@ import interface_adapter.ViewModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /**
  * The View class extends JPanel and implements the Runnable interface.
@@ -22,8 +23,6 @@ public class View extends JPanel  {
         this.setPreferredSize(this.viewModel.getDimension());
         this.setBackground(this.viewModel.getBackgroundColor());
         this.setDoubleBuffered(true);
-
-        this.setFocusable(true); // Fixed for keyboard events
     }
 
     public void update() {
