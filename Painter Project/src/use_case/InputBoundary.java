@@ -1,7 +1,7 @@
 package use_case;
 
 import entity.canvas.CanvasManager;
-import entity.tools.Tool;
+import entity.tool.Tool;
 import interface_adapter.ViewModel;
 
 import java.awt.*;
@@ -15,7 +15,7 @@ public interface InputBoundary{
 
     void update();
 
-    ViewModel getViewModel();
+    Tool getCurrentTool();
 
     InputData getInputData();
 

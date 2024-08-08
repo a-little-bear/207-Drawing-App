@@ -1,7 +1,7 @@
 package use_case.create_tool;
 
-import entity.tools.EraserTool;
-import entity.tools.EraserToolFactory;
+import entity.tool.EraserTool;
+import entity.tool.EraserToolFactory;
 
 import java.awt.*;
 

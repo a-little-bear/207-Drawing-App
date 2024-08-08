@@ -17,7 +17,17 @@ public class Presenter implements OutputBoundary {
         this.viewModel.setCanvasManager(outputData.getCanvasManager());
     }
 
+    public void updateCurrentTool() {
+        this.viewModel.setCurrentTool(outputData.getCurrentTool());
+    }
+
+    public void updateCurrentColor() {
+        this.viewModel.setActiveColor(outputData.getCurrentColor());
+    }
+
     public void update() {
         updateCanvasManager();
+        updateCurrentTool();
+        updateCurrentColor();
     }
 }

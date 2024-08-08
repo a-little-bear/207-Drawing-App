@@ -1,6 +1,6 @@
 package entity.toolbar;
 
-import entity.tools.FillTool;
+import entity.tool.FillTool;
 import use_case.InputBoundary;
 import use_case.create_tool.CreateFillTool;
 

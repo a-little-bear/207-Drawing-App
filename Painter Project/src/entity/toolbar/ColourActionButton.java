@@ -17,7 +17,6 @@ public class ColourActionButton extends AbstractActionButton {
 
     @Override
     public void performAction() {
-        interactor.getCanvasManager().chooseColor(
-                interactor.getPresenter().getViewModel());
+        interactor.getCanvasManager().chooseColor(interactor.getInputData());
     }
 }

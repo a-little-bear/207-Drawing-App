@@ -1,4 +1,4 @@
-package entity.tools;
+package entity.tool;
 
 import interface_adapter.Controller;
 import app.View;
