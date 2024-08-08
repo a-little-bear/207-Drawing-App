@@ -1,6 +1,6 @@
 package entity.toolbar;
 
-import entity.tools.EraserTool;
+import entity.tool.EraserTool;
 import use_case.InputBoundary;
 import use_case.create_tool.CreateEraserTool;
 

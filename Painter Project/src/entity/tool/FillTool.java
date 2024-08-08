@@ -1,4 +1,4 @@
-package entity.tools;
+package entity.tool;
 
 
 import lombok.AccessLevel;

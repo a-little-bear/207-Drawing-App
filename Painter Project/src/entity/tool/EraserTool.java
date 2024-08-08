@@ -1,9 +1,7 @@
-package entity.tools;
+package entity.tool;
 
-import interface_adapter.Controller;
 import lombok.Getter;
 import lombok.Setter;
-import view.View;
 
 import java.awt.*;
 
@@ -39,7 +37,7 @@ public class EraserTool implements Tool {
      */
     @Override
     public void setPaintColor(Color newColor) {
-        // No implementation needed for eraser tool
+        this.color = newColor;
     }
 
     // Getter for size

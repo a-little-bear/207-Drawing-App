@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import entity.tools.*;
+import entity.tool.*;
 import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 import use_case.ImageExportInteractor;
@@ -60,7 +60,7 @@ public class Keyboard implements KeyListener {
                 break;
             case 'c':
                 interactor.getCanvasManager().chooseColor(
-                        interactor.getPresenter().getViewModel());
+                        interactor.getInputData());
                 break;
             case 'e':
                 imageExportInteractor.exportCanvasManager(interactor.getCanvasManager());
@@ -78,10 +78,10 @@ public class Keyboard implements KeyListener {
 
         switch (this.lastPressed) {
             case KeyEvent.VK_UP:
-                interactor.getViewModel().getCurrentTool().incrementSize(1);
+                interactor.getCurrentTool().incrementSize(1);
                 break;
             case KeyEvent.VK_DOWN:
-                interactor.getViewModel().getCurrentTool().incrementSize(-1);
+                interactor.getCurrentTool().incrementSize(-1);
                 break;
         }
     }

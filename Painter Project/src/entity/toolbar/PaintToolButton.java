@@ -1,6 +1,6 @@
 package entity.toolbar;
 
-import entity.tools.PaintTool;
+import entity.tool.PaintTool;
 import use_case.InputBoundary;
 import use_case.create_tool.CreatePaintTool;
 

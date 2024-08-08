@@ -1,7 +1,7 @@
 package interface_adapter;
 
 import entity.canvas.CanvasManager;
-import entity.tools.Tool;
+import entity.tool.Tool;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,7 @@
 package use_case.create_tool;
 
-import entity.tools.PaintTool;
-import entity.tools.PaintToolFactory;
+import entity.tool.PaintTool;
+import entity.tool.PaintToolFactory;
 
 import java.awt.*;
 

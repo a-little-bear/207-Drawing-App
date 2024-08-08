@@ -1,6 +1,6 @@
 package use_case.update_tool;
 
-import entity.tools.EraserTool;
+import entity.tool.EraserTool;
 import use_case.InputBoundary;
 import use_case.InputData;
 
