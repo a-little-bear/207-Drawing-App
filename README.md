@@ -9,11 +9,17 @@ git clone https://github.com/sage35deng/207-Drawing-App
 
 2. Open `207-Drawing-App` with IntelliJ Idea.
 
-3. Right click the `Painter Project/src` directory and mark it as "Sources Root"
+3. Copy `.env.example` to `.env`
+
+`GOOGLE_GEMINI_API_KEY` should be set to an API key generated from [Google's AIStudio](https://aistudio.google.com/app/apikey).
+
+`SIMPLETEX_API_KEY` should be set to an API key generated from [SimpleTex's API](https://simpletex.net/api).
+
+4. Right click the `Painter Project/src` directory and mark it as "Sources Root"
 
 ![img.png](screenshots/img.png)
 
-4. Open `Painter Project/src/app/Main.java` and press the `Run` button in the top right. (Ctrl + F5)
+5. Open `Painter Project/src/app/Main.java` and press the `Run` button in the top right. (Ctrl + F5)
 
 ![img_1.png](screenshots/img_1.png)
 
