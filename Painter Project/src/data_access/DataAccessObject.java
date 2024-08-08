@@ -20,7 +20,7 @@ public class DataAccessObject implements DataAccessInterface {
     private final JFileChooser fileChooser;
     // Constructor for testing purposes
     public DataAccessObject() {
-        this.fileChooser = new JFileChooser();
+        this.fileChooser = new JFileChooser(new File(System.getProperty("user.dir")));
     }
 
     // Constructor for testing purposes
