@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.awt.image.BufferedImage;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotNull;
 
 public class LatexAPITest {
     private LatexAPI latexAPI;
@@ -19,6 +19,6 @@ public class LatexAPITest {
 
     @Test
     public void test() {
-        assertThat(latexAPI.OCR(dummyCanvas), instanceOf(String.class));
+        assertNotNull(latexAPI.OCR(dummyCanvas));
     }
 }
