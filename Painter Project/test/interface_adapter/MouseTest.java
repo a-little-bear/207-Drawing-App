@@ -1,6 +1,6 @@
 package interface_adapter;
 
-import app.View;
+import view.View;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,8 +15,7 @@ public class MouseTest {
 
     @Before
     public void setUp() {
-        view = mock(View.class);
-        mouse = new Mouse(view);
+        mouse = new Mouse();
     }
 
     @Test

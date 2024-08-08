@@ -2,7 +2,7 @@ package use_case;
 
 import data_access.DataAccessObject;
 import entity.canvas.CanvasManager;
-import app.View;
+import view.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,11 +29,9 @@ public class ImageExportInteractorTest {
 
         // Mock the canvasManager and its method
         CanvasManager mockCanvasManager = mock(CanvasManager.class);
-        when(mockView.getCanvasManager()).thenReturn(mockCanvasManager);
-        when(mockCanvasManager.getCanvasImage()).thenReturn(mockImage);
 
         // Run the exportImage method
-        interactor.exportImage(mockView);
+        interactor.saveImage(mockCanvasManager);
 
         // Verify the interaction
         verify(mockDataAccessObject).saveFile("Specify a file to save", mockImage);

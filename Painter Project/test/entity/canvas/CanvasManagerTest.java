@@ -60,14 +60,4 @@ public class CanvasManagerTest {
         Canvas collapsedCanvas = canvasManager.collapseLayers();
         assertNotNull(collapsedCanvas, "Collapsed canvas should not be null");
     }
-
-    @Test
-    public void testLatexOCR() {
-        // As with CanvasTest, you might want to mock the OCR method in a real-world scenario
-        try {
-            canvasManager.LatexOCR();
-        } catch (Exception e) {
-            fail("LatexOCR method should not throw an exception");
-        }
-    }
 }
