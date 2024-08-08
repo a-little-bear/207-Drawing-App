@@ -6,16 +6,20 @@ import interface_adapter.Controller;
 import interface_adapter.Mouse;
 import interface_adapter.Presenter;
 import interface_adapter.ViewModel;
+import toolbar.ToolbarFactory;
 import use_case.*;
 import use_case.create_tool.CreatePaintTool;
 import use_case.create_tool.CreateTool;
+import use_case.update_tool_size.DecreaseToolSizeAction;
+import use_case.update_tool_size.IncreaseToolSizeAction;
 import view.View;
 import view.ViewFactory;
 
-import entity.toolbar.Toolbar;
+import toolbar.Toolbar;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Main{
     private static final int scale = 1;
@@ -46,8 +50,14 @@ public class Main{
         Controller controller = new Controller(interactor, inputData, mouse);
         View view = ViewFactory.create(controller, viewModel);
 
+        view.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "up");
+        view.getActionMap().put("up", new IncreaseToolSizeAction(interactor));
+        view.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "down");
+        view.getActionMap().put("down", new DecreaseToolSizeAction(interactor));
+
         ImageExportInputBoundary imageExportInteractor = new ImageExportInteractor();
-        Toolbar toolbar = new Toolbar(interactor, imageExportInteractor);
+        ToolbarFactory toolbarFactory = new ToolbarFactory(controller, inputData, interactor, imageExportInteractor);
+        Toolbar toolbar = toolbarFactory.getToolbar();
 
         // Add the view panel to the window
         window.add(toolbar, BorderLayout.NORTH);
