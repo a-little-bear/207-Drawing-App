@@ -72,7 +72,7 @@ public class Canvas implements Serializable {
     public void paintLine(int x1, int y1, int x2, int y2, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
         g2.setColor(color);
-
+        Composite c = g2.getComposite();
         if (color.getAlpha() == 0) {
             g2.setComposite(AlphaComposite.Clear);
         }
@@ -98,7 +98,7 @@ public class Canvas implements Serializable {
                 y1 += sy;
             }
         }
-
+        g2.setComposite(c);
         g2.dispose();
     }
 
