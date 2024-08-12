@@ -6,7 +6,7 @@ import use_case.InputBoundary;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class DecreaseToolSizeAction extends AbstractAction {
+public class DecreaseToolSizeAction extends AbstractAction implements AdjustToolSizeAction{
     @Getter final InputBoundary interactor;
 
     public DecreaseToolSizeAction(InputBoundary interactor) {
