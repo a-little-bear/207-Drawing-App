@@ -1,4 +1,4 @@
-package use_case.press_button;
+package interface_adapter.press_button;
 
 import lombok.Getter;
 import use_case.ImageExportInputBoundary;
