@@ -16,5 +16,4 @@ public class LatexOCRActionButton extends AbstractActionButton {
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_T, 0), "t");
         getActionMap().put("t", listener);
     }
-
 }

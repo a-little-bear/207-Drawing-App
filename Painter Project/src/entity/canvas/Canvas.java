@@ -1,14 +1,15 @@
 package entity.canvas;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
+import java.io.*;
 
 /**
  * The Canvas class provides functionality for drawing and manipulating a canvas.
  */
 public class Canvas implements Serializable {
-    private BufferedImage canvasImage;
+    private transient BufferedImage canvasImage;
     private final int width;
     private final int height;
 
@@ -109,5 +110,42 @@ public class Canvas implements Serializable {
      */
     public void draw(Graphics2D g2) {
         g2.drawImage(canvasImage, 0, 0, null);
+    }
+
+    /**
+     * Custom serialization method for writing the object.
+     * @param out ObjectOutputStream
+     * @throws IOException
+     */
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        if (canvasImage != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(canvasImage, "png", baos);
+            byte[] imageBytes = baos.toByteArray();
+            out.writeInt(imageBytes.length);
+            out.write(imageBytes);
+        } else {
+            out.writeInt(0);
+        }
+    }
+
+    /**
+     * Custom deserialization method for reading the object.
+     * @param in ObjectInputStream
+     * @throws IOException, ClassNotFoundException
+     */
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        int length = in.readInt();
+        if (length > 0) {
+            byte[] imageBytes = new byte[length];
+            in.readFully(imageBytes);
+            ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
+            canvasImage = ImageIO.read(bais);
+        } else {
+            canvasImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            clearCanvas();
+        }
     }
 }

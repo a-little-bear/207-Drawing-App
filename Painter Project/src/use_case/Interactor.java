@@ -43,6 +43,10 @@ public class Interactor implements InputBoundary{
         return inputData.getCanvasManager();
     }
 
+    public void setCanvasManager(CanvasManager canvasManager){
+        inputData.setCanvasManager(canvasManager);
+    }
+
     public Tool getCurrentTool(){
         return inputData.getCurrentTool();
     }

@@ -1,9 +1,6 @@
 package toolbar.button.action_button;
 
-import use_case.InputBoundary;
-
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class ColorActionButton extends AbstractActionButton {

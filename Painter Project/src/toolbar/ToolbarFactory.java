@@ -3,19 +3,15 @@ package toolbar;
 import interface_adapter.Controller;
 import lombok.Getter;
 import toolbar.button.*;
-import toolbar.button.action_button.ColorActionButton;
+import toolbar.button.action_button.*;
 import toolbar.button.tool_toggle_button.EraserToolToggleButton;
 import toolbar.button.tool_toggle_button.FillToolToggleButton;
 import toolbar.button.tool_toggle_button.PaintToolToggleButton;
-import toolbar.button.action_button.LatexOCRActionButton;
-import toolbar.button.action_button.SaveActionButton;
 import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 import use_case.InputData;
 import use_case.press_button.ButtonPressedFacade;
-import use_case.press_button.action_button.ColorButtonPressed;
-import use_case.press_button.action_button.LatexOCRButtonPressed;
-import use_case.press_button.action_button.SaveButtonPressed;
+import use_case.press_button.action_button.*;
 import use_case.press_button.tool_toggle_button.EraserButtonPressed;
 import use_case.press_button.tool_toggle_button.FillButtonPressed;
 import use_case.press_button.tool_toggle_button.PaintButtonPressed;
@@ -48,6 +44,8 @@ public class ToolbarFactory {
         addColourActionButton();
         addLatexOCRActionButton();
         addSaveActionButton();
+        addExportCanvasActionButton();
+        addImportCanvasActionButton();
     }
 
 
@@ -96,5 +94,19 @@ public class ToolbarFactory {
         SaveActionButton Sab = new SaveActionButton(sbp);
         buttons.add(Sab);
         toolbar.add(Sab);
+    }
+
+    public void addExportCanvasActionButton() {
+        ExportCanvasButtonPressed ecbp = new ExportCanvasButtonPressed(interactor);
+        ExportCanvasActionButton ecab = new ExportCanvasActionButton(ecbp);
+        buttons.add(ecab);
+        toolbar.add(ecab);
+    }
+
+    public void addImportCanvasActionButton() {
+        ImportCanvasButtonPressed icbp = new ImportCanvasButtonPressed(interactor);
+        ImportCanvasActionButton icab = new ImportCanvasActionButton(icbp);
+        buttons.add(icab);
+        toolbar.add(icab);
     }
 }
