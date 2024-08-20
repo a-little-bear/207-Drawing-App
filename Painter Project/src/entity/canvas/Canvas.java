@@ -15,6 +15,7 @@ public class Canvas implements Serializable {
 
     /**
      * Instantiates a new Canvas with the specified width and height.
+     * The canvas is initialized with a transparent background.
      *
      * @param width  the width of the canvas
      * @param height the height of the canvas
@@ -38,8 +39,9 @@ public class Canvas implements Serializable {
 
     /**
      * Returns the BufferedImage representation of the canvas.
+     * This image contains all the drawings and modifications made to the canvas.
      *
-     * @return the canvas image
+     * @return The current image of the canvas.
      */
     public BufferedImage getCanvasImage() {
         return canvasImage;
@@ -47,11 +49,12 @@ public class Canvas implements Serializable {
 
     /**
      * Paints a filled rectangle at the specified location on the canvas.
+     * The rectangle is drawn with the specified color and size.
      *
-     * @param x     the x coordinate of the rectangle
-     * @param y     the y coordinate of the rectangle
-     * @param color the color of the rectangle
-     * @param size  the size of the rectangle
+     * @param x     The x coordinate of the rectangle.
+     * @param y     The y coordinate of the rectangle.
+     * @param color The color of the rectangle.
+     * @param size  The size of the rectangle (width and height).
      */
     public void paintArea(int x, int y, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
@@ -62,13 +65,14 @@ public class Canvas implements Serializable {
 
     /**
      * Paints a line between two points on the canvas using Bresenham's line algorithm.
+     * The line is drawn with the specified color and thickness.
      *
-     * @param x1    the starting x coordinate of the line
-     * @param y1    the starting y coordinate of the line
-     * @param x2    the ending x coordinate of the line
-     * @param y2    the ending y coordinate of the line
-     * @param color the color of the line
-     * @param size  the size of the line
+     * @param x1    The starting x coordinate of the line.
+     * @param y1    The starting y coordinate of the line.
+     * @param x2    The ending x coordinate of the line.
+     * @param y2    The ending y coordinate of the line.
+     * @param color The color of the line.
+     * @param size  The thickness of the line.
      */
     public void paintLine(int x1, int y1, int x2, int y2, Color color, int size) {
         Graphics2D g2 = canvasImage.createGraphics();
@@ -113,9 +117,11 @@ public class Canvas implements Serializable {
     }
 
     /**
-     * Custom serialization method for writing the object.
-     * @param out ObjectOutputStream
-     * @throws IOException
+     * Custom serialization method for writing the Canvas object to an output stream.
+     * This method handles the serialization of the canvas image.
+     *
+     * @param out The ObjectOutputStream to write to.
+     * @throws IOException If an I/O error occurs while writing the object.
      */
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
@@ -131,9 +137,12 @@ public class Canvas implements Serializable {
     }
 
     /**
-     * Custom deserialization method for reading the object.
-     * @param in ObjectInputStream
-     * @throws IOException, ClassNotFoundException
+     * Custom deserialization method for reading the Canvas object from an input stream.
+     * This method handles the deserialization of the canvas image.
+     *
+     * @param in The ObjectInputStream to read from.
+     * @throws IOException If an I/O error occurs while reading the object.
+     * @throws ClassNotFoundException If the class of a serialized object cannot be found.
      */
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();

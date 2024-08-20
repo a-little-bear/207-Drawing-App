@@ -14,13 +14,17 @@ public class PaintTool implements Tool {
     @Setter @Getter private Color paintColor;
     @Setter @Getter private boolean isDrawing;
 
+    /**
+     * Sets the drawing state of the paint tool.
+     * This method is used to start or stop the paint tool's drawing action.
+     *
+     * @param isDrawing The new drawing state to set.
+     * @return The updated drawing state.
+     */
     public boolean setIsDrawing(boolean isDrawing) {
         this.isDrawing = isDrawing;
         return isDrawing;
     }
-
-    private int lastX, lastY;
-
 
     /**
      * Increments the size of the paint tool.

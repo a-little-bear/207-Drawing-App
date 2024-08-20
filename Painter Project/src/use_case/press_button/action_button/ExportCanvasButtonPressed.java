@@ -7,11 +7,31 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
 
+/**
+ * The ExportCanvasButtonPressed class extends the {@link ButtonPressed} class to handle
+ * the action of exporting the current canvas to a file. When the export button is pressed,
+ * this class prompts the user to select a file location and then saves the canvas layers
+ * as a serialized object.
+ */
 public class ExportCanvasButtonPressed extends ButtonPressed {
+
+    /**
+     * Constructs an ExportCanvasButtonPressed instance with the specified interactor.
+     * The interactor is used to interact with the canvas manager to retrieve the canvas layers.
+     *
+     * @param interactor The {@link InputBoundary} used to interact with the canvas manager.
+     */
     public ExportCanvasButtonPressed(InputBoundary interactor) {
         super(interactor);
     }
 
+    /**
+     * Invoked when the export canvas button is pressed. This method prompts the user to select
+     * a file location using a {@link JFileChooser} and then saves the current canvas layers as
+     * a serialized object. It handles any IO exceptions that may occur during the saving process.
+     *
+     * @param e The {@link ActionEvent} triggered by the button press.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         JFileChooser fileChooser = new JFileChooser();

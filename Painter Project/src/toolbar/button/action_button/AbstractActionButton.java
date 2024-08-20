@@ -4,8 +4,10 @@ import toolbar.button.Pressable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
+/**
+ * The AbstractActionButton class is an abstract base class for creating custom action button in a toolbar.
+ */
 abstract class AbstractActionButton extends JButton implements Pressable {
     private Icon icon;
     private String tooltip;

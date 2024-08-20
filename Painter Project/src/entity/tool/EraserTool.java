@@ -40,7 +40,11 @@ public class EraserTool implements Tool {
         this.color = newColor;
     }
 
-    // Getter for size
+    /**
+     * Gets the current size of the eraser tool.
+     *
+     * @return The size of the eraser tool.
+     */
     public int getSize() {
         return size;
     }

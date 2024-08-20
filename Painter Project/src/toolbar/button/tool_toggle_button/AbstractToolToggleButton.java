@@ -4,11 +4,13 @@ import toolbar.button.Pressable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import java.util.Set;
 
+/**
+ * The AbstractToolToggleButton class is an abstract base class for creating toggle buttons
+ * in a toolbar that allow users to switch between different tools. It provides functionality
+ * for setting an icon, tooltip, and handling toggle actions.
+ * This class extends {@link JToggleButton} and implements the {@link Pressable} interface.
+ */
 abstract class AbstractToolToggleButton extends JToggleButton implements Pressable {
     private Icon icon;
     private String tooltip;
