@@ -18,21 +18,22 @@ import entity.canvas.Canvas;
 public class DataAccessObject implements DataAccessInterface {
 
     private final JFileChooser fileChooser;
-    // Constructor for testing purposes
+
+    /**
+     * Default constructor that initializes the DataAccessObject with a file chooser
+     * set to the user's current working directory.
+     */
     public DataAccessObject() {
         this.fileChooser = new JFileChooser(new File(System.getProperty("user.dir")));
     }
 
-    // Constructor for testing purposes
-    public DataAccessObject(JFileChooser fileChooser) {
-        this.fileChooser = fileChooser;
-    }
-
     /**
-     * Saves the provided image to a file.
+     * Saves the provided image to a file. The user is prompted with a dialog box
+     * to specify the file name and location. If the file name does not end with
+     * ".png", the extension is automatically added.
      *
-     * @param dialogBoxTitle the title of the dialog box
-     * @param image the image to be saved
+     * @param dialogBoxTitle The title of the dialog box.
+     * @param image The image to be saved.
      */
     @Override
     public void saveFile(String dialogBoxTitle, BufferedImage image) {
@@ -54,6 +55,15 @@ public class DataAccessObject implements DataAccessInterface {
         }
     }
 
+    /**
+     * Exports the provided list of canvas layers to a file. The user is prompted
+     * with a dialog box to specify the file name and location. If the file name does
+     * not end with ".canvas", the extension is automatically added.
+     *
+     * @param dialogBoxTitle The title of the dialog box.
+     * @param layers The layers of the canvas to be exported.
+     */
+    @Override
     public void exportFile(String dialogBoxTitle, ArrayList<Canvas> layers) {
         fileChooser.setDialogTitle(dialogBoxTitle);
         int userSelection = fileChooser.showSaveDialog(null);

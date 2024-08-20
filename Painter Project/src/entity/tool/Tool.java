@@ -10,9 +10,14 @@ public interface Tool {
     /**
      * Sets the color of the tool.
      *
-     * @param newColor the new color to set
+     * @param newColor The new color to set for the tool.
      */
     void setPaintColor(Color newColor);
 
+    /**
+     * Increments the size of the tool by the specified amount.
+     *
+     * @param increment The amount to increase (or decrease) the tool's size by.
+     */
     void incrementSize(int increment);
 }
