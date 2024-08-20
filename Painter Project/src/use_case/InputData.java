@@ -14,7 +14,7 @@ public class InputData {
     @Getter @Setter private int lastXCoord;
     @Getter @Setter private int lastYCoord;
     @Getter @Setter private boolean mouseIsActive;
-    private final CanvasManager canvasManager;
+    private CanvasManager canvasManager;
     @Getter @Setter private Tool currentTool;
     @Getter @Setter private Color currentColor;
 
@@ -41,5 +41,9 @@ public class InputData {
 
     public CanvasManager getCanvasManager(){
         return canvasManager;
+    }
+
+    public void setCanvasManager(CanvasManager canvasManager){
+        this.canvasManager = canvasManager;
     }
 }

@@ -21,5 +21,7 @@ public interface InputBoundary{
 
     CanvasManager getCanvasManager();
 
+    void setCanvasManager(CanvasManager canvasManager);
+
     void latexOCR();
 }
