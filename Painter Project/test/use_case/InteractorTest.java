@@ -1,7 +1,6 @@
 package use_case;
 
-import data_access.api.GoogleGeminiMathAPI;
-import data_access.api.SimpleTexLatexAPI;
+
 import entity.canvas.Canvas;
 import entity.canvas.CanvasManager;
 import entity.tool.PaintTool;
@@ -12,12 +11,12 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.image.BufferedImage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class InteractorTest {
 
     private Interactor interactor;
-    private OutputBoundary mockOutputBoundary;
     private InputData mockInputData;
     private OutputData mockOutputData;
     private CanvasManager mockCanvasManager;
@@ -25,7 +24,7 @@ public class InteractorTest {
 
     @BeforeEach
     void setUp() {
-        mockOutputBoundary = mock(OutputBoundary.class);
+        OutputBoundary mockOutputBoundary = mock(OutputBoundary.class);
         mockInputData = mock(InputData.class);
         mockOutputData = mock(OutputData.class);
         mockCanvasManager = mock(CanvasManager.class);
@@ -40,6 +39,31 @@ public class InteractorTest {
         when(mockCanvas.getCanvasImage()).thenReturn(mock(BufferedImage.class)); // Mock the image
 
         interactor = new Interactor(mockOutputBoundary, mockInputData, mockOutputData);
+    }
+
+    @Test
+    void testGetCanvasManager() {
+        CanvasManager canvasManager = interactor.getCanvasManager();
+        assertEquals(mockCanvasManager, canvasManager);
+    }
+
+    @Test
+    void testSetCanvasManager() {
+        CanvasManager newCanvasManager = mock(CanvasManager.class);
+        interactor.setCanvasManager(newCanvasManager);
+        verify(mockInputData).setCanvasManager(newCanvasManager);
+    }
+
+    @Test
+    void testGetCurrentTool() {
+        Tool currentTool = interactor.getCurrentTool();
+        assertEquals(mockTool, currentTool);
+    }
+
+    @Test
+    void testGetInputData() {
+        InputData inputData = interactor.getInputData();
+        assertEquals(mockInputData, inputData);
     }
 
     @Test
