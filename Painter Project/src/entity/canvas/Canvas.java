@@ -22,17 +22,14 @@ public class Canvas implements Serializable {
         this.width = width;
         this.height = height;
         canvasImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        clearCanvas();
+        // clearCanvas();
     }
 
     /**
      * Clears the canvas by filling it with a transparent color.
      */
     public void clearCanvas() {
-        Graphics2D g2 = canvasImage.createGraphics();
-        g2.setColor(new Color(0, 0, 0, 0));
-        g2.fillRect(0, 0, width, height);
-        g2.dispose();
+        canvasImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
     }
 
     /**
