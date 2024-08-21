@@ -1,8 +1,8 @@
-package use_case.press_button.action_button;
+package interface_adapter.press_button.action_button;
 
 import entity.canvas.Canvas;
 import use_case.InputBoundary;
-import use_case.press_button.ButtonPressed;
+import interface_adapter.press_button.ButtonPressed;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

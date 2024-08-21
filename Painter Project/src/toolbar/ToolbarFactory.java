@@ -10,11 +10,11 @@ import toolbar.button.tool_toggle_button.PaintToolToggleButton;
 import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 import use_case.InputData;
-import use_case.press_button.ButtonPressedFacade;
-import use_case.press_button.action_button.*;
-import use_case.press_button.tool_toggle_button.EraserButtonPressed;
-import use_case.press_button.tool_toggle_button.FillButtonPressed;
-import use_case.press_button.tool_toggle_button.PaintButtonPressed;
+import interface_adapter.press_button.ButtonPressedFacade;
+import interface_adapter.press_button.action_button.*;
+import interface_adapter.press_button.tool_toggle_button.EraserButtonPressed;
+import interface_adapter.press_button.tool_toggle_button.FillButtonPressed;
+import interface_adapter.press_button.tool_toggle_button.PaintButtonPressed;
 
 import javax.swing.*;
 import java.util.ArrayList;
