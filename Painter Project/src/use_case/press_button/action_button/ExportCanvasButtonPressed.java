@@ -41,6 +41,11 @@ public class ExportCanvasButtonPressed extends ButtonPressed {
             // Get the selected file
             File fileToSave = fileChooser.getSelectedFile();
 
+            // Check if the file has the .canvas extension
+            if (!fileToSave.getName().toLowerCase().endsWith(".canvas")) {
+                fileToSave = new File(fileToSave.getAbsolutePath() + ".canvas");
+            }
+
             try (FileOutputStream fileOut = new FileOutputStream(fileToSave);
                  ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
                 // Serialize the canvas object
