@@ -19,7 +19,7 @@ git clone https://github.com/sage35deng/207-Drawing-App
 
 ![img.png](screenshots/img.png)
 
-5. Open `Painter Project/src/app/Main.java` and press the `Run` button in the top right. (Ctrl + F5)
+6. Open `Painter Project/src/app/Main.java` and press the `Run` button in the top right. (Ctrl + F5)
 
 ![img_1.png](screenshots/img_1.png)
 
@@ -39,7 +39,7 @@ Available tools:
 - Export to PNG - S
   - This tool will export the current canvas image to a PNG file.
   - Usage:
-    - Navigate to a folder in which to store the canvas along with your desired filename. 
+    - Navigate to a folder in which to store the image along with your desired filename. 
 - Latex OCR - T
   - This tool will scan the canvas for Math and return it back in [LaTeX](https://en.wikipedia.org/wiki/LaTeX) format.
   - Usage:
@@ -52,5 +52,13 @@ Available tools:
   - This tool allows you to change the colour of your brush.
   - Usage:
     - Left click on a colour from the new pop up window and your brushes will be set to it.
+- Export to Serialized Format - I
+  - Saves current Canvas to custom format to be reused later
+  - Usage:
+    - Navigate to a folder to store the canvas along with your desired filename. 
+- Import Serialized Format - E
+  - Takes in a serialized Canvas to put into the program
+  - Usage:
+    - Navigate to a folder and select the serialized canvas then import it into the program. 
 
 In addition, use up and down arrow keys to adjust the tool size.
