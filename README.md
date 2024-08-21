@@ -53,3 +53,4 @@ Available tools:
   - Usage:
     - Left click on a colour from the new pop up window and your brushes will be set to it.
 
+In addition, use up and down arrow keys to adjust the tool size.

@@ -1,8 +1,8 @@
-package use_case.press_button.tool_toggle_button;
+package interface_adapter.press_button.tool_toggle_button;
 
 import use_case.InputBoundary;
-import use_case.press_button.ButtonPressed;
-import use_case.press_button.ButtonPressedFacade;
+import interface_adapter.press_button.ButtonPressed;
+import interface_adapter.press_button.ButtonPressedFacade;
 
 import java.awt.event.ActionEvent;
 
