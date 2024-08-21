@@ -3,6 +3,7 @@ package toolbar;
 import interface_adapter.Controller;
 import lombok.Getter;
 import toolbar.button.*;
+import toolbar.button.action_button.ClearScreenActionButton;
 import toolbar.button.action_button.ColorActionButton;
 import toolbar.button.tool_toggle_button.EraserToolToggleButton;
 import toolbar.button.tool_toggle_button.FillToolToggleButton;
@@ -13,6 +14,7 @@ import use_case.ImageExportInputBoundary;
 import use_case.InputBoundary;
 import use_case.InputData;
 import use_case.press_button.ButtonPressedFacade;
+import use_case.press_button.action_button.ClearScreenButtonPressed;
 import use_case.press_button.action_button.ColorButtonPressed;
 import use_case.press_button.action_button.LatexOCRButtonPressed;
 import use_case.press_button.action_button.SaveButtonPressed;
@@ -48,6 +50,7 @@ public class ToolbarFactory {
         addColourActionButton();
         addLatexOCRActionButton();
         addSaveActionButton();
+        addClearScreenActionButton();
     }
 
 
@@ -82,6 +85,13 @@ public class ToolbarFactory {
         ColorActionButton cab = new ColorActionButton(cbp);
         buttons.add(cab);
         toolbar.add(cab);
+    }
+
+    public void addClearScreenActionButton() {
+        ClearScreenButtonPressed csbp = new ClearScreenButtonPressed(interactor);
+        ClearScreenActionButton csab = new ClearScreenActionButton(csbp);
+        buttons.add(csab);
+        toolbar.add(csab);
     }
 
     public void addLatexOCRActionButton() {
