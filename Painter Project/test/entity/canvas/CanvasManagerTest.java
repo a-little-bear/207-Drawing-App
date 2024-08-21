@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class CanvasManagerTest {
 
@@ -59,5 +61,45 @@ public class CanvasManagerTest {
     public void testCollapseLayers() {
         Canvas collapsedCanvas = canvasManager.collapseLayers();
         assertNotNull(collapsedCanvas, "Collapsed canvas should not be null");
+    }
+
+    @Test
+    public void testGetCanvasImage() {
+        BufferedImage canvasImage = canvasManager.getCanvasImage();
+        assertNotNull(canvasImage, "Canvas image should not be null");
+        assertEquals(100, canvasImage.getWidth(), "Canvas image should have the correct width");
+        assertEquals(100, canvasImage.getHeight(), "Canvas image should have the correct height");
+    }
+
+//    @Test
+//    public void testChooseColor() {
+//        InputData mockInputData = mock(InputData.class);
+//        // The JFrame is created in the method but not easily tested in a non-GUI environment
+//        // For this reason, we verify the expected behavior when a color is selected
+//        // Here, simulate a color choice and verify that the color is set in the inputData
+//        // Simulate RED selection
+//        canvasManager.chooseColor(mockInputData);
+//        // Since there's no easy way to capture JFrame interactions, assume RED is chosen
+//        verify(mockInputData).setCurrentColor(Color.RED);
+//    }
+
+    @Test
+    public void testClearScreen() {
+        Canvas topLayer = mock(Canvas.class);
+        canvasManager.getLayers().add(topLayer);
+
+        canvasManager.clearScreen();
+
+        verify(topLayer, times(1)).clearCanvas();
+    }
+
+    @Test
+    public void testGetAndSetLayers() {
+        ArrayList<Canvas> newLayers = new ArrayList<>();
+        newLayers.add(new Canvas(100, 100));
+
+        canvasManager.setLayers(newLayers);
+
+        assertEquals(newLayers, canvasManager.getLayers(), "Layers should be correctly set and retrieved");
     }
 }
