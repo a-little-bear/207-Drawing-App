@@ -1,25 +1,23 @@
-//package data_access.api;
-//
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//public class SimpleTexLatexAPITest {
-//
-//    private SimpleTexLatexAPI latexAPI;
-//
-//    @BeforeEach
-//    void setUp() {
-//        latexAPI = new SimpleTexLatexAPI();
-//    }
-//
-//    @Test
-//    void testConvertToLatex() {
-//        String input = "x^2 + y^2 = z^2";
-//        String expectedOutput = "\\( x^2 + y^2 = z^2 \\)";
-//
-//        String result = latexAPI.convertToLatex(input);
-//        assertEquals(expectedOutput, result, "The convertToLatex method should return the correct LaTeX representation");
-//    }
-//}
+package data_access.api;
+
+import org.junit.jupiter.api.Test;
+
+import java.awt.image.BufferedImage;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SimpleTexLatexAPITest {
+
+    private final SimpleTexLatexAPI simpleTexLatexAPI = new SimpleTexLatexAPI();
+
+    @Test
+    void testOCR_SuccessfulResponse() {
+        // Assuming the API key and API are functional
+        BufferedImage image = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        String latex = simpleTexLatexAPI.OCR(image);
+
+        // Basic assertions to ensure it works
+        assertNotNull(latex, "OCR should return a result");
+        assertFalse(latex.isEmpty(), "OCR result should not be empty");
+    }
+}
