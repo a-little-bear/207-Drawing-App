@@ -14,13 +14,17 @@ public class PaintTool implements Tool {
     @Setter @Getter private Color paintColor;
     @Setter @Getter private boolean isDrawing;
 
+    /**
+     * Sets the drawing state of the paint tool.
+     * This method is used to start or stop the paint tool's drawing action.
+     *
+     * @param isDrawing The new drawing state to set.
+     * @return The updated drawing state.
+     */
     public boolean setIsDrawing(boolean isDrawing) {
         this.isDrawing = isDrawing;
         return isDrawing;
     }
-
-    private int lastX, lastY;
-
 
     /**
      * Increments the size of the paint tool.
@@ -28,10 +32,6 @@ public class PaintTool implements Tool {
      * @param increment the amount to increment the size by
      */
     public void incrementSize(int increment) {
-        if (size < 1) {
-            size = 1;
-        } else {
-            size += increment;
-        }
+        size = Math.max(1, size + increment); // size does not go below 1
     }
 }

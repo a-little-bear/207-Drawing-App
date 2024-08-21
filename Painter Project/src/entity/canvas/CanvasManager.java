@@ -121,7 +121,7 @@ public class CanvasManager {
      */
     public void chooseColor(InputData inputData) {
         JFrame frame = new JFrame("Color Picker");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(400, 400);
         frame.setLayout(new GridLayout(2, 2, 10, 10));
 
@@ -151,10 +151,21 @@ public class CanvasManager {
         currentLayer.clearCanvas();
     }
     // Getter for layers
+
+    /**
+     * Returns the list of canvas layers managed by this CanvasManager.
+     *
+     * @return The list of canvas layers.
+     */
     public ArrayList<Canvas> getLayers() {
         return layers;
     }
 
+    /**
+     * Sets the list of canvas layers managed by this CanvasManager.
+     *
+     * @param layers The new list of canvas layers.
+     */
     public void setLayers(ArrayList<Canvas> layers) {
         this.layers = layers;
     }

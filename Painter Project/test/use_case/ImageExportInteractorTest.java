@@ -2,38 +2,39 @@ package use_case;
 
 import data_access.DataAccessObject;
 import entity.canvas.CanvasManager;
-import view.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 
 public class ImageExportInteractorTest {
 
-    private ImageExportInteractor interactor;
+    private ImageExportInteractor imageExportInteractor;
     private DataAccessObject mockDataAccessObject;
-    private View mockView;
+    private CanvasManager mockCanvasManager;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mockDataAccessObject = mock(DataAccessObject.class);
-        mockView = mock(View.class);
-        interactor = new ImageExportInteractor(mockDataAccessObject);
+        imageExportInteractor = new ImageExportInteractor(mockDataAccessObject);
+        mockCanvasManager = mock(CanvasManager.class);
     }
 
     @Test
-    public void testExportImage() {
-        BufferedImage mockImage = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+    void testSaveImage() {
+        BufferedImage image = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+        when(mockCanvasManager.getCanvasImage()).thenReturn(image);
 
-        // Mock the canvasManager and its method
-        CanvasManager mockCanvasManager = mock(CanvasManager.class);
+        imageExportInteractor.saveImage(mockCanvasManager);
+        verify(mockDataAccessObject, times(1)).saveFile(anyString(), eq(image));
+    }
 
-        // Run the exportImage method
-        interactor.saveImage(mockCanvasManager);
-
-        // Verify the interaction
-        verify(mockDataAccessObject).saveFile("Specify a file to save", mockImage);
+    @Test
+    void testExportCanvasManager() {
+        imageExportInteractor.exportCanvasManager(mockCanvasManager);
+        verify(mockDataAccessObject, times(1)).exportFile(anyString(),any(ArrayList.class));
     }
 }

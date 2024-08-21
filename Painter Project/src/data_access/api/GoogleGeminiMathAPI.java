@@ -55,8 +55,7 @@ public class GoogleGeminiMathAPI implements MathAPI {
      * @return the generated response from the API
      * @throws IOException if an error occurs during the API request
      */
-    @Override
-    public String getResponse(String prompt) throws IOException {
+    private String getResponse(String prompt) throws IOException {
         OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(createJsonBody(prompt), MediaType.get("application/json; charset=utf-8"));
         Request request = new Request.Builder()

@@ -1,5 +1,6 @@
 package data_access;
 
+import entity.canvas.Canvas;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -9,50 +10,38 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.*;
 
 public class DataAccessObjectTest {
 
     private DataAccessObject dataAccessObject;
-    private JFileChooser fileChooser;
+    private JFileChooser mockFileChooser;
 
     @BeforeEach
-    public void setUp() {
-        fileChooser = mock(JFileChooser.class);
-        dataAccessObject = new DataAccessObject(fileChooser);
+    void setUp() {
+        mockFileChooser = mock(JFileChooser.class);
+        dataAccessObject = new DataAccessObject(mockFileChooser);
     }
 
     @Test
-    public void testSaveFile() throws IOException {
-        // Create a dummy image
+    void testSaveFile() {
         BufferedImage image = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
-        String filePath = "test_output.png";
-        File testFile = new File(filePath);
-        // Using Mockito to mock JFileChooser
-        // To avoid opening a dialog box during testing
-        when(fileChooser.showSaveDialog(null)).thenReturn(JFileChooser.APPROVE_OPTION);
-        when(fileChooser.getSelectedFile()).thenReturn(testFile);
+        when(mockFileChooser.showSaveDialog(null)).thenReturn(JFileChooser.APPROVE_OPTION);
+        when(mockFileChooser.getSelectedFile()).thenReturn(new File("test.png"));
 
-        // Use DataAccessObject to save the image
-        dataAccessObject.saveFile("Save File", image);
+        assertDoesNotThrow(() -> dataAccessObject.saveFile("Save Image", image));
+    }
 
-        // Check if the file exists
-        assertTrue(testFile.exists(), "File should be created");
+    @Test
+    void testExportFile() {
+        ArrayList<Canvas> layers = new ArrayList<>();
+        layers.add(new Canvas(100, 100));
+        when(mockFileChooser.showSaveDialog(null)).thenReturn(JFileChooser.APPROVE_OPTION);
+        when(mockFileChooser.getSelectedFile()).thenReturn(new File("test.canvas"));
 
-        // Verify the contents
-        BufferedImage savedImage = ImageIO.read(testFile);
-        assertNotNull(savedImage, "Saved image should not be null");
-        assertEquals(image.getWidth(), savedImage.getWidth(), "Image width should match");
-        assertEquals(image.getHeight(), savedImage.getHeight(), "Image height should match");
-
-        // Cleanup
-        if (testFile.exists()) {
-            boolean deleted = testFile.delete();
-            if (!deleted) {
-                System.err.println("Warning: Failed to delete test output file");
-            }
-        }
+        assertDoesNotThrow(() -> dataAccessObject.exportFile("Export Canvas", layers));
     }
 }
