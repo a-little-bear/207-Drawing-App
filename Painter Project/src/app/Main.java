@@ -21,6 +21,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * The main entry point for the Drawing App. This class is responsible for initializing
+ * and setting up all the core components of the application, including the view, controller,
+ * toolbar, and the main application window.
+ */
 public class Main{
     private static final int scale = 1;
     public static final int tileSize = scale;
@@ -29,6 +34,13 @@ public class Main{
     public static final int maxScreenRow = 720 / scale;
     private static final int screenHeight = tileSize * maxScreenRow;
 
+    /**
+     * The main method that serves as the entry point for the application.
+     * This method sets up the application window, initializes the MVC components,
+     * and starts the main drawing thread.
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
         // Initialize the main program window
         JFrame window = new JFrame("Drawing App");

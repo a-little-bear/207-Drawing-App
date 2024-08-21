@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -18,13 +19,16 @@ public class GoogleGeminiMathAPITest {
     }
 
     @Test
-    void testSolveEquation() throws IOException {
+    void testSolveEquation() throws Exception {
         String latex = "x^2 + y^2 = z^2";
         String expectedResult = "Steps to solve the equation";
+        GoogleGeminiMathAPI mathAPI = new GoogleGeminiMathAPI();
 
-        doReturn(expectedResult).when(mathAPI).getResponse(anyString());
+        Method method = GoogleGeminiMathAPI.class.getDeclaredMethod("getResponse", String.class);
+        method.setAccessible(true);
+        String result = (String) method.invoke(mathAPI, latex);
 
-        String result = mathAPI.solveEquation(latex);
-        assertEquals(expectedResult, result, "The solveEquation method should return the correct result");
+        assertEquals(expectedResult, result);
     }
+
 }

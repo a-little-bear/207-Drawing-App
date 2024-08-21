@@ -145,11 +145,21 @@ public class CanvasManager {
         frame.setLocationRelativeTo(null); // Center the frame on the screen
         frame.setVisible(true);
     }
-    // Getter for layers
+
+    /**
+     * Returns the list of canvas layers managed by this CanvasManager.
+     *
+     * @return The list of canvas layers.
+     */
     public ArrayList<Canvas> getLayers() {
         return layers;
     }
 
+    /**
+     * Sets the list of canvas layers managed by this CanvasManager.
+     *
+     * @param layers The new list of canvas layers.
+     */
     public void setLayers(ArrayList<Canvas> layers) {
         this.layers = layers;
     }
